@@ -133,7 +133,20 @@ class VietninieApp {
   }
 
   
+  ensureNoReferrerMeta() {
+    let meta = document.querySelector('meta[name="referrer"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.name = "referrer";
+      meta.content = "no-referrer";
+      document.head.insertBefore(meta, document.head.firstChild);
+    } else if (meta.content !== "no-referrer") {
+      meta.content = "no-referrer";
+    }
+  }
+
   initSpeechEngine() {
+    this.ensureNoReferrerMeta();
     this.currentAudio = null;
     this.localVietnameseVoice = null;
 
@@ -175,9 +188,9 @@ class VietninieApp {
 
   speakVietnamese(text, customRate = null, onEndCallback = null, triggerBtn = null) {
     if (!text) return;
+    this.ensureNoReferrerMeta();
     const cleanText = text.trim();
 
-    
     if (triggerBtn) {
       triggerBtn.classList.add("speaking");
     }
@@ -187,7 +200,6 @@ class VietninieApp {
       if (onEndCallback) onEndCallback();
     };
 
-    
     if (this.currentAudio) {
       try {
         this.currentAudio.pause();
@@ -201,42 +213,59 @@ class VietninieApp {
     }
 
     const rate = customRate || this.speechRate || 1.0;
+    const encoded = encodeURIComponent(cleanText);
 
-    
-    
-    try {
-      const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodeURIComponent(cleanText)}`;
-      const audio = new Audio(ttsUrl);
-      audio.playbackRate = Math.min(2.0, Math.max(0.5, rate));
-      this.currentAudio = audio;
+    const streamUrls = [
+      `https://translate.googleapis.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`,
+      `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`,
+      `https://translate.google.com.vn/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`,
+      `https://dict.youdao.com/dictvoice?le=vi&audio=${encoded}`
+    ];
 
-      let playedSuccessfully = false;
-
-      audio.onended = () => {
-        this.currentAudio = null;
-        finish();
-      };
-
-      audio.onerror = (err) => {
-        
+    const tryPlayStream = (idx) => {
+      if (idx >= streamUrls.length) {
         this.fallbackToSpeechSynthesis(cleanText, rate, finish);
-      };
-
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            playedSuccessfully = true;
-          })
-          .catch((err) => {
-            console.warn("在线音频播放未允许或受阻，转入本地备用方案:", err);
-            this.fallbackToSpeechSynthesis(cleanText, rate, finish);
-          });
+        return;
       }
-    } catch (err) {
-      console.warn("音频引擎异常:", err);
-      this.fallbackToSpeechSynthesis(cleanText, rate, finish);
-    }
+
+      try {
+        const audio = document.createElement("audio");
+        audio.setAttribute("referrerpolicy", "no-referrer");
+        audio.referrerPolicy = "no-referrer";
+        audio.src = streamUrls[idx];
+        audio.playbackRate = Math.min(2.0, Math.max(0.5, rate));
+        this.currentAudio = audio;
+
+        let settled = false;
+        const nextMirror = () => {
+          if (settled) return;
+          settled = true;
+          tryPlayStream(idx + 1);
+        };
+
+        audio.onended = () => {
+          if (settled) return;
+          settled = true;
+          this.currentAudio = null;
+          finish();
+        };
+
+        audio.onerror = () => {
+          nextMirror();
+        };
+
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            nextMirror();
+          });
+        }
+      } catch (err) {
+        tryPlayStream(idx + 1);
+      }
+    };
+
+    tryPlayStream(0);
   }
 
   fallbackToSpeechSynthesis(cleanText, rate, callback) {
@@ -246,7 +275,6 @@ class VietninieApp {
       return;
     }
 
-    
     if (!this.localVietnameseVoice) {
       const voices = window.speechSynthesis.getVoices();
       this.localVietnameseVoice = voices.find((v) => {
@@ -264,17 +292,15 @@ class VietninieApp {
       });
     }
 
-    
     if (!this.localVietnameseVoice) {
-      this.showToast("⚠️ 当前设备缺少越南语发音引擎。已为你打开开启指引。");
-      this.openVoiceGuideModal();
+      this.showToast("在线越南语语音暂时无法播放，请检查网络连接。");
       callback();
       return;
     }
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = "vi-VN";
-    utterance.voice = this.localVietnameseVoice; 
+    utterance.voice = this.localVietnameseVoice;
     utterance.rate = rate || this.speechRate || 0.9;
     utterance.pitch = 1.0;
 
@@ -285,8 +311,9 @@ class VietninieApp {
   }
 
   testSpeechSynthesis() {
-    this.speakVietnamese("Xin chào! Chào mừng bạn đến với Vietninie, 越学越辣！", null, () => {
-      this.showToast("纯正越南语发音测试完成！听到地道发音了吗？");
+    this.closeVoiceGuideModal();
+    this.speakVietnamese("Xin chào! Chào mừng bạn đến với Việt Nam. Chúc bạn học tiếng Việt thật vui!", null, () => {
+      this.showToast("🔊 纯正越南语发音测试完成！听到地道发音了吗？");
     });
   }
 
