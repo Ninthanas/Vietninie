@@ -434,6 +434,16 @@ input, select, textarea {
   flex-shrink: 0;
 }
 
+.fc-face.back .btn-speak {
+  width: auto;
+  min-width: 100px;
+  height: 40px;
+  padding: 8px 14px;
+  white-space: nowrap;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
 .btn-speak:hover {
   background-color: var(--color-primary);
   color: #FFFFFF;
