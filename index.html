@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Vietninie (越学越辣) — 专为中文母语者量身打造的零基础到高阶越南语自学工具。5,000生活词汇、A1-C2分级、真实情境对话、六大声调图解与智能发音。">
+  <title>Vietninie (越学越辣) — 越南语自然习得平台</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ 
+  <header class="site-header">
+    <div class="app-container header-inner">
+      <div class="brand-wrapper" onclick="app.navigateTo('home')">
+        <img src="assets/logo/logo-mark.svg" alt="Vietninie Logo" class="brand-logo-img">
+        <div class="brand-text">
+          <div class="brand-title">Viet<span>ninie</span></div>
+          <div class="brand-slogan">越学越辣 🌶️</div>
+        </div>
+      </div>
+
+      
+      <nav class="desktop-nav" id="desktopNav">
+        <button class="nav-link active" data-page="home" onclick="app.navigateTo('home')">
+          <span>🏠</span> 首页
+        </button>
+        <button class="nav-link" data-page="lessons" onclick="app.navigateTo('lessons')">
+          <span>📚</span> 核心课
+        </button>
+        <button class="nav-link" data-page="vocabulary" onclick="app.navigateTo('vocabulary')">
+          <span>📖</span> 词库 (5000)
+        </button>
+        <button class="nav-link" data-page="conversation" onclick="app.navigateTo('conversation')">
+          <span>💬</span> 生活对话
+        </button>
+        <button class="nav-link" data-page="pronunciation" onclick="app.navigateTo('pronunciation')">
+          <span>🗣️</span> 声调发音
+        </button>
+        <button class="nav-link" data-page="quiz" onclick="app.navigateTo('quiz')">
+          <span>🎯</span> 挑战测验
+        </button>
+        <button class="nav-link" data-page="profile" onclick="app.navigateTo('profile')">
+          <span>👤</span> 我的
+        </button>
+      </nav>
+
+     
+      <div class="header-controls">
+        <button class="level-badge-btn" onclick="app.openLevelModal()" title="切换学习水平等级">
+          <span id="headerLevelText">A1 · 入门</span> ▾
+        </button>
+        <div class="streak-pill" id="streakBadge" title="连续打卡天数">
+          🔥 <span id="streakCount">1</span> 天
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="app-container main-view-container">
+
+    
+    <section class="view-section active" id="view-home">
+     
+      <div class="hero-editorial">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span>🇻🇳</span> Learn Vietnamese Naturally
+          </div>
+          <h1 class="hero-title">
+            学一点越南语，<br>
+            <span>走进真实的越南生活。</span>
+          </h1>
+          <p class="hero-tagline" id="homeGreetingMsg">
+            你好，今天也一起学习吧！每天 5-10 分钟，轻松积累实用地道表达。
+          </p>
+          <div style="display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="app.startCurrentLesson()">
+              继续学习 →
+            </button>
+            <button class="btn btn-outline" onclick="app.navigateTo('vocabulary')">
+              查阅 5,000 词库
+            </button>
+          </div>
+        </div>
+        <div class="hero-illustration-box">
+          <img src="assets/images/illustrations/home.svg" alt="Vietnamese Life" class="hero-svg-img">
+        </div>
+      </div>
+
+      
+      <div class="daily-tracker-row">
+        <div class="tracker-card">
+          <div class="tracker-head">
+            <span class="tracker-title">🎯 今日目标</span>
+            <span class="tracker-value" id="homeGoalProgressText">0 / 10 词</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="homeGoalProgressBar" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="tracker-card">
+          <div class="tracker-head">
+            <span class="tracker-title">🔄 今日复习</span>
+            <span class="tracker-value" id="homeReviewDueText">0 个生词待巩固</span>
+          </div>
+          <button class="btn btn-soft btn-sm" onclick="app.startDailyReview()">
+            立即开始复习 →
+          </button>
+        </div>
+      </div>
+
+      
+      <div class="current-lesson-card" id="homeCurrentLessonBox">
+        <div class="clc-header">
+          <span class="clc-badge" id="homeClBadge">正在学习 · 第 1 课</span>
+          <span style="font-size: 1.8rem;" id="homeClIcon">👋</span>
+        </div>
+        <div>
+          <h2 class="clc-title-vi" id="homeClTitleVi">Chào hỏi & Lịch sự</h2>
+          <p class="clc-title-zh" id="homeClTitleZh">问候与基本礼貌</p>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">
+            <span>全课程完成度</span>
+            <span id="homeOverallLessonsProgText">0 / 10 课 (0%)</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="homeOverallLessonsProgBar" style="width: 0%;"></div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg w-100" onclick="app.startCurrentLesson()">
+          进入第 <span id="homeClBtnNumber">1</span> 课学习 →
+        </button>
+      </div>
+
+      
+      <div class="section-header">
+        <h2 class="section-title">⚡ 快速专项练习</h2>
+        <p class="section-desc">随时随地，利用碎片时间突破重点模块</p>
+      </div>
+      <div class="quick-modules-grid">
+        <div class="module-card" onclick="app.navigateTo('vocabulary')">
+          <span class="module-icon">📚</span>
+          <span class="module-title-zh">词汇闪卡</span>
+          <span class="module-title-vi">Từ vựng (5,000词)</span>
+        </div>
+        <div class="module-card" onclick="app.navigateTo('conversation')">
+          <span class="module-icon">💬</span>
+          <span class="module-title-zh">生活对话</span>
+          <span class="module-title-vi">Hội thoại thực tế</span>
+        </div>
+        <div class="module-card" onclick="app.navigateTo('pronunciation')">
+          <span class="module-icon">🗣️</span>
+          <span class="module-title-zh">声调发音</span>
+          <span class="module-title-vi">6 Thanh điệu</span>
+        </div>
+        <div class="module-card" onclick="app.navigateTo('quiz')">
+          <span class="module-icon">🎯</span>
+          <span class="module-title-zh">随堂测验</span>
+          <span class="module-title-vi">Làm bài tập</span>
+        </div>
+      </div>
+
+     
+      <div class="card" style="background-color: var(--color-surface-muted); border: none; padding: 14px 18px; margin-top: 20px;">
+        <p style="font-size: 0.82rem; color: var(--color-text-light); line-height: 1.5;">
+          💡 <strong>学习小贴士</strong>：Vietninie 的 A1–C2 等级体系用于直观呈现越南语词汇与语境的难易梯度，方便按部就班学习，并非官方越南语等级证书考试评级。
+        </p>
+      </div>
+    </section>
+
+    
+    <section class="view-section" id="view-lessons">
+      <div class="section-header">
+        <h2 class="section-title">📚 核心系统课程</h2>
+        <p class="section-desc">包含生词朗读、句型拆解、随堂小测与情境模拟</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px;" id="lessonsListContainer">
+       
+      </div>
+    </section>
+
+   
+    <section class="view-section" id="view-vocabulary">
+      <div class="section-header">
+        <h2 class="section-title">📖 实用词库 (5,000 词)</h2>
+        <p class="section-desc">支持中文、越南语有声检索与无调符号模糊拼音搜索</p>
+      </div>
+
+      
+      <div class="vocab-toolbar">
+        <div class="search-input-wrapper">
+          <span class="search-icon-svg">🔍</span>
+          <input type="text" class="search-input-field" id="vocabSearchInput" placeholder="输入越南语（可不带声调，如 'ca phe'）或中文检索..." oninput="app.onVocabSearchChange()">
+        </div>
+
+        
+        <div class="level-selector-row" id="vocabLevelPills">
+        </div>
+
+        
+        <div class="level-selector-row" id="vocabCategoryPills">
+        </div>
+      </div>
+
+      
+      <div class="flashcard-stage" onclick="app.flipFlashcard()">
+        <div class="flashcard-card" id="flashcardCardElement">
+          
+          <div class="fc-face front">
+            <span class="fc-badge-level" id="fcBadgeLevel">A1 · 问候</span>
+            <div class="fc-vi-word" id="fcWordVi">Xin chào</div>
+            <button class="btn-speak mt-2" onclick="event.stopPropagation(); app.speakVietnamese(document.getElementById('fcWordVi').innerText);" title="朗读发音">
+              🔊
+            </button>
+            <span class="fc-hint-tap">👆 点击翻转查看中文释义与例句</span>
+          </div>
+
+          
+          <div class="fc-face back">
+            <div class="fc-zh-word" id="fcWordZh">你好 / 您好</div>
+            <div class="fc-example-box">
+              <p style="font-weight: 800; color: var(--color-text-main);" id="fcExampleVi">Xin chào bạn!</p>
+              <p style="color: var(--color-text-muted); font-size: 0.88rem;" id="fcExampleZh">你好朋友！</p>
+            </div>
+            <button class="btn-speak mt-2" onclick="event.stopPropagation(); app.speakVietnamese(document.getElementById('fcExampleVi').innerText);" title="朗读例句">
+              🔊 读例句
+            </button>
+            <span class="fc-hint-tap">👆 点击翻回正面</span>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="fc-action-bar">
+        <button class="btn btn-outline" onclick="app.prevFlashcard()">
+          ← 上一个
+        </button>
+        <button class="btn btn-primary" onclick="app.markCurrentFlashcardLearned()">
+          我记住了 ✓
+        </button>
+        <button class="btn btn-outline" onclick="app.nextFlashcard()">
+          下一个 →
+        </button>
+      </div>
+
+      
+      <div class="section-header mt-4">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h3 style="font-size: 1.15rem; font-weight: 850;">
+            词汇列表 (<span id="vocabMatchedCount">0</span> / 5,000 词)
+          </h3>
+          <span style="font-size: 0.85rem; color: var(--color-text-light);">已掌握: <strong id="vocabKnownCount" style="color: var(--color-primary);">0</strong></span>
+        </div>
+      </div>
+
+      <div class="vocab-list-grid" id="vocabGridContainer">
+      </div>
+
+      
+      <div class="load-more-container" id="vocabLoadMoreContainer">
+        <button class="btn btn-outline btn-lg" id="btnLoadMoreVocab" onclick="app.loadMoreVocab()">
+          加载更多词汇 ↓
+        </button>
+        <span style="font-size: 0.82rem; color: var(--color-text-light);" id="vocabPaginationStatus">已显示 30 词</span>
+      </div>
+    </section>
+
+    
+    <section class="view-section" id="view-conversation">
+      <div class="section-header">
+        <h2 class="section-title">💬 真实生活情境对话</h2>
+        <p class="section-desc">支持单句朗读、整段连读、双模式切换（学习模式 vs 测验隐藏模式）</p>
+      </div>
+
+      
+      <div class="level-selector-row" id="scenarioSelectorRow" style="margin-bottom: 20px;">
+       
+      </div>
+
+     
+      <div class="card" style="border-radius: var(--radius-xl); padding: 26px;">
+        <div class="conversation-mode-bar">
+          <div>
+            <h3 id="convTitleVi" style="font-size: 1.35rem; font-weight: 900;">Ở quán cà phê</h3>
+            <p id="convTitleZh" style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary);">在咖啡店点单</p>
+          </div>
+          <div class="mode-toggle-group">
+            <button class="mode-btn active" id="btnModeLearn" onclick="app.setConversationMode('learn')">
+              📖 学习模式
+            </button>
+            <button class="mode-btn" id="btnModePractice" onclick="app.setConversationMode('practice')">
+              🎯 练习模式 (隐藏中文)
+            </button>
+          </div>
+        </div>
+
+        <div style="background-color: var(--color-primary-light); color: var(--color-primary); padding: 12px 16px; border-radius: var(--radius-md); font-size: 0.88rem; font-weight: 600;" id="convContextZh">
+          进入胡志明市街头咖啡馆，向店员点一杯地道的越南冰奶咖啡。
+        </div>
+
+        
+        <div class="dialogue-thread" id="dialogueBubblesThread">
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
+          <button class="btn btn-outline" onclick="app.autoPlayDialogue()">
+            ▶️ 连贯朗读整段对话
+          </button>
+          <button class="btn btn-primary" onclick="app.nextScenario()">
+            下一场景 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="view-section" id="view-pronunciation">
+      <div class="section-header">
+        <h2 class="section-title">🗣️ 越南语六大声调发音图解</h2>
+        <p class="section-desc">声调是越南语的灵魂。点击对应音节即刻聆听发音，掌握高低起伏！</p>
+      </div>
+
+      <div class="tones-soundboard">
+        <!-- 1. Ngang -->
+        <div class="tone-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="tone-name">1. Thanh Ngang</span>
+            <span class="tone-contour-badge">平声 · 55</span>
+          </div>
+          <p class="tone-desc">无标号。声音高而平稳，不升不降，类似中文第一声（阴平）。</p>
+          <div class="tone-example-row">
+            <div>
+              <span style="font-size: 1.4rem; font-weight: 900; color: var(--color-primary);">ma</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 8px;">鬼 / 妖魔</span>
+            </div>
+            <button class="btn-speak" onclick="app.speakVietnamese('ma', null, null, this)" title="发音">🔊</button>
+          </div>
+        </div>
+
+        <!-- 2. Sắc -->
+        <div class="tone-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="tone-name">2. Thanh Sắc</span>
+            <span class="tone-contour-badge">锐声 · 35</span>
+          </div>
+          <p class="tone-desc">标号为锐角 (´)。由中音迅速扬升到高音，轻快响亮，类似中文第二声。</p>
+          <div class="tone-example-row">
+            <div>
+              <span style="font-size: 1.4rem; font-weight: 900; color: var(--color-primary);">má</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 8px;">妈妈 / 脸颊</span>
+            </div>
+            <button class="btn-speak" onclick="app.speakVietnamese('má', null, null, this)" title="发音">🔊</button>
+          </div>
+        </div>
+
+        <!-- 3. Huyền -->
+        <div class="tone-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="tone-name">3. Thanh Huyền</span>
+            <span class="tone-contour-badge">玄声 · 21</span>
+          </div>
+          <p class="tone-desc">标号为钝角 (`)。低沉平缓下落，舒缓柔和，比中文第四声轻很多。</p>
+          <div class="tone-example-row">
+            <div>
+              <span style="font-size: 1.4rem; font-weight: 900; color: var(--color-primary);">mà</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 8px;">但是 / 却</span>
+            </div>
+            <button class="btn-speak" onclick="app.speakVietnamese('mà', null, null, this)" title="发音">🔊</button>
+          </div>
+        </div>
+
+        <!-- 4. Hỏi -->
+        <div class="tone-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="tone-name">4. Thanh Hỏi</span>
+            <span class="tone-contour-badge">问声 · 313</span>
+          </div>
+          <p class="tone-desc">标号类似问号无点 (̉)。语调先下沉降至最低，随后微带迟疑地上扬。</p>
+          <div class="tone-example-row">
+            <div>
+              <span style="font-size: 1.4rem; font-weight: 900; color: var(--color-primary);">mả</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 8px;">坟墓 / 墓地</span>
+            </div>
+            <button class="btn-speak" onclick="app.speakVietnamese('mả', null, null, this)" title="发音">🔊</button>
+          </div>
+        </div>
+
+        <!-- 5. Ngã -->
+        <div class="tone-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="tone-name">5. Thanh Ngã</span>
+            <span class="tone-contour-badge">跌声 · 35ˀ</span>
+          </div>
+          <p class="tone-desc">标号为波浪号 (~)。上升至高位时喉咙急剧收紧短暂停顿（喉塞音），富有特色。</p>
+          <div class="tone-example-row">
+            <div>
+              <span style="font-size: 1.4rem; font-weight: 900; color: var(--color-primary);">mã</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 8px;">马匹 / 密码</span>
+            </div>
+            <button class="btn-speak" onclick="app.speakVietnamese('mã', null, null, this)" title="发音">🔊</button>
+          </div>
+        </div>
+
+        <!-- 6. Nặng -->
+        <div class="tone-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="tone-name">6. Thanh Nặng</span>
+            <span class="tone-contour-badge">重声 · 21ˀ</span>
+          </div>
+          <p class="tone-desc">标号为下方圆点 (.)。音质极低沉短促，声音像被利落截断，急促沉稳。</p>
+          <div class="tone-example-row">
+            <div>
+              <span style="font-size: 1.4rem; font-weight: 900; color: var(--color-primary);">mạ</span>
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); margin-left: 8px;">稻苗 / 秧苗</span>
+            </div>
+            <button class="btn-speak" onclick="app.speakVietnamese('mạ', null, null, this)" title="发音">🔊</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vietnamese Pronouns Special Guide -->
+      <div class="pronouns-guide-card">
+        <h3 style="font-size: 1.25rem; font-weight: 900;">👥 越南语人称称谓全指南 (Vietnamese Pronouns)</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 4px;">
+          越南语中极少使用像英语 "you/I" 这样冰冷的抽象代词，而是根据彼此年龄长幼与亲疏关系称呼对方。掌握以下核心称谓，越南人会觉得你非常地道且懂礼貌：
+        </p>
+
+        <div class="pronouns-grid">
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Anh</span>
+            <span class="pronoun-zh">哥哥 / 您 (年长或同辈男士)</span>
+            <span class="pronoun-usage">用于对稍年长的男性表尊敬与亲近</span>
+          </div>
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Chị</span>
+            <span class="pronoun-zh">姐姐 / 您 (年长或同辈女士)</span>
+            <span class="pronoun-usage">称呼年轻女店员、女同事非常得体</span>
+          </div>
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Em</span>
+            <span class="pronoun-zh">弟弟 / 妹妹 / 我 (自谦)</span>
+            <span class="pronoun-usage">对晚辈称呼，或晚辈跟长辈说话时自称</span>
+          </div>
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Bạn</span>
+            <span class="pronoun-zh">你 / 朋友 (平辈之间)</span>
+            <span class="pronoun-usage">初次认识同龄人、同学之间通用</span>
+          </div>
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Cô</span>
+            <span class="pronoun-zh">姑姑 / 阿姨 / 女老师</span>
+            <span class="pronoun-usage">称呼长辈女性，或学校女教师</span>
+          </div>
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Chú</span>
+            <span class="pronoun-zh">叔叔</span>
+            <span class="pronoun-usage">称呼出租车司机大叔、长辈男士</span>
+          </div>
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Bác</span>
+            <span class="pronoun-zh">大伯 / 大妈 (父辈年长者)</span>
+            <span class="pronoun-usage">称呼年纪比父母大的街头长辈</span>
+          </div>
+          <div class="pronoun-chip">
+            <span class="pronoun-word">Ông / Bà</span>
+            <span class="pronoun-zh">老先生 / 老夫人</span>
+            <span class="pronoun-usage">对祖父母辈老人家的尊称</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. QUIZ VIEW ================= -->
+    <section class="view-section" id="view-quiz">
+      <div class="section-header">
+        <h2 class="section-title">🎯 越南语综合挑战测验</h2>
+        <p class="section-desc">包含词义判断、情境应答与听辨发音，每次随机抽取 10 道精选题</p>
+      </div>
+
+      <div class="quiz-wrapper">
+        <!-- Playing Card -->
+        <div class="card" id="quizPlayCard" style="border-radius: var(--radius-xl); padding: 28px;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; color: var(--color-text-light); margin-bottom: 12px;">
+            <span id="quizProgNum">题目 1 / 10</span>
+            <span id="quizScoreNum">得分: 0</span>
+          </div>
+          <div class="progress-bar-container mb-4">
+            <div class="progress-bar-fill" id="quizProgFill" style="width: 10%;"></div>
+          </div>
+
+          <div style="margin: 20px 0;">
+            <h3 style="font-size: 1.25rem; font-weight: 850; line-height: 1.4; color: var(--color-text-main);" id="quizQuestionText">
+              正在加载题目...
+            </h3>
+            <div style="margin-top: 12px;" id="quizAudioBtnWrap">
+              <button class="btn btn-outline btn-sm" onclick="app.playCurrentQuizAudio()">
+                🔊 听题目发音
+              </button>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;" id="quizOptionsWrap">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Explanation box -->
+          <div style="display: none; margin-top: 20px; padding: 16px; border-radius: var(--radius-md);" id="quizExpWrap"></div>
+
+          <button class="btn btn-primary w-100 mt-4" id="btnNextQuizQ" style="display: none;" onclick="app.nextQuizQuestion()">
+            下一题 →
+          </button>
+        </div>
+
+        <!-- Result Card -->
+        <div class="card text-center" id="quizResultCard" style="display: none; border-radius: var(--radius-xl); padding: 40px 24px;">
+          <div style="font-size: 4rem; line-height: 1; margin-bottom: 16px;">🏆</div>
+          <h2 style="font-size: 2.5rem; font-weight: 900; color: var(--color-primary); margin-bottom: 8px;" id="quizFinalScoreText">8 / 10</h2>
+          <p style="font-size: 1.05rem; color: var(--color-text-muted); margin-bottom: 24px;" id="quizFinalFeedback">
+            做得好棒！越学越辣，你的越南语语感正飞速提升！
+          </p>
+          <button class="btn btn-primary btn-lg" onclick="app.initQuizSession()">
+            再测一次 ↺
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. PROFILE VIEW ================= -->
+    <section class="view-section" id="view-profile">
+      <div class="section-header">
+        <h2 class="section-title">👤 学习中心与数据设置</h2>
+        <p class="section-desc">管理你的当前学习等级、每日目标、语音引擎与数据备份</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 24px;">
+        <div class="card text-center">
+          <div style="font-size: 1.8rem; margin-bottom: 4px;">🎓</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: var(--color-primary);" id="profCurrentLevelText">A1</div>
+          <div style="font-size: 0.8rem; color: var(--color-text-light); font-weight: 700;">当前学习级别</div>
+        </div>
+        <div class="card text-center">
+          <div style="font-size: 1.8rem; margin-bottom: 4px;">📖</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: var(--color-text-main);" id="profLearnedWordsCount">0</div>
+          <div style="font-size: 0.8rem; color: var(--color-text-light); font-weight: 700;">已熟记词汇数 (5,000)</div>
+        </div>
+        <div class="card text-center">
+          <div style="font-size: 1.8rem; margin-bottom: 4px;">🔥</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: #B45309;" id="profStreakCount">1</div>
+          <div style="font-size: 0.8rem; color: var(--color-text-light); font-weight: 700;">连续学习天数</div>
+        </div>
+        <div class="card text-center">
+          <div style="font-size: 1.8rem; margin-bottom: 4px;">📚</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: var(--color-text-main);" id="profCompletedLessonsCount">0 / 10</div>
+          <div style="font-size: 0.8rem; color: var(--color-text-light); font-weight: 700;">通关核心课</div>
+        </div>
+      </div>
+
+      <!-- Settings & Tools Card -->
+      <div class="card" style="border-radius: var(--radius-xl); padding: 24px; margin-bottom: 24px;">
+        <h3 style="font-size: 1.15rem; font-weight: 850; margin-bottom: 16px;">⚙️ 偏好与系统设置</h3>
+
+        <!-- Change Level -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
+          <div>
+            <div style="font-weight: 750;">切换学习水平等级</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">从 A1 入门到 C2 精通，随时随心切换</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="app.openLevelModal()">
+            选择等级
+          </button>
+        </div>
+
+        <!-- Daily Goal -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
+          <div>
+            <div style="font-weight: 750;">每日新词目标</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">设置适合自己步调的每日学习目标</div>
+          </div>
+          <div>
+            <select id="selectDailyGoal" onchange="app.setDailyGoal(this.value)" style="padding: 6px 12px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-border); background: white;">
+              <option value="5">5 个词 / 天</option>
+              <option value="10" selected>10 个词 / 天 (推荐)</option>
+              <option value="15">15 个词 / 天</option>
+              <option value="20">20 个词 / 天</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Speech Engine Diagnosis -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
+          <div>
+            <div style="font-weight: 750;">语音合成诊断 (Web Speech API)</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);" id="profVoiceStatusText">检测设备越南语语音包支持状态</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="app.testSpeechSynthesis()">
+            🔊 测试发音
+          </button>
+        </div>
+
+        <!-- Speech Rate -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
+          <div>
+            <div style="font-weight: 750;">朗读语速控制</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">初学者可选择放慢模式以辨析声调</div>
+          </div>
+          <div>
+            <select id="selectSpeechRate" onchange="app.setSpeechRate(this.value)" style="padding: 6px 12px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-border); background: white;">
+              <option value="0.75">放慢 (0.75x)</option>
+              <option value="0.9" selected>标准微慢 (0.9x)</option>
+              <option value="1.0">常速 (1.0x)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Data Export & Import -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
+          <div>
+            <div style="font-weight: 750;">学习进度备份与恢复</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">以 JSON 文本格式导出或导入本地记录</div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline btn-sm" onclick="app.exportProgressData()">
+              📥 导出进度
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('importDataInput').click()">
+              📤 导入进度
+            </button>
+            <input type="file" id="importDataInput" style="display: none;" accept=".json" onchange="app.importProgressData(event)">
+          </div>
+        </div>
+
+        <!-- Reset Data -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0;">
+          <div>
+            <div style="font-weight: 750; color: var(--color-danger);">重置所有学习进度</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">清空所有熟记单词、通关记录并重新开始</div>
+          </div>
+          <button class="btn btn-outline btn-sm" style="color: var(--color-danger); border-color: #FECACA;" onclick="app.confirmResetProgress()">
+            重置进度
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= LEVEL SELECTION MODAL ================= -->
+  <div class="modal-overlay" id="modalLevelSelect">
+    <div class="modal-content-box">
+      <div class="modal-head">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 900;">选择你的越南语学习水平</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 2px;">
+            系统将为你推荐适配的词汇与学习内容
+          </p>
+        </div>
+        <button class="modal-dismiss-btn" onclick="app.closeLevelModal()">✕</button>
+      </div>
+
+      <div class="modal-scrollable-body">
+        <div class="onboarding-level-grid" id="onboardingLevelOptions">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <span style="font-size: 0.8rem; color: var(--color-text-light);">随时可在个人中心切换</span>
+        <button class="btn btn-primary btn-sm" onclick="app.confirmLevelSelection()">
+          确认选择 ✓
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= INTERACTIVE LESSON STEP MODAL ================= -->
+  <div class="modal-overlay" id="modalLessonPlayer">
+    <div class="modal-content-box">
+      <div class="modal-head">
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 800; color: var(--color-primary);" id="lmLessonBadge">第 1 课</span>
+          <h3 style="font-size: 1.15rem; font-weight: 900; margin-top: 2px;" id="lmLessonTitle">问候与基本礼貌</h3>
+        </div>
+        <button class="modal-dismiss-btn" onclick="app.closeLessonModal()">✕</button>
+      </div>
+
+      <div class="modal-scrollable-body" id="lmModalContentBody">
+        <!-- Rendered dynamically by step -->
+      </div>
+
+      <div class="modal-foot">
+        <button class="btn btn-outline btn-sm" id="btnLmPrevStep" onclick="app.prevLessonStep()">
+          上一步
+        </button>
+        <span style="font-size: 0.85rem; color: var(--color-text-light); font-weight: 700;" id="lmStepIndicator">步骤 1 / 4</span>
+        <button class="btn btn-primary btn-sm" id="btnLmNextStep" onclick="app.nextLessonStep()">
+          下一步 →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NATIVE VOICE SETUP GUIDE MODAL ================= -->
+  <div class="modal-overlay" id="modalVoiceGuide">
+    <div class="modal-content-box">
+      <div class="modal-head">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 900; color: var(--color-primary);">🎙️ 越南语真人语音设置说明</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 2px;">
+            Vietninie 优先启用超清在线越南语原声，亦可开启系统离线语音
+          </p>
+        </div>
+        <button class="modal-dismiss-btn" onclick="app.closeVoiceGuideModal()">✕</button>
+      </div>
+
+      <div class="modal-scrollable-body" style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-main);">
+        <div style="background-color: var(--color-accent-green-light); color: #065F46; padding: 14px 18px; border-radius: var(--radius-md); margin-bottom: 18px; font-weight: 700;">
+          💡 <strong>已自动为你开启</strong>：高质量在线越南语真人原声（Google vi-VN 原声流），联网即可流畅发音，声调极其纯正！
+        </div>
+
+        <h4 style="font-weight: 850; margin-bottom: 8px;">如何在 Windows 10/11 安装完全离线的原生越南语语音包？</h4>
+        <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+          <li>按键盘快捷键 <kbd style="background:#EEE; padding:2px 6px; border-radius:4px;">Win + I</kbd> 打开 Windows【系统设置 (Settings)】。</li>
+          <li>点击【时间和语言 (Time & Language)】，然后选择左侧或右侧的【语音 (Speech)】。</li>
+          <li>在【管理语音 (Manage voices)】区域，点击【添加语音 (Add voices)】。</li>
+          <li>在搜索框中输入 <strong>“越南语”</strong> 或 <strong>“Vietnamese”</strong>，勾选并点击【安装】。</li>
+          <li>安装完成无需重启电脑，Edge 和 Chrome 浏览器即可直接调用微软本地离线超清语音！</li>
+        </ol>
+
+        <h4 style="font-weight: 850; margin-bottom: 8px;">苹果设备 (iPhone / iPad / Mac)</h4>
+        <p style="color: var(--color-text-muted); margin-bottom: 16px;">
+          苹果 iOS / macOS 系统自带超高音质的越南语 Linh / Siri 语音，点击发音喇叭会自动调用。
+        </p>
+
+        <h4 style="font-weight: 850; margin-bottom: 8px;">安卓手机 (Android)</h4>
+        <p style="color: var(--color-text-muted);">
+          可在【系统设置】->【语言与输入法】->【文字转语音输出 (TTS)】中确认 Google 语音引擎已勾选越南语。
+        </p>
+      </div>
+
+      <div class="modal-foot">
+        <button class="btn btn-outline btn-sm" onclick="app.testSpeechSynthesis()">
+          🔊 测试发音
+        </button>
+        <button class="btn btn-primary btn-sm" onclick="app.closeVoiceGuideModal()">
+          我知道了 ✓
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MOBILE BOTTOM NAVIGATION ================= -->
+  <nav class="mobile-bottom-nav">
+    <button class="m-nav-item active" data-page="home" onclick="app.navigateTo('home')">
+      <span class="m-icon">🏠</span>
+      <span>首页</span>
+    </button>
+    <button class="m-nav-item" data-page="lessons" onclick="app.navigateTo('lessons')">
+      <span class="m-icon">📚</span>
+      <span>课程</span>
+    </button>
+    <button class="m-nav-item" data-page="vocabulary" onclick="app.navigateTo('vocabulary')">
+      <span class="m-icon">📖</span>
+      <span>词库</span>
+    </button>
+    <button class="m-nav-item" data-page="conversation" onclick="app.navigateTo('conversation')">
+      <span class="m-icon">💬</span>
+      <span>对话</span>
+    </button>
+    <button class="m-nav-item" data-page="pronunciation" onclick="app.navigateTo('pronunciation')">
+      <span class="m-icon">🗣️</span>
+      <span>发音</span>
+    </button>
+    <button class="m-nav-item" data-page="profile" onclick="app.navigateTo('profile')">
+      <span class="m-icon">👤</span>
+      <span>我的</span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-outlet" id="toastOutlet"></div>
+
+  <!-- Scripts: Level Datasets -> Master Vocabulary -> Lessons -> Conversations -> Quizzes -> App Controller -->
+  <script src="data/vocabulary-a1.js"></script>
+  <script src="data/vocabulary-a2.js"></script>
+  <script src="data/vocabulary-b1.js"></script>
+  <script src="data/vocabulary-b2.js"></script>
+  <script src="data/vocabulary-c1.js"></script>
+  <script src="data/vocabulary-c2.js"></script>
+  <script src="data/vocabulary.js"></script>
+  <script src="data/lessons.js"></script>
+  <script src="data/conversations.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
