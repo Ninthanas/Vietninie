@@ -1,6 +1,3 @@
-// 越南语互动测验题库 (Dữ liệu bài tập trắc nghiệm tiếng Việt)
-// 包含单选题、听辨题、情境应答题，配有中文深度解析
-
 const QUIZ_BANK = [
   {
     id: "q_01",

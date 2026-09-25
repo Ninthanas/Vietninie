@@ -1,6 +1,3 @@
-// 越南语真实情境对话数据 (Dữ liệu hội thoại tiếng Việt thực tế)
-// 包含 7 个地道生活场景，支持单句跟读、中文提示切换、角色扮演
-
 const CONVERSATIONS_DATA = [
   {
     id: "conv_cafe",

@@ -1,5 +1,3 @@
-// Vietninie Vocabulary - Level Dataset
-// Auto-generated comprehensive authentic Vietnamese vocabulary dataset
 const VOCABULARY_B2 = [
   {
     "id": 2701,

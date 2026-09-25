@@ -1,6 +1,3 @@
-// Vietninie Master Vocabulary Dataset
-// Integrates 5,000 authentic Vietnamese words from A1 to C2
-
 const VOCAB_CATEGORIES = [
   { key: "all", nameZh: "全部词汇", icon: "📚" },
   { key: "greeting", nameZh: "问候礼貌", icon: "👋" },
@@ -34,7 +31,6 @@ const VIETNAMESE_LEVELS = [
   { key: "C2", nameZh: "C2 · 精通", nameVi: "Thành thạo", descZh: "宏观哲理、深度思辨、精妙微言大义与文学表达 (约600词)" }
 ];
 
-// Combine all 5,000 words
 const VOCABULARY_DATA = [
   ...(typeof VOCABULARY_A1 !== 'undefined' ? VOCABULARY_A1 : []),
   ...(typeof VOCABULARY_A2 !== 'undefined' ? VOCABULARY_A2 : []),

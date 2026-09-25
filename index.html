@@ -6,17 +6,19 @@
   <meta name="description" content="Vietninie (越学越辣) — 专为中文母语者量身打造的零基础到高阶越南语自学工具。5,000生活词汇、A1-C2分级、真实情境对话、六大声调图解与智能发音。">
   <title>Vietninie (越学越辣) — 越南语自然习得平台</title>
   
-  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
   
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
- 
+  
   <header class="site-header">
     <div class="app-container header-inner">
       <div class="brand-wrapper" onclick="app.navigateTo('home')">
-        <img src="assets/logo/logo-mark.svg" alt="Vietninie Logo" class="brand-logo-img">
+        <img src="logo-mark.svg" onerror="this.onerror=null;this.src='assets/logo/logo-mark.svg'" alt="Vietninie Logo" class="brand-logo-img">
         <div class="brand-text">
           <div class="brand-title">Viet<span>ninie</span></div>
           <div class="brand-slogan">越学越辣 🌶️</div>
@@ -48,12 +50,12 @@
         </button>
       </nav>
 
-     
+      
       <div class="header-controls">
         <button class="level-badge-btn" onclick="app.openLevelModal()" title="切换学习水平等级">
           <span id="headerLevelText">A1 · 入门</span> ▾
         </button>
-        <div class="streak-pill" id="streakBadge" title="连续打卡天数">
+        <div class="streak-pill" id="streakBadge" onclick="app.showStreakInfo()" title="点击查看连续打卡状态">
           🔥 <span id="streakCount">1</span> 天
         </div>
       </div>
@@ -65,7 +67,7 @@
 
     
     <section class="view-section active" id="view-home">
-     
+      
       <div class="hero-editorial">
         <div class="hero-content">
           <div class="hero-tag">
@@ -88,7 +90,7 @@
           </div>
         </div>
         <div class="hero-illustration-box">
-          <img src="assets/images/illustrations/home.svg" alt="Vietnamese Life" class="hero-svg-img">
+          <img src="home.svg" onerror="this.onerror=null;this.src='assets/images/illustrations/home.svg'" alt="Vietnamese Life" class="hero-svg-img">
         </div>
       </div>
 
@@ -166,7 +168,7 @@
         </div>
       </div>
 
-     
+      
       <div class="card" style="background-color: var(--color-surface-muted); border: none; padding: 14px 18px; margin-top: 20px;">
         <p style="font-size: 0.82rem; color: var(--color-text-light); line-height: 1.5;">
           💡 <strong>学习小贴士</strong>：Vietninie 的 A1–C2 等级体系用于直观呈现越南语词汇与语境的难易梯度，方便按部就班学习，并非官方越南语等级证书考试评级。
@@ -182,11 +184,11 @@
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 14px;" id="lessonsListContainer">
-       
+        
       </div>
     </section>
 
-   
+    
     <section class="view-section" id="view-vocabulary">
       <div class="section-header">
         <h2 class="section-title">📖 实用词库 (5,000 词)</h2>
@@ -202,10 +204,12 @@
 
         
         <div class="level-selector-row" id="vocabLevelPills">
+          
         </div>
 
         
         <div class="level-selector-row" id="vocabCategoryPills">
+          
         </div>
       </div>
 
@@ -261,6 +265,7 @@
       </div>
 
       <div class="vocab-list-grid" id="vocabGridContainer">
+        
       </div>
 
       
@@ -281,10 +286,10 @@
 
       
       <div class="level-selector-row" id="scenarioSelectorRow" style="margin-bottom: 20px;">
-       
+        
       </div>
 
-     
+      
       <div class="card" style="border-radius: var(--radius-xl); padding: 26px;">
         <div class="conversation-mode-bar">
           <div>
@@ -307,6 +312,7 @@
 
         
         <div class="dialogue-thread" id="dialogueBubblesThread">
+          
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
@@ -327,8 +333,9 @@
         <p class="section-desc">声调是越南语的灵魂。点击对应音节即刻聆听发音，掌握高低起伏！</p>
       </div>
 
+      
       <div class="tones-soundboard">
-        <!-- 1. Ngang -->
+        
         <div class="tone-card-item">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="tone-name">1. Thanh Ngang</span>
@@ -344,7 +351,7 @@
           </div>
         </div>
 
-        <!-- 2. Sắc -->
+        
         <div class="tone-card-item">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="tone-name">2. Thanh Sắc</span>
@@ -360,7 +367,7 @@
           </div>
         </div>
 
-        <!-- 3. Huyền -->
+        
         <div class="tone-card-item">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="tone-name">3. Thanh Huyền</span>
@@ -376,7 +383,7 @@
           </div>
         </div>
 
-        <!-- 4. Hỏi -->
+        
         <div class="tone-card-item">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="tone-name">4. Thanh Hỏi</span>
@@ -392,7 +399,7 @@
           </div>
         </div>
 
-        <!-- 5. Ngã -->
+        
         <div class="tone-card-item">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="tone-name">5. Thanh Ngã</span>
@@ -408,7 +415,7 @@
           </div>
         </div>
 
-        <!-- 6. Nặng -->
+        
         <div class="tone-card-item">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="tone-name">6. Thanh Nặng</span>
@@ -425,7 +432,7 @@
         </div>
       </div>
 
-      <!-- Vietnamese Pronouns Special Guide -->
+      
       <div class="pronouns-guide-card">
         <h3 style="font-size: 1.25rem; font-weight: 900;">👥 越南语人称称谓全指南 (Vietnamese Pronouns)</h3>
         <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 4px;">
@@ -477,7 +484,7 @@
       </div>
     </section>
 
-    <!-- ================= 6. QUIZ VIEW ================= -->
+    
     <section class="view-section" id="view-quiz">
       <div class="section-header">
         <h2 class="section-title">🎯 越南语综合挑战测验</h2>
@@ -485,7 +492,7 @@
       </div>
 
       <div class="quiz-wrapper">
-        <!-- Playing Card -->
+        
         <div class="card" id="quizPlayCard" style="border-radius: var(--radius-xl); padding: 28px;">
           <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; color: var(--color-text-light); margin-bottom: 12px;">
             <span id="quizProgNum">题目 1 / 10</span>
@@ -507,10 +514,10 @@
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 12px;" id="quizOptionsWrap">
-            <!-- Rendered by JS -->
+            
           </div>
 
-          <!-- Explanation box -->
+          
           <div style="display: none; margin-top: 20px; padding: 16px; border-radius: var(--radius-md);" id="quizExpWrap"></div>
 
           <button class="btn btn-primary w-100 mt-4" id="btnNextQuizQ" style="display: none;" onclick="app.nextQuizQuestion()">
@@ -518,7 +525,7 @@
           </button>
         </div>
 
-        <!-- Result Card -->
+        
         <div class="card text-center" id="quizResultCard" style="display: none; border-radius: var(--radius-xl); padding: 40px 24px;">
           <div style="font-size: 4rem; line-height: 1; margin-bottom: 16px;">🏆</div>
           <h2 style="font-size: 2.5rem; font-weight: 900; color: var(--color-primary); margin-bottom: 8px;" id="quizFinalScoreText">8 / 10</h2>
@@ -532,14 +539,14 @@
       </div>
     </section>
 
-    <!-- ================= 7. PROFILE VIEW ================= -->
+    
     <section class="view-section" id="view-profile">
       <div class="section-header">
         <h2 class="section-title">👤 学习中心与数据设置</h2>
         <p class="section-desc">管理你的当前学习等级、每日目标、语音引擎与数据备份</p>
       </div>
 
-      <!-- Stats Grid -->
+      
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 24px;">
         <div class="card text-center">
           <div style="font-size: 1.8rem; margin-bottom: 4px;">🎓</div>
@@ -563,11 +570,11 @@
         </div>
       </div>
 
-      <!-- Settings & Tools Card -->
+      
       <div class="card" style="border-radius: var(--radius-xl); padding: 24px; margin-bottom: 24px;">
         <h3 style="font-size: 1.15rem; font-weight: 850; margin-bottom: 16px;">⚙️ 偏好与系统设置</h3>
 
-        <!-- Change Level -->
+        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
           <div>
             <div style="font-weight: 750;">切换学习水平等级</div>
@@ -578,7 +585,7 @@
           </button>
         </div>
 
-        <!-- Daily Goal -->
+        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
           <div>
             <div style="font-weight: 750;">每日新词目标</div>
@@ -594,7 +601,7 @@
           </div>
         </div>
 
-        <!-- Speech Engine Diagnosis -->
+        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
           <div>
             <div style="font-weight: 750;">语音合成诊断 (Web Speech API)</div>
@@ -605,7 +612,7 @@
           </button>
         </div>
 
-        <!-- Speech Rate -->
+        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
           <div>
             <div style="font-weight: 750;">朗读语速控制</div>
@@ -620,7 +627,7 @@
           </div>
         </div>
 
-        <!-- Data Export & Import -->
+        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border);">
           <div>
             <div style="font-weight: 750;">学习进度备份与恢复</div>
@@ -637,7 +644,7 @@
           </div>
         </div>
 
-        <!-- Reset Data -->
+        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0;">
           <div>
             <div style="font-weight: 750; color: var(--color-danger);">重置所有学习进度</div>
@@ -652,7 +659,7 @@
 
   </main>
 
-  <!-- ================= LEVEL SELECTION MODAL ================= -->
+  
   <div class="modal-overlay" id="modalLevelSelect">
     <div class="modal-content-box">
       <div class="modal-head">
@@ -667,7 +674,7 @@
 
       <div class="modal-scrollable-body">
         <div class="onboarding-level-grid" id="onboardingLevelOptions">
-          <!-- Rendered by JS -->
+          
         </div>
       </div>
 
@@ -680,7 +687,7 @@
     </div>
   </div>
 
-  <!-- ================= INTERACTIVE LESSON STEP MODAL ================= -->
+  
   <div class="modal-overlay" id="modalLessonPlayer">
     <div class="modal-content-box">
       <div class="modal-head">
@@ -692,7 +699,7 @@
       </div>
 
       <div class="modal-scrollable-body" id="lmModalContentBody">
-        <!-- Rendered dynamically by step -->
+        
       </div>
 
       <div class="modal-foot">
@@ -707,7 +714,7 @@
     </div>
   </div>
 
-  <!-- ================= NATIVE VOICE SETUP GUIDE MODAL ================= -->
+  
   <div class="modal-overlay" id="modalVoiceGuide">
     <div class="modal-content-box">
       <div class="modal-head">
@@ -756,7 +763,7 @@
     </div>
   </div>
 
-  <!-- ================= MOBILE BOTTOM NAVIGATION ================= -->
+  
   <nav class="mobile-bottom-nav">
     <button class="m-nav-item active" data-page="home" onclick="app.navigateTo('home')">
       <span class="m-icon">🏠</span>
@@ -784,20 +791,21 @@
     </button>
   </nav>
 
-  <!-- Toast Notification Container -->
+  
   <div class="toast-outlet" id="toastOutlet"></div>
 
-  <!-- Scripts: Level Datasets -> Master Vocabulary -> Lessons -> Conversations -> Quizzes -> App Controller -->
-  <script src="data/vocabulary-a1.js"></script>
-  <script src="data/vocabulary-a2.js"></script>
-  <script src="data/vocabulary-b1.js"></script>
-  <script src="data/vocabulary-b2.js"></script>
-  <script src="data/vocabulary-c1.js"></script>
-  <script src="data/vocabulary-c2.js"></script>
-  <script src="data/vocabulary.js"></script>
-  <script src="data/lessons.js"></script>
-  <script src="data/conversations.js"></script>
-  <script src="data/quizzes.js"></script>
+  
+  
+  <script src="vocabulary-a1.js"></script>
+  <script src="vocabulary-a2.js"></script>
+  <script src="vocabulary-b1.js"></script>
+  <script src="vocabulary-b2.js"></script>
+  <script src="vocabulary-c1.js"></script>
+  <script src="vocabulary-c2.js"></script>
+  <script src="vocabulary.js"></script>
+  <script src="lessons.js"></script>
+  <script src="conversations.js"></script>
+  <script src="quizzes.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

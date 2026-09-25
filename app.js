@@ -1,9 +1,3 @@
-/**
- * Vietninie (越学越辣) — Application Controller
- * Pure Vanilla JavaScript Client-Side Engine
- * Handles: 5,000 Vocabulary Filtering, A1-C2 Levels, Audio TTS, Flashcards, Lessons, Quizzes & Offline LocalStorage
- */
-
 const STORAGE_KEYS = {
   LEVEL: "vietmigo_current_level",
   LESSON: "vietmigo_current_lesson",
@@ -16,7 +10,6 @@ const STORAGE_KEYS = {
   SPEECH_RATE: "vietmigo_speech_rate"
 };
 
-// Helper: Remove Vietnamese diacritics for smart, insensitive search
 function removeVietnameseDiacritics(str) {
   if (!str) return "";
   return str
@@ -30,53 +23,54 @@ function removeVietnameseDiacritics(str) {
 
 class VietninieApp {
   constructor() {
+    window.app = this;
     this.currentPage = "home";
     this.currentLevel = localStorage.getItem(STORAGE_KEYS.LEVEL) || "A1";
     this.currentLessonId = parseInt(localStorage.getItem(STORAGE_KEYS.LESSON), 10) || 1;
     this.dailyGoal = parseInt(localStorage.getItem(STORAGE_KEYS.DAILY_GOAL), 10) || 10;
     this.speechRate = parseFloat(localStorage.getItem(STORAGE_KEYS.SPEECH_RATE)) || 0.9;
     
-    // Load local storage structures
+    
     this.completedLessons = this.loadJSON(STORAGE_KEYS.COMPLETED_LESSONS, []);
     this.vocabularyStatus = this.loadJSON(STORAGE_KEYS.VOCABULARY_STATUS, {});
     this.quizScores = this.loadJSON(STORAGE_KEYS.QUIZ_SCORES, {});
     this.streak = parseInt(localStorage.getItem(STORAGE_KEYS.STREAK), 10) || 1;
 
-    // Check & update streak
+    
     this.updateDailyStreak();
 
-    // Vocabulary 5,000 Engine State
+    
     this.vocabSearchQuery = "";
     this.vocabLevelFilter = "ALL";
     this.vocabCategoryFilter = "all";
     this.filteredVocabList = [];
-    this.vocabDisplayLimit = 36; // Render in batches of 36 for high performance
+    this.vocabDisplayLimit = 36; 
     this.currentFlashcardIdx = 0;
 
-    // Conversation Engine State
+    
     this.currentScenarioIdx = 0;
-    this.conversationMode = "learn"; // 'learn' (bilingual) or 'practice' (hidden Chinese)
+    this.conversationMode = "learn"; 
 
-    // Lesson Modal State
+    
     this.activeLesson = null;
     this.currentLessonStep = 1;
     this.lessonQuizAnswers = {};
 
-    // Quiz Arena State
+    
     this.quizQuestions = [];
     this.currentQuizIdx = 0;
     this.quizScore = 0;
     this.quizAnswered = false;
 
-    // Web Speech API Voice
+    
     this.vietnameseVoice = null;
     this.initSpeechEngine();
 
-    // Startup
+    
     this.init();
   }
 
-  /* --- Storage Helpers --- */
+  
   loadJSON(key, defaultVal) {
     try {
       const data = localStorage.getItem(key);
@@ -94,25 +88,51 @@ class VietninieApp {
     }
   }
 
-  updateDailyStreak() {
-    const today = new Date().toISOString().split("T")[0];
-    const lastDate = localStorage.getItem(STORAGE_KEYS.LAST_ACTIVE_DATE);
-
-    if (!lastDate) {
-      this.streak = 1;
-    } else if (lastDate !== today) {
-      const diffDays = Math.ceil(Math.abs(new Date(today) - new Date(lastDate)) / (1000 * 60 * 60 * 24));
-      if (diffDays === 1) {
-        this.streak += 1;
-      } else if (diffDays > 1) {
-        this.streak = 1;
-      }
-    }
-    localStorage.setItem(STORAGE_KEYS.LAST_ACTIVE_DATE, today);
-    localStorage.setItem(STORAGE_KEYS.STREAK, this.streak);
+  getLocalDateString(dateObj = new Date()) {
+    const y = dateObj.getFullYear();
+    const m = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const d = String(dateObj.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
   }
 
-  /* --- Dual-Engine Authentic Vietnamese Audio System --- */
+  updateDailyStreak() {
+    const today = this.getLocalDateString();
+    const lastDate = localStorage.getItem(STORAGE_KEYS.LAST_ACTIVE_DATE);
+    let savedStreak = parseInt(localStorage.getItem(STORAGE_KEYS.STREAK), 10) || 1;
+
+    if (!lastDate) {
+      savedStreak = 1;
+    } else if (lastDate !== today) {
+      const [y1, m1, d1] = lastDate.split("-").map(Number);
+      const [y2, m2, d2] = today.split("-").map(Number);
+      const utc1 = Date.UTC(y1, (m1 || 1) - 1, d1 || 1);
+      const utc2 = Date.UTC(y2, (m2 || 1) - 1, d2 || 1);
+      const diffDays = Math.round((utc2 - utc1) / (1000 * 60 * 60 * 24));
+
+      if (diffDays === 1) {
+        savedStreak += 1;
+      } else if (diffDays > 1) {
+        savedStreak = 1;
+      }
+    }
+
+    this.streak = Math.max(1, savedStreak);
+    localStorage.setItem(STORAGE_KEYS.LAST_ACTIVE_DATE, today);
+    localStorage.setItem(STORAGE_KEYS.STREAK, String(this.streak));
+
+    const streakEl = document.getElementById("streakCount");
+    if (streakEl) streakEl.innerText = this.streak;
+    const profStreakEl = document.getElementById("profStreakCount");
+    if (profStreakEl) profStreakEl.innerText = this.streak;
+  }
+
+  showStreakInfo() {
+    this.updateDailyStreak();
+    const today = this.getLocalDateString();
+    this.showToast(`🔥 已连续学习 ${this.streak} 天！今日 (${today}) 已打卡，明天继续学习即可升至 ${this.streak + 1} 天！`);
+  }
+
+  
   initSpeechEngine() {
     this.currentAudio = null;
     this.localVietnameseVoice = null;
@@ -157,7 +177,7 @@ class VietninieApp {
     if (!text) return;
     const cleanText = text.trim();
 
-    // 播放动效高亮
+    
     if (triggerBtn) {
       triggerBtn.classList.add("speaking");
     }
@@ -167,7 +187,7 @@ class VietninieApp {
       if (onEndCallback) onEndCallback();
     };
 
-    // 停止当前任何正在播放的声音，避免重叠
+    
     if (this.currentAudio) {
       try {
         this.currentAudio.pause();
@@ -182,8 +202,8 @@ class VietninieApp {
 
     const rate = customRate || this.speechRate || 1.0;
 
-    // 核心方案 A：使用高质量在线越南语真人原声流 (Google vi-VN TTS)
-    // 保证 100% 地道纯正越南语母语发音，彻底解决非越南语系统被英文/其他语言读变音的问题
+    
+    
     try {
       const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodeURIComponent(cleanText)}`;
       const audio = new Audio(ttsUrl);
@@ -198,7 +218,7 @@ class VietninieApp {
       };
 
       audio.onerror = (err) => {
-        // 网络异常或离线时，平滑转入本地 Web Speech API 备用方案
+        
         this.fallbackToSpeechSynthesis(cleanText, rate, finish);
       };
 
@@ -226,7 +246,7 @@ class VietninieApp {
       return;
     }
 
-    // 扫描系统已安装的越南语语音包
+    
     if (!this.localVietnameseVoice) {
       const voices = window.speechSynthesis.getVoices();
       this.localVietnameseVoice = voices.find((v) => {
@@ -244,7 +264,7 @@ class VietninieApp {
       });
     }
 
-    // 关键语言防护：如果本地没有安装越南语语音包，严禁交给系统默认英文/中文引擎发声！
+    
     if (!this.localVietnameseVoice) {
       this.showToast("⚠️ 当前设备缺少越南语发音引擎。已为你打开开启指引。");
       this.openVoiceGuideModal();
@@ -254,7 +274,7 @@ class VietninieApp {
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = "vi-VN";
-    utterance.voice = this.localVietnameseVoice; // 严格绑定越南语语音包，杜绝任何外部语种变音
+    utterance.voice = this.localVietnameseVoice; 
     utterance.rate = rate || this.speechRate || 0.9;
     utterance.pitch = 1.0;
 
@@ -286,21 +306,22 @@ class VietninieApp {
     this.showToast(`发音语速已更新为: ${this.speechRate}x`);
   }
 
-  /* --- Navigation & Route Controller --- */
+  
   navigateTo(pageId) {
     this.currentPage = pageId;
+    this.updateDailyStreak();
 
-    // Desktop nav items
+    
     document.querySelectorAll(".desktop-nav .nav-link").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.page === pageId);
     });
 
-    // Mobile nav items
+    
     document.querySelectorAll(".mobile-bottom-nav .m-nav-item").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.page === pageId);
     });
 
-    // View sections
+    
     document.querySelectorAll(".view-section").forEach((sec) => {
       sec.classList.remove("active");
     });
@@ -311,7 +332,7 @@ class VietninieApp {
 
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Render target view
+    
     if (pageId === "home") this.renderHomeView();
     if (pageId === "lessons") this.renderLessonsView();
     if (pageId === "vocabulary") this.initVocabularyView();
@@ -320,9 +341,9 @@ class VietninieApp {
     if (pageId === "profile") this.renderProfileView();
   }
 
-  /* --- 1. HOME VIEW CONTROLLER --- */
+  
   renderHomeView() {
-    // Dynamic greeting based on time of day
+    this.updateDailyStreak();
     const hour = new Date().getHours();
     let timeWord = "你好";
     if (hour < 11) timeWord = "早上好";
@@ -335,14 +356,14 @@ class VietninieApp {
       greetingEl.innerText = `${timeWord}，今天也一起越学越辣吧！每天 5-10 分钟，轻松积累实用地道表达。`;
     }
 
-    // Header level badge & streak badge
+    
     const headerLevelEl = document.getElementById("headerLevelText");
     const streakEl = document.getElementById("streakCount");
     if (headerLevelEl) headerLevelEl.innerText = `${this.currentLevel} · 水平`;
     if (streakEl) streakEl.innerText = this.streak;
 
-    // Daily Goal progress
-    const today = new Date().toISOString().split("T")[0];
+    
+    const today = this.getLocalDateString();
     let learnedToday = 0;
     Object.values(this.vocabularyStatus).forEach((st) => {
       if (st.lastDate === today) learnedToday++;
@@ -356,7 +377,7 @@ class VietninieApp {
       goalProgBar.style.width = `${goalPct}%`;
     }
 
-    // Daily Review Due
+    
     let reviewDue = 0;
     Object.values(this.vocabularyStatus).forEach((st) => {
       if (st.status === "learning") reviewDue++;
@@ -364,7 +385,11 @@ class VietninieApp {
     const reviewDueEl = document.getElementById("homeReviewDueText");
     if (reviewDueEl) reviewDueEl.innerText = `${reviewDue} 个生词待巩固`;
 
-    // Current Lesson Card
+    
+    if (typeof LESSONS_DATA === "undefined" || !Array.isArray(LESSONS_DATA) || LESSONS_DATA.length === 0) {
+      return;
+    }
+
     let nextUncompleted = LESSONS_DATA.find((l) => !this.completedLessons.includes(l.id));
     if (!nextUncompleted) nextUncompleted = LESSONS_DATA[LESSONS_DATA.length - 1];
     this.currentLessonId = nextUncompleted.id;
@@ -400,10 +425,10 @@ class VietninieApp {
     this.showToast("已为你筛选待巩固词汇进行复习！");
   }
 
-  /* --- 2. LESSONS CONTROLLER --- */
+  
   renderLessonsView() {
     const container = document.getElementById("lessonsListContainer");
-    if (!container) return;
+    if (!container || typeof LESSONS_DATA === "undefined") return;
 
     container.innerHTML = LESSONS_DATA.map((lesson) => {
       const isDone = this.completedLessons.includes(lesson.id);
@@ -482,7 +507,7 @@ class VietninieApp {
       else nextBtn.innerText = "下一步 →";
     }
 
-    // Step 1: Vocab
+    
     if (this.currentLessonStep === 1) {
       body.innerHTML = `
         <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 16px;">${lesson.summaryZh}</p>
@@ -500,7 +525,7 @@ class VietninieApp {
         </div>
       `;
     }
-    // Step 2: Sentences
+
     else if (this.currentLessonStep === 2) {
       body.innerHTML = `
         <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 16px;">仔细体会语调起伏，点击喇叭跟读模仿：</p>
@@ -520,7 +545,7 @@ class VietninieApp {
         </div>
       `;
     }
-    // Step 3: Quiz
+
     else if (this.currentLessonStep === 3) {
       body.innerHTML = `
         <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 16px;">回答小测题检验掌握程度：</p>
@@ -541,7 +566,7 @@ class VietninieApp {
         </div>
       `;
     }
-    // Step 4: Celebration
+
     else if (this.currentLessonStep === 4) {
       if (!this.completedLessons.includes(lesson.id)) {
         this.completedLessons.push(lesson.id);
@@ -613,7 +638,7 @@ class VietninieApp {
     }
   }
 
-  /* --- 3. VOCABULARY ENGINE (5,000 WORDS) --- */
+  
   initVocabularyView() {
     this.renderVocabLevelPills();
     this.renderVocabCategoryPills();
@@ -667,15 +692,15 @@ class VietninieApp {
     const query = removeVietnameseDiacritics(this.vocabSearchQuery);
 
     this.filteredVocabList = VOCABULARY_DATA.filter((item) => {
-      // Level filter
+
       if (this.vocabLevelFilter !== "ALL" && item.level !== this.vocabLevelFilter) {
         return false;
       }
-      // Category filter
+
       if (this.vocabCategoryFilter !== "all" && item.category !== this.vocabCategoryFilter) {
         return false;
       }
-      // Search query (diacritics-insensitive Vietnamese or Chinese)
+
       if (query) {
         const viClean = removeVietnameseDiacritics(item.vietnamese);
         const zhClean = item.chinese.toLowerCase();
@@ -742,7 +767,8 @@ class VietninieApp {
     if (this.filteredVocabList.length === 0) return;
     const cur = this.filteredVocabList[this.currentFlashcardIdx];
 
-    const today = new Date().toISOString().split("T")[0];
+    this.updateDailyStreak();
+    const today = this.getLocalDateString();
     this.vocabularyStatus[cur.id] = {
       status: "known",
       lastDate: today,
@@ -765,7 +791,6 @@ class VietninieApp {
     const total = this.filteredVocabList.length;
     if (matchedCount) matchedCount.innerText = total;
 
-    // Count total known
     const totalKnown = Object.values(this.vocabularyStatus).filter((s) => s.status === "known").length;
     if (knownCount) knownCount.innerText = totalKnown;
 
@@ -805,7 +830,7 @@ class VietninieApp {
     this.renderVocabGrid();
   }
 
-  /* --- 4. CONVERSATION CONTROLLER --- */
+  
   renderConversations() {
     const selector = document.getElementById("scenarioSelectorRow");
     if (!selector) return;
@@ -908,7 +933,7 @@ class VietninieApp {
     playNext();
   }
 
-  /* --- 5. QUIZ ARENA CONTROLLER --- */
+  
   initQuizSession() {
     const shuffled = [...QUIZ_BANK].sort(() => 0.5 - Math.random());
     this.quizQuestions = shuffled.slice(0, 10);
@@ -1028,7 +1053,7 @@ class VietninieApp {
     if (feedback) feedback.innerText = msg;
   }
 
-  /* --- 6. PROFILE & ONBOARDING CONTROLLER --- */
+  
   renderProfileView() {
     const lvlText = document.getElementById("profCurrentLevelText");
     const learnedWords = document.getElementById("profLearnedWordsCount");
@@ -1074,7 +1099,7 @@ class VietninieApp {
   selectOnboardingLevel(levelKey) {
     this.currentLevel = levelKey;
     localStorage.setItem(STORAGE_KEYS.LEVEL, levelKey);
-    this.openLevelModal(); // Re-render selected state
+    this.openLevelModal();
   }
 
   confirmLevelSelection() {
@@ -1093,7 +1118,7 @@ class VietninieApp {
     if (modal) modal.classList.remove("active");
   }
 
-  /* --- Data Backup & Reset --- */
+  
   exportProgressData() {
     const exportData = {
       app: "Vietninie",
@@ -1161,7 +1186,7 @@ class VietninieApp {
     }
   }
 
-  /* --- Toast Notifications --- */
+  
   showToast(message) {
     const outlet = document.getElementById("toastOutlet");
     if (!outlet) return;
@@ -1179,21 +1204,82 @@ class VietninieApp {
     }, 2800);
   }
 
-  /* --- Initialization --- */
-  init() {
-    // If first-time user has no level chosen, gently trigger onboarding modal
+  
+  loadScriptSequential(urls) {
+    return new Promise((resolve) => {
+      let idx = 0;
+      const next = () => {
+        if (idx >= urls.length) {
+          resolve(true);
+          return;
+        }
+        const pair = urls[idx++];
+        const s = document.createElement("script");
+        s.src = pair.primary;
+        s.onload = () => next();
+        s.onerror = () => {
+          const sFallback = document.createElement("script");
+          sFallback.src = pair.fallback;
+          sFallback.onload = () => next();
+          sFallback.onerror = () => next();
+          document.body.appendChild(sFallback);
+        };
+        document.body.appendChild(s);
+      };
+      next();
+    });
+  }
+
+  async ensureDatasetsLoaded() {
+    if (
+      typeof VOCABULARY_DATA !== "undefined" &&
+      typeof LESSONS_DATA !== "undefined" &&
+      typeof CONVERSATIONS_DATA !== "undefined" &&
+      typeof QUIZ_BANK !== "undefined"
+    ) {
+      return;
+    }
+
+    const files = [
+      "vocabulary-a1.js",
+      "vocabulary-a2.js",
+      "vocabulary-b1.js",
+      "vocabulary-b2.js",
+      "vocabulary-c1.js",
+      "vocabulary-c2.js",
+      "vocabulary.js",
+      "lessons.js",
+      "conversations.js",
+      "quizzes.js"
+    ];
+
+    const pairs = files.map((f) => ({
+      primary: f,
+      fallback: `data/${f}`
+    }));
+
+    await this.loadScriptSequential(pairs);
+  }
+
+  async init() {
+
+    await this.ensureDatasetsLoaded();
+
     if (!localStorage.getItem(STORAGE_KEYS.LEVEL)) {
       setTimeout(() => this.openLevelModal(), 500);
     }
 
     this.renderHomeView();
     this.renderLessonsView();
+    if (this.currentPage !== "home") {
+      this.navigateTo(this.currentPage);
+    }
     console.log("Vietninie (越学越辣) — 越南语自然习得平台已就绪！");
   }
 }
 
-// Global Singleton Instance
 let app;
 window.addEventListener("DOMContentLoaded", () => {
   app = new VietninieApp();
+  window.app = app;
 });

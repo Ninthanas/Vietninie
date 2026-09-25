@@ -1,6 +1,3 @@
-// 10 门越南语新手核心课程数据 (10 Bài học tiếng Việt cho người mới bắt đầu)
-// 每个课程包含：1. 词汇学习 (Vocabulary) -> 2. 核心句型 (Key Sentences) -> 3. 听力辨音 (Listening) -> 4. 课后小测 (Quiz)
-
 const LESSONS_DATA = [
   {
     id: 1,
