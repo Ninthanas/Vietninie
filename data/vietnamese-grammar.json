@@ -1,0 +1,337 @@
+[
+  {
+    "id": 1,
+    "title": "越南语基本语序 SVO 与定语后置规则",
+    "pattern": "主语 (S) + 动词 (V) + 宾语 (O) | 中心名词 + 形容词/定语",
+    "level": "A1",
+    "explanation": "越南语的主干语序与中文相同，都是“主-谓-宾（SVO）”。但最大的不同是：越南语的修饰语（形容词、所属关系、指示词）必须放在中心名词的后面（定语后置）！例如：“好朋友”在越南语里要说“朋友好 (Bạn tốt)”。",
+    "examples": [
+      {
+        "vi": "Tôi uống cà phê nóng.",
+        "pinyin": "[Từ vựng] cà phê (咖啡) + nóng (热的)",
+        "zh": "我喝热咖啡。（字面顺序：我 喝 咖啡 热）"
+      },
+      {
+        "vi": "Đây là công ty mới của tôi.",
+        "pinyin": "[Từ vựng] công ty (公司) + mới (新的) + của tôi (我的)",
+        "zh": "这是我的新公司。（字面顺序：这 是 公司 新 的 我）"
+      }
+    ],
+    "quiz": {
+      "question": "“漂亮衣服”用越南语的正确语序应该怎么说？",
+      "options": [
+        "Quần áo đẹp (衣服 漂亮)",
+        "Đẹp quần áo (漂亮 衣服)",
+        "Quần đẹp áo",
+        "Áo của đẹp"
+      ],
+      "answerIndex": 0,
+      "explanation": "越南语形容词必须放在名词后面：Quần áo (衣服) + đẹp (漂亮)。"
+    }
+  },
+  {
+    "id": 2,
+    "title": "过去时态标记词：Đã (已经...了)",
+    "pattern": "主语 + đã + 动词 + 宾语 (+ rồi)",
+    "level": "A1",
+    "explanation": "“Đã”放在动词前面，表示动作已经发生或完成，相当于中文的“已经…了”。常与句末的“rồi”配合使用（đã... rồi）。",
+    "examples": [
+      {
+        "vi": "Tôi đã ăn cơm sáng rồi.",
+        "pinyin": "Đã + ăn (吃) + cơm sáng (早饭) + rồi",
+        "zh": "我已经吃过早饭了。"
+      },
+      {
+        "vi": "Họ đã ký hợp đồng hôm qua.",
+        "pinyin": "Đã + ký (签署) + hợp đồng (合同)",
+        "zh": "他们昨天已经签了合同。"
+      }
+    ],
+    "quiz": {
+      "question": "想表达“我已经去过河内了”，动词前应该加哪个词？",
+      "options": [
+        "đã",
+        "đang",
+        "sẽ",
+        "chưa"
+      ],
+      "answerIndex": 0,
+      "explanation": "“đã”表示过去或已完成的动作。"
+    }
+  },
+  {
+    "id": 3,
+    "title": "进行时态标记词：Đang (正在...)",
+    "pattern": "主语 + đang + 动词 + 宾语",
+    "level": "A1",
+    "explanation": "“Đang”放在动词前面，表示动作正在进行中，完全对应中文的“正在”。",
+    "examples": [
+      {
+        "vi": "Anh ấy đang họp ở văn phòng.",
+        "pinyin": "đang + họp (开会)",
+        "zh": "他正在办公室开会。"
+      },
+      {
+        "vi": "Em đang học tiếng Việt mỗi ngày.",
+        "pinyin": "đang + học (学习)",
+        "zh": "我每天都在学习越南语。"
+      }
+    ],
+    "quiz": {
+      "question": "“我正在工作”用越南语怎么表达？",
+      "options": [
+        "Tôi đang làm việc.",
+        "Tôi đã làm việc.",
+        "Tôi sẽ làm việc.",
+        "Tôi không làm việc."
+      ],
+      "answerIndex": 0,
+      "explanation": "đang + làm việc = 正在工作。"
+    }
+  },
+  {
+    "id": 4,
+    "title": "将来时态标记词：Sẽ (将要/会)",
+    "pattern": "主语 + sẽ + 动词 + 宾语",
+    "level": "A1",
+    "explanation": "“Sẽ”放在动词前，表示未来将要发生的动作或计划，相当于中文的“将要、将会”。",
+    "examples": [
+      {
+        "vi": "Ngày mai chúng tôi sẽ bay đi Thượng Hải.",
+        "pinyin": "sẽ + bay (飞)",
+        "zh": "明天我们将飞往上海。"
+      },
+      {
+        "vi": "Em sẽ gửi báo cáo cho anh ngay.",
+        "pinyin": "sẽ + gửi (发送)",
+        "zh": "我马上就会把报告发给您。"
+      }
+    ],
+    "quiz": {
+      "question": "表示未来计划（将要做某事）的副词是：",
+      "options": [
+        "sẽ",
+        "đã",
+        "vừa",
+        "mới"
+      ],
+      "answerIndex": 0,
+      "explanation": "sẽ 表示将来时态。"
+    }
+  },
+  {
+    "id": 5,
+    "title": "越南语褒义被动与收获结构：Được (被/得到/可以)",
+    "pattern": "主语 + được + (施事者) + 动词",
+    "level": "A2",
+    "explanation": "越南语严格区分“好事被动”和“坏事被动”！当主语受到有利、积极、开心的对待（如被表扬、被送礼、被录取）时，必须用“được”，绝不能用“bị”。",
+    "examples": [
+      {
+        "vi": "Anh ấy được giám đốc khen ngợi.",
+        "pinyin": "được + giám đốc (总监) + khen ngợi (表扬)",
+        "zh": "他受到了总监的表扬。"
+      },
+      {
+        "vi": "Hôm nay em được nghỉ làm sớm.",
+        "pinyin": "được + nghỉ làm sớm (提早下班)",
+        "zh": "今天我可以提早下班。"
+      }
+    ],
+    "quiz": {
+      "question": "“我得到了晋升（升职）”是件好事，应该用哪个词？",
+      "options": [
+        "được",
+        "bị",
+        "chưa",
+        "không"
+      ],
+      "answerIndex": 0,
+      "explanation": "积极、有利的被动或获得必须使用 được。"
+    }
+  },
+  {
+    "id": 6,
+    "title": "越南语贬义被动结构：Bị (遭受/被...)",
+    "pattern": "主语 + bị + (施事者) + 动词 / 状态",
+    "level": "A2",
+    "explanation": "当主语遭遇不幸、不愉快、消极的事情（生病、堵车、迟到、被罚款、丢东西）时，一律使用“bị”。",
+    "examples": [
+      {
+        "vi": "Sáng nay tôi bị kẹt xe suốt một tiếng.",
+        "pinyin": "bị + kẹt xe (堵车)",
+        "zh": "今天早上我被堵车堵了一个小时。"
+      },
+      {
+        "vi": "Cô ấy bị cảm cúm nên xin nghỉ phép.",
+        "pinyin": "bị + cảm cúm (感冒)",
+        "zh": "她患了感冒所以请假了。"
+      }
+    ],
+    "quiz": {
+      "question": "表达“我的手机被偷了”应该用：",
+      "options": [
+        "Điện thoại của tôi bị mất trộm.",
+        "Điện thoại của tôi được mất trộm.",
+        "Điện thoại của tôi sẽ mất.",
+        "Điện thoại của tôi đang trộm."
+      ],
+      "answerIndex": 0,
+      "explanation": "丢手机是消极遭遇，必须用 bị。"
+    }
+  },
+  {
+    "id": 7,
+    "title": "否定副词区分：Không (不/不是) 与 Chưa (还没)",
+    "pattern": "Không + 动词/形容词 |Không phải là + 名词 | Chưa + 动词",
+    "level": "A1",
+    "explanation": "“Không”用于一般否定（不去、不喜欢、不贵）；否定名词时用“Không phải là”（不是）。而“Chưa”专门表示动作“尚未发生/还没有做”（常置于句首否定，句末可加“đâu”）。",
+    "examples": [
+      {
+        "vi": "Tôi không uống rượu bia.",
+        "pinyin": "không + uống (不喝)",
+        "zh": "我不喝酒。"
+      },
+      {
+        "vi": "Tôi chưa ăn tối, chúng mình đi ăn nhé!",
+        "pinyin": "chưa + ăn tối (还没吃晚饭)",
+        "zh": "我还没吃晚饭，我们去吃饭吧！"
+      }
+    ],
+    "quiz": {
+      "question": "别人问你“结婚了吗？”，如果你想回答“还没有”，应该说：",
+      "options": [
+        "Chưa, tôi chưa kết hôn.",
+        "Không, tôi không phải kết hôn.",
+        "Bị kết hôn.",
+        "Đang kết hôn."
+      ],
+      "answerIndex": 0,
+      "explanation": "表示“尚未发生/还没有”必须用 Chưa。"
+    }
+  },
+  {
+    "id": 8,
+    "title": "句末完成语气词：Rồi (...了)",
+    "pattern": "主语 + (đã) + 动词 + 宾语 + rồi",
+    "level": "A1",
+    "explanation": "“Rồi”放在句末，表示事情已经完成或状态已经改变，用法与中文句末的“了”高度一致。单独说“Rồi!”意思就是“好了！/做好了！”。",
+    "examples": [
+      {
+        "vi": "Hàng hóa đã đến kho rồi.",
+        "pinyin": "đã đến kho + rồi",
+        "zh": "货物已经到仓库了。"
+      }
+    ],
+    "quiz": {
+      "question": "“我已经明白你的意思了”句末应该放哪个词？",
+      "options": [
+        "rồi",
+        "chưa",
+        "sẽ",
+        "bị"
+      ],
+      "answerIndex": 0,
+      "explanation": "句末表示“已经…了”用 rồi。"
+    }
+  },
+  {
+    "id": 9,
+    "title": "突发打断结构：Đang… thì… (正在…的时候，突然…)",
+    "pattern": "主语 1 + đang + 动词 1 + thì + 主语 2 + 动词 2",
+    "level": "B1",
+    "explanation": "表示一个动作正在进行时，另一个动作突然发生并插了进来。",
+    "examples": [
+      {
+        "vi": "Chúng tôi đang đi dạo thì trời đổ mưa to.",
+        "pinyin": "đang đi dạo (正在散步) ... thì trời đổ mưa (突然下大雨)",
+        "zh": "我们正在散步的时候，天突然下起了大雨。"
+      }
+    ],
+    "quiz": {
+      "question": "完成句子：“Tôi đang ngủ ___ có người gọi điện thoại.”",
+      "options": [
+        "thì",
+        "nên",
+        "nhưng",
+        "hoặc"
+      ],
+      "answerIndex": 0,
+      "explanation": "Đang... thì... 是固定搭配，表示“正在…突然…”。"
+    }
+  },
+  {
+    "id": 10,
+    "title": "条件假设句：Nếu… thì… (如果…就…)",
+    "pattern": "Nếu + 条件分句, thì + 结果分句",
+    "level": "A2",
+    "explanation": "“Nếu”引导假设条件，“thì”引出结果（位置可放在第二分句主语前）。",
+    "examples": [
+      {
+        "vi": "Nếu ngày mai trời đẹp thì chúng ta đi Vịnh Hạ Long.",
+        "pinyin": "Nếu... thì...",
+        "zh": "如果明天天气好，我们就去下龙湾。"
+      }
+    ],
+    "quiz": {
+      "question": "与“Nếu”（如果）搭配的连词是：",
+      "options": [
+        "thì",
+        "nhưng",
+        "mà",
+        "vì"
+      ],
+      "answerIndex": 0,
+      "explanation": "Nếu... thì... = 如果…就…。"
+    }
+  },
+  {
+    "id": 11,
+    "title": "因果关系句：Vì… nên… (因为…所以…)",
+    "pattern": "Vì (Bởi vì) + 原因, nên (cho nên) + 结果",
+    "level": "A2",
+    "explanation": "表示原因与结果，“Vì / Bởi vì”是“因为”，“nên / cho nên”是“所以”。",
+    "examples": [
+      {
+        "vi": "Vì chất lượng sản phẩm rất tốt nên khách hàng rất hài lòng.",
+        "pinyin": "Vì... nên...",
+        "zh": "因为产品质量很好，所以客户非常满意。"
+      }
+    ],
+    "quiz": {
+      "question": "“Vì… nên…”对应的中文意思是：",
+      "options": [
+        "因为…所以…",
+        "虽然…但是…",
+        "一边…一边…",
+        "不仅…而且…"
+      ],
+      "answerIndex": 0,
+      "explanation": "Vì (因为) ... nên (所以)。"
+    }
+  },
+  {
+    "id": 12,
+    "title": "转折让步句：Tuy… nhưng… (虽然…但是…)",
+    "pattern": "Tuy (Mặc dù) + 让步分句, nhưng + 转折分句",
+    "level": "A2",
+    "explanation": "表示转折关系，“Tuy”或“Mặc dù”相当于“虽然/尽管”，“nhưng”相当于“但是”。",
+    "examples": [
+      {
+        "vi": "Tuy mới học tiếng Việt ba tháng nhưng anh ấy nói rất tự nhiên.",
+        "pinyin": "Tuy... nhưng...",
+        "zh": "虽然才学了三个月越南语，但他讲得非常自然。"
+      }
+    ],
+    "quiz": {
+      "question": "填空：“Tuy giá hơi cao ___ chất lượng cực kỳ bền.”",
+      "options": [
+        "nhưng",
+        "nên",
+        "thì",
+        "sẽ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Tuy... nhưng... 表示“虽然…但是…”。"
+    }
+  }
+]

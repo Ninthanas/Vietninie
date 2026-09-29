@@ -1,0 +1,171 @@
+/* ============================================================================
+   QUIZ (8 MODES), PROGRESS DASHBOARD & SETTINGS/ADMIN STYLES
+   ============================================================================ */
+.quiz-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.quiz-mode-btn {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quiz-mode-btn:hover,
+.quiz-mode-btn.active {
+  border-color: var(--brand-primary);
+  background: var(--brand-primary-soft);
+  transform: translateY(-2px);
+}
+
+.quiz-arena {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+}
+
+.quiz-progress-track {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin: 14px 0 28px;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-gold));
+  border-radius: var(--radius-pill);
+  transition: width 0.35s ease;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.quiz-opt-btn {
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.02rem;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quiz-opt-btn:hover:not(:disabled) {
+  border-color: var(--brand-primary);
+  background: var(--brand-primary-soft);
+}
+
+.quiz-opt-btn.correct {
+  border-color: #10B981;
+  background: rgba(16, 185, 129, 0.18);
+  color: #059669;
+}
+
+.quiz-opt-btn.wrong {
+  border-color: #EF4444;
+  background: rgba(239, 68, 68, 0.18);
+  color: #DC2626;
+}
+
+/* Matching Game Grid */
+.matching-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.match-card {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.match-card.selected {
+  border-color: var(--brand-primary);
+  background: var(--brand-primary-soft);
+}
+
+.match-card.matched {
+  border-color: #10B981;
+  background: var(--brand-secondary-soft);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Progress Page Stats & Bar Chart */
+.progress-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.kpi-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.kpi-value {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  margin: 6px 0;
+}
+
+.chart-bars-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 210px;
+  gap: 12px;
+  padding: 24px 12px 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.chart-bar {
+  width: 100%;
+  max-width: 44px;
+  background: linear-gradient(180deg, var(--brand-primary), #FB7185);
+  border-radius: 10px 10px 4px 4px;
+  min-height: 8px;
+  transition: height 0.5s ease;
+}

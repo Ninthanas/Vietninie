@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Vietninie (越学越辣) — Nền tảng Học Ngoại Ngữ Song Ngữ Việt Nam ⇄ Trung Quốc</title>
+  <meta name="description" content="Nền tảng học ngoại ngữ hai chiều Việt Nam ⇄ Trung Quốc với hơn 5.000+ từ vựng chia theo 60 chủ đề, Pinyin chuẩn, phát âm AI, Flashcard 3D SRS, Ngữ pháp, Hội thoại và 8 chế độ Quiz." />
+  <meta property="og:title" content="Vietninie (越学越辣) — Học Tiếng Việt & Tiếng Trung Thực Chiến" />
+  <meta property="og:description" content="2.306 từ vựng tiếng Trung (HSK 1-6) & 5.000 từ vựng tiếng Việt (A1-C2) theo 60 chủ đề thực tế." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/vocabulary.css" />
+  <link rel="stylesheet" href="css/quiz.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- Dynamic Navbar & Mobile Bottom Nav -->
+  <div id="appHeader"></div>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-eyebrow" data-i18n="heroEyebrow">✨ Nền tảng song ngữ Việt ⇄ Trung thế hệ mới</span>
+          <h1 class="hero-title" data-i18n="heroTitle">
+            Chinh phục <span class="highlight">Tiếng Trung</span> tự nhiên cùng Linh vật Bảo Sen
+          </h1>
+          <p class="hero-desc" data-i18n="heroDesc">
+            Hơn 2.300+ từ vựng HSK 1–6 chia theo 60 chủ đề thực tế, đầy đủ Pinyin chuẩn, phát âm giọng bản xứ, Flashcard 3D lặp lại ngắt quãng (SRS), 16 chuyên đề ngữ pháp và 17 tình huống hội thoại.
+          </p>
+
+          <div class="hero-cta-group" style="flex-wrap: wrap;">
+            <a href="pages/vocabulary.html" class="btn btn-primary" data-i18n="startLearning">Bắt đầu học ngay</a>
+            <button type="button" class="btn btn-outline" onclick="CoreLessonController.openSelector()">🎓 Khóa học 4 bước (Lưu điểm)</button>
+            <button type="button" class="btn btn-outline" onclick="PlacementController.open()">🎯 Test Đầu Vào (A1–C2)</button>
+            <a href="pages/quiz.html" class="btn btn-outline">🧠 8 Chế độ Quiz</a>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="stat-mini-card">
+              <strong>2.306+</strong>
+              <span data-i18n="statWords">Từ vựng mỗi hướng</span>
+            </div>
+            <div class="stat-mini-card">
+              <strong>60</strong>
+              <span data-i18n="statTopics">Chủ đề thực tế</span>
+            </div>
+            <div class="stat-mini-card">
+              <strong>17</strong>
+              <span data-i18n="statDialogues">Hội thoại tình huống</span>
+            </div>
+            <div class="stat-mini-card">
+              <strong>8</strong>
+              <span data-i18n="statQuizModes">Chế độ Quiz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Showcase Card with Mascot & Daily Word -->
+        <div class="hero-showcase-card">
+          <div class="mascot-floating-header">
+            <img src="assets/images/mascot.svg" alt="BaoSen Mascot" />
+            <div>
+              <span class="badge badge-jade" data-i18n="directionBadge">🇻🇳 Người Việt học Tiếng Trung 🇨🇳</span>
+              <h3 style="margin-top: 4px;" data-i18n="dailySpotlightTitle">Từ vựng tiêu điểm hôm nay</h3>
+            </div>
+          </div>
+
+          <div id="homeSpotlightCard" class="daily-word-spotlight">
+            <!-- Rendered by app.js -->
+          </div>
+
+          <div id="homeProgressSummary" style="margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. FEATURE CARDS SECTION -->
+    <section class="section-block">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 data-i18n="featuresTitle">Hệ sinh thái học toàn diện</h2>
+            <p data-i18n="featuresSubtitle">Thiết kế tối ưu riêng cho từng hướng học: Việt → Trung và Trung → Việt</p>
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3 data-i18n="feat1Title">4.474+ Từ vựng 60 Chủ đề</h3>
+            <p style="color:var(--text-secondary); margin-top:8px;" data-i18n="feat1Desc">
+              2.306 từ tiếng Trung & 2.168 từ tiếng Việt riêng biệt, đầy đủ Pinyin, phát âm, ví dụ và ghi chú cách dùng.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🃏</div>
+            <h3 data-i18n="feat2Title">Flashcard 3D & Spaced Repetition</h3>
+            <p style="color:var(--text-secondary); margin-top:8px;" data-i18n="feat2Desc">
+              Lật thẻ 3D mượt mà, tự động lên lịch ôn tập thông minh theo 4 mức độ ghi nhớ (Chưa nhớ → Rất nhớ).
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3 data-i18n="feat3Title">8 Chế độ Quiz & Ghép thẻ</h3>
+            <p style="color:var(--text-secondary); margin-top:8px;" data-i18n="feat3Desc">
+              Trắc nghiệm nghĩa, chọn từ, kiểm tra Pinyin, nghe hiểu, điền từ vào câu, dịch câu và ghép cặp.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📐</div>
+            <h3 data-i18n="feat4Title">Ngữ pháp trực quan theo cấp độ</h3>
+            <p style="color:var(--text-secondary); margin-top:8px;" data-i18n="feat4Desc">
+              Làm chủ 是, 有, 在, 了, 过, 的/得/地, 把, 被, 比 (Tiếng Trung) và Đã, Đang, Sẽ, Được, Bị (Tiếng Việt).
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3 data-i18n="feat5Title">17 Hội thoại & Luyện nghe thực tế</h3>
+            <p style="color:var(--text-secondary); margin-top:8px;" data-i18n="feat5Desc">
+              Giao tiếp nhà hàng, sân bay, khách sạn, đàm phán thương mại, phỏng vấn và chat WeChat/Zalo.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 data-i18n="feat6Title">Theo dõi Tiến độ & Chuỗi ngày học</h3>
+            <p style="color:var(--text-secondary); margin-top:8px;" data-i18n="feat6Desc">
+              Biểu đồ thống kê số từ đã thuộc, từ cần ôn tập SRS, tỷ lệ chính xác Quiz và chuỗi Streak.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. VOCABULARY PREVIEW SECTION -->
+    <section class="section-block" style="background: var(--bg-tertiary);">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 data-i18n="vocabPreviewTitle">Khám phá kho từ vựng thực chiến</h2>
+            <p>Bấm vào nút 🔊 để nghe phát âm trực tiếp hoặc mở xem phân tích chi tiết</p>
+          </div>
+          <a href="pages/vocabulary.html" class="btn btn-primary" data-i18n="viewAllVocab">Xem toàn bộ 2.300+ từ →</a>
+        </div>
+
+        <div id="homeVocabPreview" class="vocab-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. LEARNING PATH SECTION -->
+    <section class="section-block">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-i18n="pathTitle">Lộ trình học 4 Giai đoạn bài bản</h2>
+        </div>
+        <div class="learning-path-grid">
+          <div class="path-step-card">
+            <div class="path-step-number">1</div>
+            <h3 data-i18n="pathStep1">Giai đoạn 1: Nền tảng (A1 / HSK 1–2)</h3>
+            <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:8px;">
+              Chào hỏi, đại từ, số đếm, ngày tháng, gọi món, mua sắm và 500 từ vựng sinh hoạt cốt lõi.
+            </p>
+          </div>
+          <div class="path-step-card">
+            <div class="path-step-number">2</div>
+            <h3 data-i18n="pathStep2">Giai đoạn 2: Giao tiếp mở rộng (A2 / HSK 3)</h3>
+            <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:8px;">
+              Du lịch, khách sạn, sân bay, thuê nhà, bệnh viện và các cấu trúc câu chữ 把, 被, 比.
+            </p>
+          </div>
+          <div class="path-step-card">
+            <div class="path-step-number">3</div>
+            <h3 data-i18n="pathStep3">Giai đoạn 3: Công sở & Thương mại (B1–B2 / HSK 4–5)</h3>
+            <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:8px;">
+              Họp văn phòng, ký hợp đồng, xuất nhập khẩu, thương mại điện tử, tài chính và AI/Data.
+            </p>
+          </div>
+          <div class="path-step-card">
+            <div class="path-step-number">4</div>
+            <h3 data-i18n="pathStep4">Giai đoạn 4: Thành thạo bản xứ (C1–C2 / HSK 6)</h3>
+            <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:8px;">
+              Thành ngữ 4 chữ (成语), tiếng lóng mạng xã hội, đàm phán cấp cao và văn hóa doanh nghiệp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FAQ SECTION -->
+    <section class="section-block" style="background: var(--bg-tertiary);">
+      <div class="container">
+        <div class="section-header" style="justify-content:center; text-align:center;">
+          <h2 data-i18n="faqTitle">Câu hỏi thường gặp (FAQ)</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button type="button" class="faq-question">
+              <span data-i18n="faq1Q">Làm sao để đổi giữa giao diện học Tiếng Trung và học Tiếng Việt?</span>
+              <span>▾</span>
+            </button>
+            <div class="faq-answer" data-i18n="faq1A">
+              Bạn chỉ cần bấm nút "Đổi ngôn ngữ / 切换语言" trên thanh menu trên cùng. Toàn bộ giao diện và kho dữ liệu sẽ chuyển sang hướng học tương ứng ngay lập tức.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span data-i18n="faq2Q">Hệ thống ôn tập Spaced Repetition (SRS) hoạt động như thế nào?</span>
+              <span>▾</span>
+            </button>
+            <div class="faq-answer" data-i18n="faq2A">
+              Khi học Flashcard, bạn đánh giá mức độ nhớ (❌ Chưa nhớ, 😐 Hơi nhớ, 😊 Nhớ, 🔥 Rất nhớ). Hệ thống sẽ lưu vào bộ nhớ trình duyệt và ưu tiên nhắc lại những từ bạn hay quên.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span data-i18n="faq3Q">Website có phát âm giọng đọc khi không có mạng hoặc thiếu file MP3 không?</span>
+              <span>▾</span>
+            </button>
+            <div class="faq-answer" data-i18n="faq3A">
+              Có! Hệ thống ưu tiên phát file MP3 trong thư mục audio/ và tự động chuyển sang giọng đọc AI bản xứ (Web Speech API zh-CN / vi-VN) trên mọi trình duyệt.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <!-- Scripts -->
+  <script src="data/data-bundle.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

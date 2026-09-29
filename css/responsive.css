@@ -1,0 +1,96 @@
+/* ============================================================================
+   RESPONSIVE BREAKPOINTS (DESKTOP, TABLET, MOBILE, IPHONE)
+   ============================================================================ */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .learning-path-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grammar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .grammar-sidebar {
+    position: static;
+    max-height: 280px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid,
+  .learning-path-grid,
+  .onboarding-grid,
+  .quiz-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srs-rating-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quiz-arena {
+    padding: 22px 18px;
+  }
+
+  .onboarding-modal {
+    padding: 24px 18px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* iPhone SE / Mini / Pro Max Safe Areas */
+@media (max-width: 430px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .brand-subtitle {
+    display: none;
+  }
+
+  .lang-switch-btn span.switch-label-text {
+    display: none;
+  }
+
+  .vocab-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flashcard-3d-wrapper {
+    height: 320px;
+  }
+
+  .mobile-bottom-nav {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+}

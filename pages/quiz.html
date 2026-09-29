@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>8 Chế Độ Quiz & Ghép Thẻ — SenTrúc (莲竹学堂)</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/quiz.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <div id="appHeader"></div>
+
+  <main class="section-block">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="badge badge-rose" data-i18n="directionBadge">🇻🇳 Người Việt học Tiếng Trung 🇨🇳</span>
+          <h1 style="font-size: 2rem; font-weight: 800; margin-top: 6px;" data-i18n="quiz">
+            Đấu Trường Kiểm Tra 8 Chế Độ (Interactive Quiz)
+          </h1>
+          <p style="color: var(--text-secondary);">
+            Chọn 1 trong 8 hình thức kiểm tra bên dưới để rèn luyện phản xạ từ vựng, Pinyin, nghe hiểu và dịch câu:
+          </p>
+        </div>
+      </div>
+
+      <!-- 8 Quiz Mode Selector Buttons -->
+      <div id="quizModesMount" class="quiz-mode-grid"></div>
+
+      <!-- Active Quiz Arena -->
+      <div id="quizArenaMount" class="quiz-arena"></div>
+    </div>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../data/data-bundle.js"></script>
+  <script src="../js/language.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/quiz.js"></script>
+</body>
+</html>

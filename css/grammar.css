@@ -1,0 +1,125 @@
+/* ============================================================================
+   GRAMMAR, CONVERSATION & LISTENING STYLES
+   ============================================================================ */
+.grammar-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.grammar-sidebar {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  position: sticky;
+  top: 90px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.grammar-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  margin-bottom: 4px;
+}
+
+.grammar-nav-item:hover,
+.grammar-nav-item.active {
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+}
+
+.grammar-detail-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.formula-banner {
+  background: var(--brand-gold-soft);
+  border: 1.5px solid var(--brand-gold);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.example-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.example-item-row {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Conversation Chat Bubbles */
+.dialogue-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.chat-bubble-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.chat-bubble-row.speaker-B {
+  flex-direction: row-reverse;
+}
+
+.speaker-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chat-bubble-row.speaker-B .speaker-avatar {
+  background: var(--brand-secondary-soft);
+  color: var(--brand-secondary);
+}
+
+.chat-bubble {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 16px 20px;
+  max-width: 78%;
+}
+
+.chat-bubble-row.speaker-B .chat-bubble {
+  background: var(--brand-secondary-soft);
+  border-color: rgba(5, 150, 105, 0.25);
+}
