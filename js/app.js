@@ -974,7 +974,7 @@ const AppUI = {
     if (headerMount) {
       headerMount.innerHTML = `
         <header class="site-header">
-          <div class="container navbar" style="flex-wrap: wrap; height: auto; min-height: 72px; padding-top: 8px; padding-bottom: 8px;">
+          <div class="container navbar">
             <a href="${this.linkPath('index.html')}" class="brand-logo" aria-label="Vietninie Home">
               <img src="${this.assetPath('logo-mark.svg')}" onerror="this.onerror=null;this.src='${this.assetPath('assets/images/mascot.svg')}'" alt="Vietninie Logo" />
               <div>
@@ -983,44 +983,86 @@ const AppUI = {
               </div>
             </a>
 
-            <nav aria-label="Main Navigation">
-              <ul class="nav-links" style="flex-wrap: wrap;">
+            <nav class="desktop-main-nav" aria-label="Main Navigation">
+              <ul class="nav-links">
                 <li><a href="${this.linkPath('index.html')}" class="${currentFile === 'index.html' ? 'active' : ''}" data-i18n="home">Trang chủ</a></li>
-                <li><a href="javascript:void(0)" onclick="CoreLessonController.openSelector()" style="color:var(--brand-primary); font-weight:800;">🎓 Bài học 4 bước</a></li>
+                <li><a href="javascript:void(0)" onclick="CoreLessonController.openSelector()" class="nav-highlight-pill">🎓 Bài học 4 bước</a></li>
                 <li><a href="${this.linkPath('pages/vocabulary.html')}" class="${currentFile.includes('vocabulary') ? 'active' : ''}" data-i18n="vocabulary">Từ vựng</a></li>
                 <li><a href="${this.linkPath('pages/grammar.html')}" class="${currentFile === 'grammar.html' ? 'active' : ''}" data-i18n="grammar">Ngữ pháp</a></li>
                 <li><a href="${this.linkPath('pages/conversation.html')}" class="${currentFile === 'conversation.html' ? 'active' : ''}" data-i18n="conversation">Hội thoại</a></li>
                 <li><a href="${this.linkPath('pages/listening.html')}" class="${currentFile === 'listening.html' ? 'active' : ''}" data-i18n="listening">Luyện nghe</a></li>
-                <li><a href="${this.linkPath('pages/quiz.html')}" class="${currentFile === 'quiz.html' ? 'active' : ''}" data-i18n="quiz">Quiz (8 chế độ)</a></li>
-                <li><a href="${this.linkPath('pages/progress.html')}" class="${currentFile === 'progress.html' ? 'active' : ''}" data-i18n="progress">Tiến độ & Điểm</a></li>
+                <li><a href="${this.linkPath('pages/quiz.html')}" class="${currentFile === 'quiz.html' ? 'active' : ''}" data-i18n="quiz">Quiz</a></li>
+                <li><a href="${this.linkPath('pages/progress.html')}" class="${currentFile === 'progress.html' ? 'active' : ''}" data-i18n="progress">Tiến độ</a></li>
                 <li><a href="${this.linkPath('pages/settings.html')}" class="${currentFile === 'settings.html' ? 'active' : ''}" data-i18n="settings">Cài đặt</a></li>
               </ul>
             </nav>
 
-            <div class="nav-actions" style="flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="PlacementController.open()" style="padding: 6px 12px; font-size: 0.82rem; border-color: var(--brand-primary); color: var(--brand-primary);">
-                🎯 Test Đầu Vào
+            <div class="nav-actions">
+              <button type="button" class="btn btn-sm btn-outline nav-test-btn" onclick="PlacementController.open()" title="Kiểm tra trình độ đầu vào A1-C2">
+                🎯 <span class="hide-on-compact">Test Level</span>
               </button>
               <div id="navAuthMount"></div>
-              <button type="button" id="langSwitchBtn" class="lang-switch-btn" aria-label="Switch Language">
+              <button type="button" id="langSwitchBtn" class="lang-switch-btn" aria-label="Switch Language" title="Đổi ngôn ngữ Việt ⇄ Trung">
                 <span>🇻🇳⇄🇨🇳</span>
                 <span class="switch-label-text" data-i18n="switchLangBtn">Đổi ngôn ngữ</span>
               </button>
-              <button type="button" id="openOnboardBtn" class="btn-icon" title="Chọn lại hướng học / 重新选择语言" aria-label="Onboarding">
-                🌏
-              </button>
               <button type="button" id="themeToggleBtn" class="btn-icon" aria-label="Toggle Dark Mode">
                 🌙
+              </button>
+              <button type="button" id="mobileDrawerToggleBtn" class="btn-icon mobile-menu-trigger" onclick="document.getElementById('mobileNavDrawer').classList.add('open')" aria-label="Open Menu">
+                ☰
               </button>
             </div>
           </div>
         </header>
 
+        <!-- Slide-Out Responsive Drawer for Tablet & Mobile -->
+        <div id="mobileNavDrawer" class="mobile-nav-drawer-backdrop" onclick="if(event.target===this)this.classList.remove('open')">
+          <aside class="mobile-nav-drawer">
+            <div class="drawer-header">
+              <div class="brand-logo">
+                <img src="${this.assetPath('logo-mark.svg')}" alt="Vietninie" style="width:36px;height:36px;border-radius:10px;" />
+                <div>
+                  <strong>Vietninie 🌶️</strong>
+                  <small style="display:block;font-size:0.72rem;color:var(--brand-primary);">越学越辣 • Việt ⇄ Trung</small>
+                </div>
+              </div>
+              <button type="button" class="btn-icon" onclick="document.getElementById('mobileNavDrawer').classList.remove('open')">✕</button>
+            </div>
+
+            <div class="drawer-quick-actions">
+              <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="document.getElementById('mobileNavDrawer').classList.remove('open'); CoreLessonController.openSelector();">
+                🎓 Học Khóa 4 Bước (Lưu điểm)
+              </button>
+              <button type="button" class="btn btn-outline" style="width:100%;justify-content:center;" onclick="document.getElementById('mobileNavDrawer').classList.remove('open'); PlacementController.open();">
+                🎯 Làm Bài Test Đầu Vào (A1–C2)
+              </button>
+            </div>
+
+            <nav class="drawer-links">
+              <a href="${this.linkPath('index.html')}" class="${currentFile === 'index.html' ? 'active' : ''}">🏠 <span data-i18n="home">Trang chủ</span></a>
+              <a href="${this.linkPath('pages/vocabulary.html')}" class="${currentFile.includes('vocabulary') ? 'active' : ''}">📚 <span data-i18n="vocabulary">Kho Từ vựng & Flashcard 3D</span></a>
+              <a href="${this.linkPath('pages/grammar.html')}" class="${currentFile === 'grammar.html' ? 'active' : ''}">📐 <span data-i18n="grammar">Chuyên đề Ngữ pháp</span></a>
+              <a href="${this.linkPath('pages/conversation.html')}" class="${currentFile === 'conversation.html' ? 'active' : ''}">💬 <span data-i18n="conversation">17 Tình huống Hội thoại</span></a>
+              <a href="${this.linkPath('pages/listening.html')}" class="${currentFile === 'listening.html' ? 'active' : ''}">🎧 <span data-i18n="listening">Luyện nghe & Phát âm</span></a>
+              <a href="${this.linkPath('pages/quiz.html')}" class="${currentFile === 'quiz.html' ? 'active' : ''}">🧠 <span data-i18n="quiz">8 Chế độ Quiz</span></a>
+              <a href="${this.linkPath('pages/progress.html')}" class="${currentFile === 'progress.html' ? 'active' : ''}">📊 <span data-i18n="progress">Tiến độ & Bảng điểm</span></a>
+              <a href="${this.linkPath('pages/settings.html')}" class="${currentFile === 'settings.html' ? 'active' : ''}">⚙️ <span data-i18n="settings">Cài đặt & Quản trị CMS</span></a>
+            </nav>
+
+            <div class="drawer-footer">
+              <button type="button" class="btn btn-sm btn-outline" style="width:100%;" onclick="document.getElementById('mobileNavDrawer').classList.remove('open'); document.getElementById('onboardingBackdrop')?.classList.add('active');">
+                🌏 Chọn lại hướng học & Trình độ
+              </button>
+            </div>
+          </aside>
+        </div>
+
         <!-- Mobile Bottom Navigation Bar -->
         <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
           <a href="${this.linkPath('index.html')}" class="${currentFile === 'index.html' ? 'active' : ''}">
             <span class="nav-icon">🏠</span>
-            <span data-i18n="home">Home</span>
+            <span data-i18n="home">Trang chủ</span>
           </a>
           <a href="javascript:void(0)" onclick="CoreLessonController.openSelector()">
             <span class="nav-icon">🎓</span>
@@ -1030,9 +1072,9 @@ const AppUI = {
             <span class="nav-icon">📚</span>
             <span data-i18n="vocabulary">Từ vựng</span>
           </a>
-          <a href="javascript:void(0)" onclick="PlacementController.open()">
-            <span class="nav-icon">🎯</span>
-            <span>Test Level</span>
+          <a href="${this.linkPath('pages/quiz.html')}" class="${currentFile === 'quiz.html' ? 'active' : ''}">
+            <span class="nav-icon">🧠</span>
+            <span data-i18n="quiz">Quiz</span>
           </a>
           <a href="${this.linkPath('pages/progress.html')}" class="${(currentFile === 'progress.html' || currentFile === 'settings.html') ? 'active' : ''}">
             <span class="nav-icon">👤</span>

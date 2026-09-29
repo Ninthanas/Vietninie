@@ -112,7 +112,7 @@ const ProgressAndSettingsController = {
       </div>
 
       <!-- Unified Lesson Score History & Placement Level -->
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-top: 28px;">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; margin-top: 28px;">
         <div class="card" style="padding: 26px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
             <h3>🎓 ${isLearningZh ? 'Bảng Điểm Các Bài Học (4 Bước)' : '核心课程得分记录 (4步法)'}</h3>
@@ -196,7 +196,7 @@ const ProgressAndSettingsController = {
     const customList = window.StorageManager.getCustomVocabulary();
 
     mount.innerHTML = `
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px;">
         <!-- Preferences Card -->
         <div class="card">
           <h3 style="margin-bottom: 16px;">⚙️ ${isLearningZh ? 'Cài đặt Ngôn ngữ & Giao diện' : '语言方向与界面设置'}</h3>
