@@ -5,7 +5,8 @@
 const API_BASE_URL = 'http://localhost:8000';
 
 const AudioEngine = {
-  currentAudio: null,
+  sharedAudio: null,
+  _unlocked: false,
 
   ensureNoReferrer() {
     if (!document.querySelector('meta[name="referrer"]')) {
@@ -16,28 +17,66 @@ const AudioEngine = {
     }
   },
 
+  getAudioElement() {
+    if (!this.sharedAudio) {
+      this.sharedAudio = new Audio();
+      this.sharedAudio.preload = 'auto';
+      this.sharedAudio.setAttribute('playsinline', '');
+      this.sharedAudio.setAttribute('webkit-playsinline', '');
+      try {
+        this.sharedAudio.referrerPolicy = 'no-referrer';
+      } catch (e) {}
+    }
+    return this.sharedAudio;
+  },
+
+  unlockMobileAudio() {
+    if (this._unlocked) return;
+    this._unlocked = true;
+    this.ensureNoReferrer();
+    const audio = this.getAudioElement();
+    // Unlock HTML5 Audio element on first touchstart/click for iOS Safari & Android
+    try {
+      audio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+      const p = audio.play();
+      if (p !== undefined) {
+        p.then(() => {
+          audio.pause();
+          audio.currentTime = 0;
+        }).catch(() => {});
+      }
+    } catch (e) {}
+
+    // Unlock Web Speech API on mobile
+    if ('speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.resume();
+        const silentUtter = new SpeechSynthesisUtterance('');
+        silentUtter.volume = 0;
+        window.speechSynthesis.speak(silentUtter);
+      } catch (e) {}
+    }
+  },
+
   speak(text, langCode = 'zh-CN', audioPath = '') {
     if (!text) return;
     this.ensureNoReferrer();
 
-    if (this.currentAudio) {
-      try {
-        this.currentAudio.pause();
-        this.currentAudio.currentTime = 0;
-      } catch (e) {}
-      this.currentAudio = null;
-    }
+    const audio = this.getAudioElement();
+    try {
+      audio.pause();
+    } catch (e) {}
 
     // 1. Try local MP3 if enabled
     if (audioPath && window.__USE_LOCAL_MP3__) {
       const prefix = window.location.pathname.includes('/pages/') ? '../assets/' : 'assets/';
-      const audio = new Audio(prefix + audioPath);
-      this.currentAudio = audio;
+      audio.src = prefix + audioPath;
       audio.play().catch(() => this.playOnlineWaterfall(text, langCode));
       return;
     }
 
-    // 2. 4-Mirror Online TTS Waterfall (Vietninie Engine) + Web Speech Fallback
+    // 2. 4-Mirror Online TTS Waterfall (Mobile-compatible without CORS anonymous block)
     this.playOnlineWaterfall(text, langCode);
   },
 
@@ -46,39 +85,59 @@ const AudioEngine = {
     const tl = isVi ? 'vi' : 'zh-CN';
     const encoded = encodeURIComponent(text.trim());
 
+    // Important: Do NOT set crossOrigin='anonymous' because mobile Safari/Chrome block
+    // opaque third-party audio streams if CORS headers are absent.
     const streamUrls = [
       `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`,
+      `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`,
       `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`,
-      `https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`,
-      `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`
+      `https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`
     ];
 
-    const tryStream = (idx) => {
-      if (idx >= streamUrls.length) {
+    const audio = this.getAudioElement();
+    let currentIdx = 0;
+    let settled = false;
+    let timeoutId = null;
+
+    const tryNext = () => {
+      if (settled) return;
+      clearTimeout(timeoutId);
+      currentIdx++;
+      if (currentIdx >= streamUrls.length) {
+        settled = true;
         this.speakFallback(text, langCode);
         return;
       }
-      const audio = new Audio();
-      audio.referrerPolicy = 'no-referrer';
-      audio.crossOrigin = 'anonymous';
-      audio.src = streamUrls[idx];
-      this.currentAudio = audio;
+      loadAndPlay(currentIdx);
+    };
 
-      let settled = false;
-      const failNext = () => {
-        if (settled) return;
-        settled = true;
-        tryStream(idx + 1);
-      };
+    const loadAndPlay = (idx) => {
+      try {
+        audio.onerror = tryNext;
+        audio.onplaying = () => {
+          settled = true;
+          clearTimeout(timeoutId);
+        };
+        audio.src = streamUrls[idx];
+        audio.load();
 
-      audio.onerror = failNext;
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(failNext);
+        // Fallback timeout if mobile network hangs on a mirror
+        timeoutId = setTimeout(() => {
+          if (!settled) tryNext();
+        }, 2200);
+
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            if (!settled) tryNext();
+          });
+        }
+      } catch (err) {
+        tryNext();
       }
     };
 
-    tryStream(0);
+    loadAndPlay(0);
   },
 
   speakFallback(text, langCode) {
@@ -86,18 +145,27 @@ const AudioEngine = {
       AppUI.showToast('Trình duyệt không hỗ trợ phát âm / 浏览器不支持语音合成');
       return;
     }
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = langCode;
-    utter.rate = 0.92;
+    try {
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.resume();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = langCode;
+      utter.rate = 0.92;
 
-    const voices = window.speechSynthesis.getVoices();
-    const matchedVoice = voices.find(v => v.lang.toLowerCase().includes(langCode.toLowerCase().slice(0, 2)));
-    if (matchedVoice) utter.voice = matchedVoice;
+      const voices = window.speechSynthesis.getVoices();
+      const matchedVoice = voices.find(v => v.lang && v.lang.toLowerCase().includes(langCode.toLowerCase().slice(0, 2)));
+      if (matchedVoice) utter.voice = matchedVoice;
 
-    window.speechSynthesis.speak(utter);
+      window.speechSynthesis.speak(utter);
+    } catch (e) {
+      AppUI.showToast('Không thể phát âm trên thiết bị này / 无法播放语音');
+    }
   }
 };
+
+// Automatically unlock mobile audio on first touch or click anywhere
+document.addEventListener('touchstart', () => AudioEngine.unlockMobileAudio(), { once: true, passive: true });
+document.addEventListener('click', () => AudioEngine.unlockMobileAudio(), { once: true, passive: true });
 
 // ============================================================================
 // UNIFIED AUTHENTICATION CONTROLLER (TURSO BACKEND + LOCAL FALLBACK)
