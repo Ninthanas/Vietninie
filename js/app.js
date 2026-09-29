@@ -1149,10 +1149,11 @@ const AppUI = {
     const currentLevel = localStorage.getItem('sentruc_user_level') || 'beginner';
 
     const modalHtml = `
-      <div id="onboardingBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="onboardModalTitle">
+      <div id="onboardingBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="onboardModalTitle" onclick="if(event.target===this){localStorage.setItem('sentruc_onboarded','true');this.classList.remove('active');}">
         <div class="onboarding-modal">
-          <img src="${this.assetPath('assets/images/mascot.svg')}" alt="BaoSen Mascot" class="onboarding-mascot" />
-          <h2 id="onboardModalTitle" data-i18n="onboardTitle">Chào mừng bạn đến với SenTrúc × Vietninie! 🌏</h2>
+          <button type="button" onclick="localStorage.setItem('sentruc_onboarded','true');document.getElementById('onboardingBackdrop').classList.remove('active');" style="position:absolute;top:14px;right:16px;background:var(--bg-tertiary);border:1px solid var(--border-color);width:34px;height:34px;border-radius:50%;font-size:1.1rem;font-weight:800;cursor:pointer;color:var(--text-secondary);display:flex;align-items:center;justify-content:center;" title="Đóng">✕</button>
+          <img src="${this.assetPath('assets/images/mascot.svg')}" alt="Vietninie Mascot" class="onboarding-mascot" />
+          <h2 id="onboardModalTitle" data-i18n="onboardTitle" style="font-size:1.35rem;">Chào mừng bạn đến với Vietninie (越学越辣)! 🌶️</h2>
           <p style="color: var(--text-secondary); margin-top: 6px;" data-i18n="onboardSubtitle">
             Hãy chọn ngôn ngữ mẹ đẻ của bạn để hệ thống thiết lập chương trình học:
           </p>
