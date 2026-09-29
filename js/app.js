@@ -80,20 +80,63 @@ const AudioEngine = {
     this.playOnlineWaterfall(text, langCode);
   },
 
+  isMainlandChinaEnv() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (tz.includes('Shanghai') || tz.includes('Chongqing') || tz.includes('Urumqi') || tz.includes('Harbin') || tz.includes('Beijing')) {
+        return true;
+      }
+      const ua = navigator.userAgent || '';
+      if (/MicroMessenger|WeChat|QQ\/|Baidu|UCBrowser|HuaweiBrowser|MiuiBrowser/i.test(ua)) {
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  },
+
+  hasNativeVoiceFor(langCode = 'vi-VN') {
+    if (!('speechSynthesis' in window)) return false;
+    try {
+      const prefix = langCode.toLowerCase().slice(0, 2);
+      const voices = window.speechSynthesis.getVoices() || [];
+      return voices.some(v => v.lang && v.lang.toLowerCase().startsWith(prefix));
+    } catch (e) {
+      return false;
+    }
+  },
+
   playOnlineWaterfall(text, langCode = 'vi-VN') {
     const isVi = langCode.toLowerCase().startsWith('vi');
     const tl = isVi ? 'vi' : 'zh-CN';
     const encoded = encodeURIComponent(text.trim());
+    const inChina = this.isMainlandChinaEnv();
 
-    // Important: Do NOT set crossOrigin='anonymous' because mobile Safari/Chrome block
-    // opaque third-party audio streams if CORS headers are absent.
-    const streamUrls = [
-      `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`,
+    // If user is in Mainland China (where Google is blocked by GFW) and device has native voice,
+    // or for Chinese words via Youdao China CDN:
+    // 1. Put NetEase Youdao CDN (Mainland China server, 0% GFW block) FIRST!
+    // 2. If in China and speaking Vietnamese on a phone with native iOS/Android vi-VN voice, trigger native speech immediately if Youdao doesn't start within 500ms!
+    const chinaFirstUrls = [
       `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`,
-      `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`,
+      `https://fanyi.sogou.com/reventondc/synthesis?text=${encoded}&speed=1&lang=${isVi ? 'vi' : 'zh-CHS'}&from=translateweb&speaker=6`,
+      `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`,
+      `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`
+    ];
+
+    const globalFirstUrls = [
+      `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`,
+      `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`,
+      `https://fanyi.sogou.com/reventondc/synthesis?text=${encoded}&speed=1&lang=${isVi ? 'vi' : 'zh-CHS'}&from=translateweb&speaker=6`,
       `https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`
     ];
 
+    // If in Mainland China and device already has built-in native voice (e.g. iPhone/Xiaomi/Huawei),
+    // use native voice immediately for Vietnamese sentences so GFW never causes any delay!
+    if (inChina && isVi && this.hasNativeVoiceFor('vi-VN')) {
+      this.speakFallback(text, langCode);
+      return;
+    }
+
+    const streamUrls = inChina ? chinaFirstUrls : globalFirstUrls;
     const audio = this.getAudioElement();
     let currentIdx = 0;
     let settled = false;
@@ -121,10 +164,11 @@ const AudioEngine = {
         audio.src = streamUrls[idx];
         audio.load();
 
-        // Fallback timeout if mobile network hangs on a mirror
+        // Fast 700ms timeout so blocked domains in China (Google) immediately fail over
+        // before mobile Safari/WeChat gesture window expires!
         timeoutId = setTimeout(() => {
           if (!settled) tryNext();
-        }, 2200);
+        }, 700);
 
         const playPromise = audio.play();
         if (playPromise !== undefined) {
@@ -152,8 +196,9 @@ const AudioEngine = {
       utter.lang = langCode;
       utter.rate = 0.92;
 
-      const voices = window.speechSynthesis.getVoices();
-      const matchedVoice = voices.find(v => v.lang && v.lang.toLowerCase().includes(langCode.toLowerCase().slice(0, 2)));
+      const voices = window.speechSynthesis.getVoices() || [];
+      const prefix = langCode.toLowerCase().slice(0, 2);
+      const matchedVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith(prefix));
       if (matchedVoice) utter.voice = matchedVoice;
 
       window.speechSynthesis.speak(utter);
@@ -162,6 +207,11 @@ const AudioEngine = {
     }
   }
 };
+
+// Preload voices list on page load for iOS/Android/HarmonyOS
+if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
+  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+}
 
 // Automatically unlock mobile audio on first touch or click anywhere
 document.addEventListener('touchstart', () => AudioEngine.unlockMobileAudio(), { once: true, passive: true });
