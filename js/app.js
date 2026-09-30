@@ -1120,6 +1120,9 @@ const AppUI = {
                 🎯 <span class="hide-on-compact">Test Level</span>
               </button>
               <div id="navAuthMount"></div>
+              <button type="button" id="scriptSwitchBtn" class="btn btn-sm btn-outline" onclick="window.ChineseScriptEngine && window.ChineseScriptEngine.cycleMode()" style="padding:6px 10px; font-size:0.8rem; font-weight:800;" title="Chuyển đổi Chữ Giản Thể (Đại lục) / Phồn Thể (Đài Loan)">
+                简·繁 🇨🇳🇹🇼
+              </button>
               <button type="button" id="langSwitchBtn" class="lang-switch-btn" aria-label="Switch Language" title="Đổi ngôn ngữ Việt ⇄ Trung">
                 <span>🇻🇳⇄🇨🇳</span>
                 <span class="switch-label-text" data-i18n="switchLangBtn">Đổi ngôn ngữ</span>
@@ -1149,6 +1152,11 @@ const AppUI = {
             </div>
 
             <div class="drawer-quick-actions">
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.ChineseScriptEngine && window.ChineseScriptEngine.setMode('simplified')">🇨🇳 简体</button>
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.ChineseScriptEngine && window.ChineseScriptEngine.setMode('traditional')">🇹🇼 繁體</button>
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.ChineseScriptEngine && window.ChineseScriptEngine.setMode('both')">简+繁</button>
+              </div>
               <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="document.getElementById('mobileNavDrawer').classList.remove('open'); CoreLessonController.openSelector();">
                 🎓 Học Khóa 4 Bước (Lưu điểm)
               </button>
@@ -1390,24 +1398,30 @@ const AppUI = {
       const exTarget = isLearningZh ? item.example_zh : item.example_vi;
       const exNative = isLearningZh ? item.example_vi : item.example_zh;
       const speechLang = isLearningZh ? 'zh-CN' : 'vi-VN';
+      const zhRef = isLearningZh ? targetWord : meaning;
+      const sp = window.ChineseScriptEngine ? window.ChineseScriptEngine.getScriptPair(zhRef) : { simp: zhRef, trad: zhRef };
 
       spotlightEl.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-          <div>
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
             <span class="badge badge-rose">${item.level}</span>
-            <span class="badge badge-jade">${isLearningZh ? item.topic_label_vi : item.topic_label_zh}</span>
+            <span class="badge badge-indigo">🇨🇳 简: ${sp.simp}</span>
+            <span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;">🇹🇼 繁: ${sp.trad}</span>
           </div>
           <button type="button" class="btn btn-sm btn-primary" onclick="AudioEngine.speak('${targetWord.replace(/'/g, "\\'")}', '${speechLang}', '${item.pronunciation}')">
             🔊 ${isLearningZh ? 'Nghe' : '听发音'}
           </button>
         </div>
-        <div class="spotlight-hanzi" style="margin-top: 10px;">${targetWord}</div>
+        <div class="spotlight-hanzi" style="margin-top: 10px;">${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(targetWord) : targetWord}</div>
         <div class="spotlight-pinyin">${subPhonetic}</div>
-        <div style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">${meaning}</div>
-        <div style="font-size: 0.88rem; color: var(--text-secondary); background: var(--bg-secondary); padding: 10px 12px; border-radius: 12px;">
-          <div><strong>${exTarget}</strong></div>
+        <div style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">${window.ChineseScriptEngine && !isLearningZh ? window.ChineseScriptEngine.formatText(meaning) : meaning}</div>
+        <div style="font-size: 0.88rem; color: var(--text-secondary); background: var(--bg-secondary); padding: 10px 12px; border-radius: 12px; margin-bottom: 10px;">
+          <div><strong>${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(exTarget) : exTarget}</strong></div>
           <div>${exNative}</div>
         </div>
+        <button type="button" class="btn btn-sm btn-outline" style="width:100%; border-color:var(--brand-primary); color:var(--brand-primary);" onclick="window.DeepWordInsightEngine && window.DeepWordInsightEngine.openModal(${item.id})">
+          ✨ ${isLearningZh ? 'Giải mã thú vị (SGK vs Đời thực & 简/繁)' : '趣味深度解析 (教科书 vs 现实口语 & 简/繁)'}
+        </button>
       `;
     }
 
@@ -1419,25 +1433,34 @@ const AppUI = {
         const exTarget = isLearningZh ? item.example_zh : item.example_vi;
         const exNative = isLearningZh ? item.example_vi : item.example_zh;
         const speechLang = isLearningZh ? 'zh-CN' : 'vi-VN';
+        const zhRef = isLearningZh ? item.word : meaning;
+        const sp = window.ChineseScriptEngine ? window.ChineseScriptEngine.getScriptPair(zhRef) : { simp: zhRef, trad: zhRef };
+
         return `
           <article class="vocab-card">
             <div>
               <div class="vocab-card-header">
-                <span class="badge badge-rose">${item.level}</span>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <span class="badge badge-rose">${item.level}</span>
+                  <span class="badge badge-indigo">简: ${sp.simp}</span>
+                  <span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;">繁: ${sp.trad}</span>
+                </div>
                 <button type="button" class="action-icon-btn" onclick="AudioEngine.speak('${item.word.replace(/'/g, "\\'")}', '${speechLang}', '${item.pronunciation}')">
                   🔊 ${isLearningZh ? 'Nghe' : '发音'}
                 </button>
               </div>
-              <div class="vocab-word-main">${item.word}</div>
+              <div class="vocab-word-main">${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(item.word) : item.word}</div>
               <div class="vocab-pinyin">${subPhonetic}</div>
-              <div class="vocab-meaning">${meaning}</div>
+              <div class="vocab-meaning">${window.ChineseScriptEngine && !isLearningZh ? window.ChineseScriptEngine.formatText(meaning) : meaning}</div>
               <div class="vocab-example-box">
-                <div class="ex-target">${exTarget}</div>
+                <div class="ex-target">${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(exTarget) : exTarget}</div>
                 <div class="ex-native">${exNative}</div>
               </div>
             </div>
-            <div class="vocab-card-footer">
-              <span style="font-size:0.78rem; color:var(--text-muted);">${isLearningZh ? item.topic_label_vi : item.topic_label_zh}</span>
+            <div class="vocab-card-footer" style="flex-wrap:wrap; gap:8px;">
+              <button type="button" class="btn btn-sm btn-outline" style="border-color:var(--brand-primary); color:var(--brand-primary);" onclick="window.DeepWordInsightEngine && window.DeepWordInsightEngine.openModal(${item.id})">
+                ✨ ${isLearningZh ? 'Giải mã thú vị' : '趣味解析'}
+              </button>
               <a href="pages/vocabulary-detail.html?id=${item.id}" class="btn btn-sm btn-outline">${isLearningZh ? 'Chi tiết →' : '查看详情 →'}</a>
             </div>
           </article>
