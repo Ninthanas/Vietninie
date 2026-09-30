@@ -7,6 +7,8 @@ const API_BASE_URL = 'http://localhost:8000';
 const AudioEngine = {
   sharedAudio: null,
   _unlocked: false,
+  _playRequestId: 0,
+  _timeoutId: null,
 
   ensureNoReferrer() {
     if (!document.querySelector('meta[name="referrer"]')) {
@@ -30,12 +32,32 @@ const AudioEngine = {
     return this.sharedAudio;
   },
 
+  stopAll() {
+    if (this._timeoutId) {
+      clearTimeout(this._timeoutId);
+      this._timeoutId = null;
+    }
+    if ('speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
+    if (this.sharedAudio) {
+      try {
+        this.sharedAudio.onplaying = null;
+        this.sharedAudio.onerror = null;
+        this.sharedAudio.pause();
+        this.sharedAudio.removeAttribute('src');
+        this.sharedAudio.load();
+      } catch (e) {}
+    }
+  },
+
   unlockMobileAudio() {
     if (this._unlocked) return;
     this._unlocked = true;
     this.ensureNoReferrer();
     const audio = this.getAudioElement();
-    // Unlock HTML5 Audio element on first touchstart/click for iOS Safari & Android
     try {
       audio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
       const p = audio.play();
@@ -46,38 +68,29 @@ const AudioEngine = {
         }).catch(() => {});
       }
     } catch (e) {}
-
-    // Unlock Web Speech API on mobile
-    if ('speechSynthesis' in window) {
-      try {
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.resume();
-        const silentUtter = new SpeechSynthesisUtterance('');
-        silentUtter.volume = 0;
-        window.speechSynthesis.speak(silentUtter);
-      } catch (e) {}
-    }
   },
 
   speak(text, langCode = 'zh-CN', audioPath = '') {
     if (!text) return;
     this.ensureNoReferrer();
-
-    const audio = this.getAudioElement();
-    try {
-      audio.pause();
-    } catch (e) {}
+    const reqId = ++this._playRequestId;
+    this.stopAll();
 
     // 1. Try local MP3 if enabled
     if (audioPath && window.__USE_LOCAL_MP3__) {
+      const audio = this.getAudioElement();
       const prefix = window.location.pathname.includes('/pages/') ? '../assets/' : 'assets/';
       audio.src = prefix + audioPath;
-      audio.play().catch(() => this.playOnlineWaterfall(text, langCode));
+      audio.play().catch(() => {
+        if (reqId === this._playRequestId) {
+          this.playOnlineWaterfall(text, langCode, reqId);
+        }
+      });
       return;
     }
 
-    // 2. 4-Mirror Online TTS Waterfall (Mobile-compatible without CORS anonymous block)
-    this.playOnlineWaterfall(text, langCode);
+    // 2. Strictly serialized Online TTS Waterfall
+    this.playOnlineWaterfall(text, langCode, reqId);
   },
 
   isMainlandChinaEnv() {
@@ -105,86 +118,103 @@ const AudioEngine = {
     }
   },
 
-  playOnlineWaterfall(text, langCode = 'vi-VN') {
+  playOnlineWaterfall(text, langCode = 'vi-VN', reqId = this._playRequestId) {
+    if (reqId !== this._playRequestId) return;
     const isVi = langCode.toLowerCase().startsWith('vi');
     const tl = isVi ? 'vi' : 'zh-CN';
     const encoded = encodeURIComponent(text.trim());
     const inChina = this.isMainlandChinaEnv();
 
-    // If user is in Mainland China (where Google is blocked by GFW) and device has native voice,
-    // or for Chinese words via Youdao China CDN:
-    // 1. Put NetEase Youdao CDN (Mainland China server, 0% GFW block) FIRST!
-    // 2. If in China and speaking Vietnamese on a phone with native iOS/Android vi-VN voice, trigger native speech immediately if Youdao doesn't start within 500ms!
-    const chinaFirstUrls = [
-      `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`,
-      `https://fanyi.sogou.com/reventondc/synthesis?text=${encoded}&speed=1&lang=${isVi ? 'vi' : 'zh-CHS'}&from=translateweb&speaker=6`,
-      `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`,
-      `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`
-    ];
-
-    const globalFirstUrls = [
-      `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`,
-      `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`,
-      `https://fanyi.sogou.com/reventondc/synthesis?text=${encoded}&speed=1&lang=${isVi ? 'vi' : 'zh-CHS'}&from=translateweb&speaker=6`,
-      `https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=tw-ob`
-    ];
-
-    // If in Mainland China and device already has built-in native voice (e.g. iPhone/Xiaomi/Huawei),
-    // use native voice immediately for Vietnamese sentences so GFW never causes any delay!
+    // If in Mainland China and device has built-in native voice for Vietnamese, use it directly (100% single source)
     if (inChina && isVi && this.hasNativeVoiceFor('vi-VN')) {
-      this.speakFallback(text, langCode);
+      this.speakFallback(text, langCode, reqId);
       return;
     }
 
-    const streamUrls = inChina ? chinaFirstUrls : globalFirstUrls;
+    const streamUrls = inChina
+      ? [
+          `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`,
+          `https://fanyi.sogou.com/reventondc/synthesis?text=${encoded}&speed=1&lang=${isVi ? 'vi' : 'zh-CHS'}&from=translateweb&speaker=6`,
+          `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`
+        ]
+      : [
+          `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${tl}&client=gtx`,
+          `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${isVi ? 'vi' : 'zh'}`,
+          `https://fanyi.sogou.com/reventondc/synthesis?text=${encoded}&speed=1&lang=${isVi ? 'vi' : 'zh-CHS'}&from=translateweb&speaker=6`
+        ];
+
     const audio = this.getAudioElement();
     let currentIdx = 0;
     let settled = false;
-    let timeoutId = null;
 
-    const tryNext = () => {
-      if (settled) return;
-      clearTimeout(timeoutId);
+    const tryNext = (fromIdx) => {
+      if (reqId !== this._playRequestId || settled || fromIdx !== currentIdx) return;
+      if (this._timeoutId) {
+        clearTimeout(this._timeoutId);
+        this._timeoutId = null;
+      }
       currentIdx++;
       if (currentIdx >= streamUrls.length) {
         settled = true;
-        this.speakFallback(text, langCode);
+        this.speakFallback(text, langCode, reqId);
         return;
       }
       loadAndPlay(currentIdx);
     };
 
-    const loadAndPlay = (idx) => {
+    const loadAndPlay = (attemptIdx) => {
+      if (reqId !== this._playRequestId || settled) return;
       try {
-        audio.onerror = tryNext;
+        audio.onerror = () => tryNext(attemptIdx);
         audio.onplaying = () => {
+          if (reqId !== this._playRequestId) {
+            this.stopAll();
+            return;
+          }
           settled = true;
-          clearTimeout(timeoutId);
+          if (this._timeoutId) {
+            clearTimeout(this._timeoutId);
+            this._timeoutId = null;
+          }
+          if ('speechSynthesis' in window) {
+            try { window.speechSynthesis.cancel(); } catch (e) {}
+          }
         };
-        audio.src = streamUrls[idx];
+
+        audio.src = streamUrls[attemptIdx];
         audio.load();
 
-        // Fast 700ms timeout so blocked domains in China (Google) immediately fail over
-        // before mobile Safari/WeChat gesture window expires!
-        timeoutId = setTimeout(() => {
-          if (!settled) tryNext();
-        }, 700);
+        this._timeoutId = setTimeout(() => {
+          tryNext(attemptIdx);
+        }, 1600);
 
         const playPromise = audio.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
-            if (!settled) tryNext();
+            tryNext(attemptIdx);
           });
         }
       } catch (err) {
-        tryNext();
+        tryNext(attemptIdx);
       }
     };
 
     loadAndPlay(0);
   },
 
-  speakFallback(text, langCode) {
+  speakFallback(text, langCode, reqId = this._playRequestId) {
+    if (reqId !== this._playRequestId) return;
+    // Completely stop HTML5 audio element first so it can NEVER play alongside speechSynthesis
+    if (this.sharedAudio) {
+      try {
+        this.sharedAudio.onplaying = null;
+        this.sharedAudio.onerror = null;
+        this.sharedAudio.pause();
+        this.sharedAudio.removeAttribute('src');
+        this.sharedAudio.load();
+      } catch (e) {}
+    }
+
     if (!('speechSynthesis' in window)) {
       AppUI.showToast('Trình duyệt không hỗ trợ phát âm / 浏览器不支持语音合成');
       return;

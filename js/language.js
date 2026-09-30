@@ -687,7 +687,23 @@ const ChineseScriptEngine = {
 
   toTraditional(str = '') {
     if (!str) return '';
-    return Array.from(String(str)).map(ch => S2T_CHAR_MAP[ch] || ch).join('');
+    const s = String(str)
+      .replace(/牛肉面/g, '牛肉麵')
+      .replace(/面条/g, '麵條')
+      .replace(/泡面/g, '泡麵')
+      .replace(/拉面/g, '拉麵')
+      .replace(/方便面/g, '方便麵')
+      .replace(/面包/g, '麵包')
+      .replace(/面粉/g, '麵粉')
+      .replace(/头发/g, '頭髮')
+      .replace(/理发/g, '理髮')
+      .replace(/干净/g, '乾淨')
+      .replace(/干杯/g, '乾杯')
+      .replace(/饼干/g, '餅乾')
+      .replace(/干燥/g, '乾燥')
+      .replace(/系统/g, '系統')
+      .replace(/联系/g, '聯繫');
+    return Array.from(s).map(ch => (ch === '面' ? '面' : (S2T_CHAR_MAP[ch] || ch))).join('');
   },
 
   formatText(str = '') {
