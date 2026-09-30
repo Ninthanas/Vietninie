@@ -4,17 +4,17 @@
 const translations = {
   vi: {
     brandName: 'Vietninie',
-    brandTagline: '越学越辣 🌶️ • Học Song Ngữ Việt ⇄ Trung',
-    switchLangBtn: 'Đổi ngôn ngữ / 切换语言',
+    brandTagline: '越学越辣 🌶️ • Việt ⇄ Trung',
+    switchLangBtn: 'VI ⇄ 中',
     directionBadge: '🇻🇳 Người Việt học Tiếng Trung 🇨🇳',
     home: 'Trang chủ',
     vocabulary: 'Từ vựng',
     grammar: 'Ngữ pháp',
     conversation: 'Hội thoại',
     listening: 'Luyện nghe',
-    quiz: 'Kiểm tra (Quiz)',
+    quiz: 'Quiz',
     progress: 'Tiến độ',
-    settings: 'Cài đặt & Admin',
+    settings: 'Cài đặt',
     profile: 'Hồ sơ',
     startLearning: 'Bắt đầu học ngay',
     exploreVocab: 'Khám phá 2.300+ từ vựng',
@@ -92,19 +92,19 @@ const translations = {
     onboardConfirm: 'Hoàn tất & Bắt đầu học 🚀'
   },
   zh: {
-    brandName: 'Vietninie 越学越辣',
-    brandTagline: '越学越辣 🌶️ • 中国人学地道越南语',
-    switchLangBtn: '切换语言 / Đổi ngôn ngữ',
+    brandName: 'Vietninie',
+    brandTagline: '越学越辣 🌶️ • 中越双语',
+    switchLangBtn: '中 ⇄ VI',
     directionBadge: '🇨🇳 中国人学习越南语 🇻🇳',
     home: '首页',
-    vocabulary: '越南语词汇',
-    grammar: '越南语语法',
-    conversation: '情景对话',
-    listening: '听力训练',
-    quiz: '互动测验',
-    progress: '学习进度',
-    settings: '设置与管理',
-    profile: '个人中心',
+    vocabulary: '词汇',
+    grammar: '语法',
+    conversation: '对话',
+    listening: '听力',
+    quiz: '测验',
+    progress: '进度',
+    settings: '设置',
+    profile: '我的',
     startLearning: '立即开始学习',
     exploreVocab: '探索 2,160+ 越南语词汇',
     heroEyebrow: '✨ 专为华人打造的沉浸式越南语学习平台',
@@ -679,7 +679,7 @@ const ChineseScriptEngine = {
     const badgeMap = {
       simplified: '简 🇨🇳',
       traditional: '繁 🇹🇼',
-      both: '简·繁 🇨🇳🇹🇼'
+      both: '简·繁'
     };
     btn.innerHTML = `<span>${badgeMap[mode]}</span>`;
     btn.setAttribute('title', 'Chuyển đổi Chữ Giản Thể (Đại lục) / Phồn Thể (Đài Loan) / Song song');
@@ -696,7 +696,6 @@ const ChineseScriptEngine = {
     if (mode === 'simplified') return str;
     const trad = this.toTraditional(str);
     if (mode === 'traditional') return trad;
-    // If 'both' mode and the string is short (like a word/title) and differs in Traditional:
     if (trad !== str && str.length <= 8) {
       return `${str} <span style="font-weight:600; color:var(--brand-indigo); font-size:0.86em;">(繁: ${trad})</span>`;
     }
@@ -734,37 +733,60 @@ const DeepWordInsightEngine = {
     const scriptPair = ChineseScriptEngine.getScriptPair(zhSource);
     const twComp = ChineseScriptEngine.getTaiwanComparison(zhSource);
 
-    // 1. Memory Hook & Word DNA (Giải mã gốc từ & Mẹo nhớ cực dính)
+    // 1. Memory Hook & Word DNA
     let memoryHook = '';
     if (isLearningZh) {
-      memoryHook = `Từ <strong>${word}</strong> (${phonetic}) nghĩa là <strong>"${meaning}"</strong>. ` +
+      memoryHook = `<strong>${word}</strong> (${phonetic}) nghĩa là <strong>"${meaning}"</strong>. ` +
         (scriptPair.differs
-          ? `Ở Trung Quốc đại lục viết nét giản lược là <strong>${scriptPair.simp}</strong>, còn ở Đài Loan / Hồng Kông viết đầy đủ nét cổ truyền là <strong>${scriptPair.trad}</strong>. `
-          : `Chữ này viết giống hệt nhau ở cả Đại lục (简体) và Đài Loan (繁體)! `) +
-        `💡 <em>Mẹo nhớ phản xạ:</em> Đừng học vẹt từng chữ rời rạc — hãy gắn ngay từ <strong>${word}</strong> vào tình huống <strong>${topic}</strong> mỗi khi bạn mở miệng nói câu "${exTarget}".`;
+          ? `🇨🇳 Đại Lục viết Giản thể là <strong>${scriptPair.simp}</strong>, còn 🇹🇼 Đài Loan / Hồng Kông viết Phồn thể là <strong>${scriptPair.trad}</strong>. `
+          : `Chữ này ở cả 🇨🇳 Đại Lục (简体) và 🇹🇼 Đài Loan (繁體) đều viết giống hệt nhau! `) +
+        (item.usage_note ? `<br/>${item.usage_note}` : '');
     } else {
       memoryHook = `越南语词条 <strong>"${word}"</strong> 对应中文的 <strong>“${scriptPair.simp}”</strong>（台湾繁体：<strong>${scriptPair.trad}</strong>）。` +
-        `💡 <em>秒记窍门：</em> 越南语修饰词遵循<strong>“中心词在前、修饰语在后”</strong>（定语后置），发音时注意声调起伏 ${phonetic}，结合场景“${topic}”一口气连读最自然！`;
+        (item.usage_note ? `<br/>${item.usage_note}` : '');
     }
 
-    // 2. Textbook (Chuẩn SGK) vs Street/Office Real-Life (Ngoài đời thực nói thế nào?)
+    // 2. Textbook (Chuẩn SGK) vs Street/Office Real-Life
     const textbookStyle = isLearningZh
-      ? `📘 <strong>Trong Sách Giáo Khoa (HSK / Thi cử):</strong> Dùng đầy đủ chủ ngữ – vị ngữ trang trọng: <em>"${exTarget}"</em> (${exNative}).`
-      : `📘 <strong>教科书标准用法 (标准书面/考试):</strong> 语法完整规范：<em>"${exTarget}"</em>（${exNative}）。`;
+      ? `📘 <strong>Ví dụ chuẩn mực (${item.level || 'HSK'}):</strong><br/><em>"${exTarget}"</em><br/><span style="color:var(--text-secondary);">${exNative}</span>`
+      : `📘 <strong>标准实用例句 (${item.level || 'CEFR'}):</strong><br/><em>"${exTarget}"</em><br/><span style="color:var(--text-secondary);">${exNative}</span>`;
 
     const streetRealLife = isLearningZh
-      ? `🌶️ <strong>Ngoài Đời Thực (Quán xá / Công sở / Chat WeChat & LINE):</strong> Người bản xứ ở Bắc Kinh hay Đài Bắc thường lược bỏ chủ ngữ rườm rà, nói ngắn gọn, nhấn thẳng vào từ khóa <strong>"${word}"</strong> kèm ngữ điệu tự nhiên. ${twComp ? `<br/>🇹🇼 <strong>Bí kíp Đài Loan:</strong> ${twComp.note_vi}` : `Khi nhắn tin WeChat (Đại lục) hoặc LINE (Đài Loan), dùng cụm này giúp bạn nghe như người bản địa 100%!`}`
-      : `🌶️ <strong>现实生活地道口语 (越南街头 / 职场 / Zalo聊天):</strong> 越南本地人日常交流讲究亲切自然，常在句尾加上语气词 <strong>"nhé / nha / ạ"</strong>（北越常用 nhé/ạ，南越西贡常用 nha/nghen），让 <strong>"${word}"</strong> 听起来瞬间有人情味！`;
+      ? (twComp
+          ? `🇹🇼 <strong>So sánh Đại Lục 🇨🇳 & Đài Loan 🇹🇼:</strong><br/>Đại Lục dùng <strong>${twComp.mainland}</strong>, còn Đài Loan dùng <strong>${twComp.taiwan}</strong>.<br/>${twComp.note_vi}`
+          : `🌶️ <strong>Mẹo phản xạ thực tế:</strong><br/>Ngoài đời thực (WeChat, LINE, quán ăn, văn phòng), người bản xứ không nói câu dài dòng như sách giáo khoa mà ưu tiên cụm ngắn gọn chứa <strong>"${word}"</strong> kèm ngữ khí tự nhiên.`)
+      : `🌶️ <strong>越南本地人实战技巧:</strong><br/>在西贡或河内日常交流中，可在句尾灵活加上语气助词 <strong>"ạ"</strong>（对长辈/客户表礼貌）或 <strong>"nhé / nha"</strong>（对朋友同事表亲切）。`;
 
-    // 3. Mini Real-Life Chat (Đoạn hội thoại 2 câu thực chiến)
+    // 3. Natural 2-Turn Real-Life Dialogue (No meta-questions!)
+    const replyMapZh = {
+      '你好': { target: '你好！往前走两百米左转就到地铁站啦。', sub: 'Chào bạn! Đi thẳng 200m rồi rẽ trái là tới ga tàu điện ngầm nha.' },
+      '您好': { target: '辛苦了！放我办公桌上吧，我马上看。', sub: 'Vất vả cho em rồi! Cứ để trên bàn làm việc của anh, anh xem ngay.' },
+      '早上好': { target: '早啊！会议资料我都打印好发给大家了。', sub: 'Chào buổi sáng! Tài liệu họp mình đã in sẵn phát cho mọi người rồi.' },
+      '下午好': { target: '太棒了，我正困着呢，加我一杯少糖的！', sub: 'Tuyệt quá, mình đang buồn ngủ díp mắt đây, cho mình ké 1 ly ít đường nhé!' },
+      '晚上好': { target: '晚上好！我们有预约，姓阮，两位靠窗的位置。', sub: 'Chào buổi tối! Tụi mình có đặt trước tên Nguyễn, bàn 2 người cạnh cửa sổ ạ.' },
+      '晚安': { target: '晚安啦，明天见，做个好梦！', sub: 'Ngủ ngon nha, mai gặp lại, mơ đẹp nhé!' },
+      '谢谢': { target: '客气啥呀！趁热快喝吧。', sub: 'Khách sáo gì chứ! Uống lúc còn nóng/lạnh ngay đi.' }
+    };
+
+    const customReply = replyMapZh[word];
     const miniDialogue = isLearningZh
       ? [
-          { speaker: '🧑 Bạn (Hỏi)', target: `请问，关于“${word}”怎么说最地道？`, sub: `Cho mình hỏi dùng từ "${word}" thế nào cho chuẩn?`, lang: 'zh-CN' },
-          { speaker: '👩‍💼 Bản xứ (Đáp)', target: exTarget, sub: exNative, lang: 'zh-CN' }
+          { speaker: '🧑 Tình huống mở lời', target: exTarget, sub: exNative, lang: 'zh-CN' },
+          {
+            speaker: '👩‍💼 Đáp lại tự nhiên (Bản xứ)',
+            target: customReply ? customReply.target : `好的没问题！关于${word}这件事我们就这么定啦。`,
+            sub: customReply ? customReply.sub : `Ok không thành vấn đề! Chuyện này tụi mình cứ chốt như vậy nhé.`,
+            lang: 'zh-CN'
+          }
         ]
       : [
-          { speaker: '🧑 提问 (Bạn)', target: `Bạn ơi, "${word}" dùng trong trường hợp nào?`, sub: `请问，“${scriptPair.simp}”在实际中怎么用？`, lang: 'vi-VN' },
-          { speaker: '👩‍💼 越南本地人', target: exTarget, sub: exNative, lang: 'vi-VN' }
+          { speaker: '🧑 实际场景开口', target: exTarget, sub: exNative, lang: 'vi-VN' },
+          {
+            speaker: '👩‍💼 越南本地人自然回应',
+            target: `Dạ vâng, ok luôn bạn ơi! Cứ thống nhất như vậy nhé.`,
+            sub: `好的没问题朋友！咱们就这么敲定啦。`,
+            lang: 'vi-VN'
+          }
         ];
 
     return {

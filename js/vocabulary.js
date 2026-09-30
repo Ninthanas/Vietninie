@@ -275,16 +275,20 @@ const VocabularyController = {
 
       const zhRef = isLearningZh ? item.word : meaning;
       const sp = window.ChineseScriptEngine ? window.ChineseScriptEngine.getScriptPair(zhRef) : { simp: zhRef, trad: zhRef };
+      const hasDiffTrad = sp.simp !== sp.trad;
       const twComp = window.ChineseScriptEngine ? window.ChineseScriptEngine.getTaiwanComparison(zhRef) : null;
 
       return `
         <article class="vocab-card ${isLearned ? 'is-learned' : ''}" id="vocab-card-${item.id}">
           <div>
             <div class="vocab-card-header">
-              <div style="display:flex; gap:5px; flex-wrap:wrap;">
+              <div style="display:flex; gap:5px; flex-wrap:wrap; align-items:center;">
                 <span class="badge badge-rose">${item.level}</span>
-                <span class="badge badge-indigo">🇨🇳 简: ${sp.simp}</span>
-                <span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;">🇹🇼 繁: ${sp.trad}</span>
+                ${hasDiffTrad
+                  ? `<span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;" title="Chữ Phồn thể dùng tại Đài Loan / Hồng Kông">🇹🇼 繁: ${sp.trad}</span>`
+                  : `<span class="badge badge-jade" title="Chữ Giản thể và Phồn thể viết giống nhau">简·繁 chung</span>`
+                }
+                ${twComp ? `<span class="badge badge-indigo">🇹🇼 Đài: ${twComp.taiwan}</span>` : ''}
               </div>
               <button type="button" class="action-icon-btn" onclick="AudioEngine.speak('${safeWord}', '${speechLang}', '${item.pronunciation}')" aria-label="Listen pronunciation">
                 🔊 ${isLearningZh ? 'Nghe' : '听发音'}
@@ -295,21 +299,20 @@ const VocabularyController = {
             <div class="vocab-pinyin">${phonetic}</div>
             <div class="vocab-meaning">${window.ChineseScriptEngine && !isLearningZh ? window.ChineseScriptEngine.formatText(meaning) : meaning}</div>
 
-            <!-- Textbook vs Real-Life Mini Pill -->
-            <div style="background:var(--brand-secondary-soft); border-radius:10px; padding:8px 11px; margin-bottom:10px; font-size:0.8rem; color:var(--text-primary); line-height:1.45;">
-              ${isLearningZh
-                ? `💡 <strong>Hiểu sâu:</strong> 📘 SGK dùng <em>"${item.word}"</em> trang trọng • 🌶️ Đời thực gắn vào ngữ cảnh <strong>${item.topic_label_vi || 'giao tiếp'}</strong>${twComp ? ` (🇹🇼 Đài Loan gọi: <strong>${twComp.tw}</strong>)` : ''}.`
-                : `💡 <strong>活学活用:</strong> 📘 课本规范词 • 🌶️ 越南日常交际高频词（加语气词 nhé/nha 更地道）。`}
-            </div>
-
-            <div class="vocab-example-box">
+            <div class="vocab-example-box" style="margin-bottom:8px;">
               <div class="ex-target" style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
-                <span>${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(exTarget) : exTarget}</span>
+                <span>💬 ${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(exTarget) : exTarget}</span>
                 <button type="button" class="btn-icon" style="width:26px; height:26px; font-size:0.75rem; flex-shrink:0;" onclick="AudioEngine.speak('${safeEx}', '${speechLang}')" title="Nghe câu ví dụ">🔊</button>
               </div>
               ${exPy ? `<div class="ex-py">${exPy}</div>` : ''}
               <div class="ex-native">${exNative}</div>
             </div>
+
+            ${item.usage_note ? `
+              <div style="background:var(--bg-secondary); border-left:3px solid var(--brand-gold); border-radius:8px; padding:8px 11px; margin-bottom:10px; font-size:0.8rem; color:var(--text-secondary); line-height:1.45;">
+                ${window.ChineseScriptEngine ? window.ChineseScriptEngine.formatText(item.usage_note) : item.usage_note}
+              </div>
+            ` : ''}
           </div>
 
           <div class="vocab-card-footer" style="flex-wrap:wrap; gap:6px;">
