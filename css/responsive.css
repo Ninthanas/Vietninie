@@ -242,8 +242,9 @@ img, svg, video, canvas {
     gap: 28px;
   }
 
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .features-grid,
+  .pillars-grid {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
@@ -333,20 +334,33 @@ img, svg, video, canvas {
   }
 
   .hero-cta-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+    width: 100%;
   }
 
   .hero-cta-group .btn {
     width: 100%;
-    padding: 11px 12px;
-    font-size: 0.85rem;
+    justify-content: center;
+    text-align: center;
   }
 
-  .hero-stats-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  .hero-btn-main {
+    padding: 13px 20px !important;
+    font-size: 1rem !important;
+  }
+
+  .hero-btn-sub {
+    padding: 11px 18px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .hero-highlights {
+    font-size: 0.84rem;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 4px;
   }
 
   .hero-showcase-card {

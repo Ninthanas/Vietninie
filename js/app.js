@@ -1533,13 +1533,12 @@ const AppUI = {
       const hasDiffTrad = sp.simp !== sp.trad;
 
       spotlightEl.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
-          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
             <span class="badge badge-rose">${item.level}</span>
             ${hasDiffTrad
-              ? `<span class="badge badge-indigo">🇨🇳 简: ${sp.simp}</span>
-                 <span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;">🇹🇼 繁: ${sp.trad}</span>`
-              : `<span class="badge badge-indigo">🇨🇳/🇹🇼 简繁同字</span>`
+              ? `<span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;" title="Chữ Phồn thể (Đài Loan/Hồng Kông)">🇹🇼 繁: ${sp.trad}</span>`
+              : `<span class="badge badge-jade">简·繁同字</span>`
             }
           </div>
           <button type="button" class="btn btn-sm btn-primary" onclick="AudioEngine.speak('${targetWord.replace(/'/g, "\\'")}', '${speechLang}', '${item.pronunciation}')">
@@ -1548,24 +1547,19 @@ const AppUI = {
         </div>
         <div class="spotlight-hanzi" style="margin-top: 10px;">${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(targetWord) : targetWord}</div>
         <div class="spotlight-pinyin">${subPhonetic}</div>
-        <div style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">${window.ChineseScriptEngine && !isLearningZh ? window.ChineseScriptEngine.formatText(meaning) : meaning}</div>
-        <div style="font-size: 0.88rem; color: var(--text-secondary); background: var(--bg-secondary); padding: 10px 12px; border-radius: 12px; margin-bottom: 8px; border-left: 3px solid var(--brand-primary);">
-          <div style="color:var(--text-primary); margin-bottom:3px;"><strong>💬 ${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(exTarget) : exTarget}</strong></div>
+        <div style="font-size: 1.12rem; font-weight: 700; margin-bottom: 10px;">${window.ChineseScriptEngine && !isLearningZh ? window.ChineseScriptEngine.formatText(meaning) : meaning}</div>
+        <div style="font-size: 0.88rem; color: var(--text-secondary); background: var(--bg-secondary); padding: 10px 12px; border-radius: 12px; margin-bottom: 12px; border-left: 3px solid var(--brand-primary);">
+          <div style="color:var(--text-primary); margin-bottom:2px;"><strong>💬 ${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(exTarget) : exTarget}</strong></div>
           <div>${exNative}</div>
         </div>
-        ${item.usage_note ? `
-          <div style="font-size: 0.82rem; line-height: 1.45; color: var(--text-secondary); background: var(--brand-gold-soft); padding: 9px 12px; border-radius: 10px; margin-bottom: 10px;">
-            ${window.ChineseScriptEngine ? window.ChineseScriptEngine.formatText(item.usage_note) : item.usage_note}
-          </div>
-        ` : ''}
         <button type="button" class="btn btn-sm btn-outline" style="width:100%; border-color:var(--brand-primary); color:var(--brand-primary);" onclick="window.DeepWordInsightEngine && window.DeepWordInsightEngine.openModal(${item.id})">
-          ✨ ${isLearningZh ? 'Xem đối thoại thực tế & So sánh 🇨🇳 Đại Lục / 🇹🇼 Đài Loan' : '查看真实微对话 & 🇨🇳大陆/🇹🇼台湾用法对比'}
+          ✨ ${isLearningZh ? 'Xem chi tiết & So sánh Giản / Phồn' : '查看深度拆解与简繁对比'}
         </button>
       `;
     }
 
     if (vocabPreviewEl) {
-      const sample = vocabList.slice(0, 6);
+      const sample = vocabList.slice(0, 4);
       vocabPreviewEl.innerHTML = sample.map(item => {
         const subPhonetic = isLearningZh ? item.pinyin : item.pronunciation_guide;
         const meaning = isLearningZh ? item.meaning_vi : item.meaning_zh;
@@ -1583,8 +1577,8 @@ const AppUI = {
                 <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
                   <span class="badge badge-rose">${item.level}</span>
                   ${hasDiffTrad
-                    ? `<span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;" title="Chữ Phồn thể dùng tại Đài Loan / Hồng Kông">🇹🇼 繁: ${sp.trad}</span>`
-                    : `<span class="badge badge-jade" title="Chữ Giản thể và Phồn thể viết giống nhau">简·繁 chung</span>`
+                    ? `<span class="badge" style="background:var(--brand-gold-soft); color:var(--brand-gold); font-weight:800;" title="Chữ Phồn thể">🇹🇼 ${sp.trad}</span>`
+                    : ''
                   }
                 </div>
                 <button type="button" class="action-icon-btn" onclick="AudioEngine.speak('${item.word.replace(/'/g, "\\'")}', '${speechLang}', '${item.pronunciation}')">
@@ -1598,17 +1592,9 @@ const AppUI = {
                 <div class="ex-target">💬 ${window.ChineseScriptEngine && isLearningZh ? window.ChineseScriptEngine.formatText(exTarget) : exTarget}</div>
                 <div class="ex-native">${exNative}</div>
               </div>
-              ${item.usage_note ? `
-                <div style="font-size: 0.8rem; line-height: 1.42; color: var(--text-secondary); background: var(--bg-secondary); padding: 8px 10px; border-radius: 8px; border-left: 3px solid var(--brand-gold);">
-                  ${window.ChineseScriptEngine ? window.ChineseScriptEngine.formatText(item.usage_note) : item.usage_note}
-                </div>
-              ` : ''}
             </div>
-            <div class="vocab-card-footer" style="flex-wrap:wrap; gap:8px; margin-top: 12px;">
-              <button type="button" class="btn btn-sm btn-outline" style="border-color:var(--brand-primary); color:var(--brand-primary);" onclick="window.DeepWordInsightEngine && window.DeepWordInsightEngine.openModal(${item.id})">
-                ✨ ${isLearningZh ? 'Giải mã sâu' : '深度拆解'}
-              </button>
-              <a href="pages/vocabulary-detail.html?id=${item.id}" class="btn btn-sm btn-outline">${isLearningZh ? 'Chi tiết →' : '查看详情 →'}</a>
+            <div class="vocab-card-footer" style="margin-top: 10px;">
+              <a href="pages/vocabulary-detail.html?id=${item.id}" class="btn btn-sm btn-outline" style="width:100%; text-align:center;">${isLearningZh ? 'Xem chi tiết →' : '查看详情 →'}</a>
             </div>
           </article>
         `;
@@ -1622,21 +1608,17 @@ const AppUI = {
       const streak = window.StorageManager.getStreak();
       const placementLvl = localStorage.getItem('sentruc_placement_level') || 'A1';
       progressPreviewEl.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-          <strong>${isLearningZh ? 'Tiến độ học Tiếng Trung (HSK 1–6)' : '越南语词库掌握进度 (A1–C2)'}</strong>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <strong style="font-size:0.92rem;">${isLearningZh ? 'Tiến độ học tập' : '词库掌握进度'}</strong>
           <span class="badge badge-jade">${learnedCount} / ${totalCount} (${pct}%)</span>
         </div>
-        <div class="quiz-progress-track" style="margin: 8px 0 16px;">
+        <div class="quiz-progress-track" style="margin: 6px 0 12px; height: 6px;">
           <div class="quiz-progress-fill" style="width: ${Math.max(4, pct)}%;"></div>
         </div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap; font-size:0.88rem; margin-bottom:12px;">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; font-size:0.84rem; color:var(--text-secondary);">
           <span>📚 ${isLearningZh ? 'Đã học' : '已学'}: <strong>${learnedCount}</strong></span>
           <span>🔥 Streak: <strong>${streak} ${isLearningZh ? 'ngày' : '天'}</strong></span>
-          <span>🧭 Level: <strong>${placementLvl}</strong></span>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button type="button" class="btn btn-sm btn-primary" onclick="CoreLessonController.openSelector()">🎓 Học bài 4 bước</button>
-          <button type="button" class="btn btn-sm btn-outline" onclick="PlacementController.open()">🎯 Test đầu vào</button>
+          <span>🧭 Trình độ: <strong>${placementLvl}</strong></span>
         </div>
       `;
     }
