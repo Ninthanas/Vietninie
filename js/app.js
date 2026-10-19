@@ -1234,7 +1234,8 @@ const AppUI = {
               <ul class="nav-links">
                 <li><a href="${this.linkPath('index.html')}" class="${currentFile === 'index.html' ? 'active' : ''}" data-i18n="home">Trang chủ</a></li>
                 <li><a href="javascript:void(0)" onclick="CoreLessonController.openSelector()" class="nav-highlight-pill">🎓 Bài học</a></li>
-                <li><a href="${this.linkPath('pages/vocabulary.html')}" class="${currentFile.includes('vocabulary') ? 'active' : ''}" data-i18n="vocabulary">Từ vựng</a></li>
+                <li><a href="${this.linkPath('pages/vocabulary.html')}" class="${currentFile === 'vocabulary.html' ? 'active' : ''}" data-i18n="vocabulary">Từ vựng</a></li>
+                <li><a href="${this.linkPath('pages/specialized.html')}" class="${currentFile === 'specialized.html' ? 'active' : ''}" data-i18n="specialized">Chuyên ngành</a></li>
                 <li><a href="${this.linkPath('pages/grammar.html')}" class="${currentFile === 'grammar.html' ? 'active' : ''}" data-i18n="grammar">Ngữ pháp</a></li>
                 <li><a href="${this.linkPath('pages/conversation.html')}" class="${currentFile === 'conversation.html' ? 'active' : ''}" data-i18n="conversation">Hội thoại</a></li>
                 <li><a href="${this.linkPath('pages/listening.html')}" class="${currentFile === 'listening.html' ? 'active' : ''}" data-i18n="listening">Luyện nghe</a></li>
@@ -1295,7 +1296,8 @@ const AppUI = {
 
             <nav class="drawer-links">
               <a href="${this.linkPath('index.html')}" class="${currentFile === 'index.html' ? 'active' : ''}">🏠 <span data-i18n="home">Trang chủ</span></a>
-              <a href="${this.linkPath('pages/vocabulary.html')}" class="${currentFile.includes('vocabulary') ? 'active' : ''}">📚 <span data-i18n="vocabulary">Kho Từ vựng & Flashcard 3D</span></a>
+              <a href="${this.linkPath('pages/vocabulary.html')}" class="${currentFile === 'vocabulary.html' ? 'active' : ''}">📚 <span data-i18n="vocabulary">Kho Từ vựng & Flashcard 3D</span></a>
+              <a href="${this.linkPath('pages/specialized.html')}" class="${currentFile === 'specialized.html' ? 'active' : ''}">💼 <span>Từ vựng Chuyên ngành (Game, PM, Mkt...)</span></a>
               <a href="${this.linkPath('pages/grammar.html')}" class="${currentFile === 'grammar.html' ? 'active' : ''}">📐 <span data-i18n="grammar">Chuyên đề Ngữ pháp</span></a>
               <a href="${this.linkPath('pages/conversation.html')}" class="${currentFile === 'conversation.html' ? 'active' : ''}">💬 <span data-i18n="conversation">17 Tình huống Hội thoại</span></a>
               <a href="${this.linkPath('pages/listening.html')}" class="${currentFile === 'listening.html' ? 'active' : ''}">🎧 <span data-i18n="listening">Luyện nghe & Phát âm</span></a>

@@ -238,11 +238,74 @@ const GrammarAndDialogueController = {
   // ============================================================================
   // 3. LISTENING PAGE (AUDIO COMPREHENSION & DICTATION)
   // ============================================================================
+  // LISTENING PAGE WITH LEVEL SELECTION (A1 -> C2 / HSK 1 -> 6)
+  // ============================================================================
+  listeningLevels: [
+    { id: 'all', vi: '🌟 Tất cả cấp độ', zh: '🌟 全部等级' },
+    { id: 'A1', vi: '🌱 A1 (HSK 1)', zh: '🌱 A1 / HSK 1' },
+    { id: 'A2', vi: '🌿 A2 (HSK 2)', zh: '🌿 A2 / HSK 2' },
+    { id: 'B1', vi: '🌳 B1 (HSK 3)', zh: '🌳 B1 / HSK 3' },
+    { id: 'B2', vi: '🎋 B2 (HSK 4)', zh: '🎋 B2 / HSK 4' },
+    { id: 'C1', vi: '🏆 C1 (HSK 5)', zh: '🏆 C1 / HSK 5' },
+    { id: 'C2', vi: '👑 C2 (HSK 6)', zh: '👑 C2 / HSK 6' }
+  ],
+
   async initListeningPage() {
-    const vocab = await window.DataService.getActiveVocabulary();
-    this.listeningItems = vocab.slice(0, 60);
-    this.listeningIdx = 0;
+    this.allListeningVocab = await window.DataService.getActiveVocabulary();
+    this.selectedListeningLevel = localStorage.getItem('sentruc_listening_level') || localStorage.getItem('sentruc_placement_level') || 'all';
+    this.filterListeningItems();
+    this.renderListeningLevelPills();
     this.renderListeningChallenge();
+
+    window.addEventListener('sentruc:lang-changed', async () => {
+      this.allListeningVocab = await window.DataService.getActiveVocabulary();
+      this.filterListeningItems();
+      this.renderListeningLevelPills();
+      this.renderListeningChallenge();
+    });
+  },
+
+  renderListeningLevelPills() {
+    const mount = document.getElementById('listeningLevelMount');
+    if (!mount) return;
+    const isVi = window.LanguageManager ? window.LanguageManager.getNativeLang() === 'vi' : true;
+    mount.innerHTML = this.listeningLevels.map(lvl => {
+      const active = (lvl.id === this.selectedListeningLevel) || (lvl.id.toUpperCase() === (this.selectedListeningLevel || '').toUpperCase());
+      return `
+        <button type="button" class="btn btn-sm ${active ? 'btn-primary' : 'btn-outline'}" style="padding:7px 16px; border-radius:99px; font-weight:700; font-size:0.86rem;" onclick="GrammarAndDialogueController.setListeningLevel('${lvl.id}')">
+          ${isVi ? lvl.vi : lvl.zh}
+        </button>
+      `;
+    }).join('');
+  },
+
+  setListeningLevel(level) {
+    this.selectedListeningLevel = level;
+    localStorage.setItem('sentruc_listening_level', level);
+    this.filterListeningItems();
+    this.renderListeningLevelPills();
+    this.renderListeningChallenge();
+    const isVi = window.LanguageManager ? window.LanguageManager.getNativeLang() === 'vi' : true;
+    window.AppUI.showToast(isVi ? `🎧 Đã chọn cấp độ nghe: ${level.toUpperCase()}` : `🎧 已切换听力等级：${level.toUpperCase()}`);
+  },
+
+  filterListeningItems() {
+    if (!this.allListeningVocab || !this.allListeningVocab.length) {
+      this.listeningItems = [];
+      return;
+    }
+    if (!this.selectedListeningLevel || this.selectedListeningLevel === 'all') {
+      this.listeningItems = this.allListeningVocab.slice(0, 80);
+    } else {
+      const t = this.selectedListeningLevel.toUpperCase();
+      const filtered = this.allListeningVocab.filter(item => {
+        const lvl = (item.level || '').toUpperCase();
+        const cefr = (item.cefr || '').toUpperCase();
+        return lvl.includes(t) || cefr === t;
+      });
+      this.listeningItems = filtered.length > 0 ? filtered : this.allListeningVocab.slice(0, 60);
+    }
+    this.listeningIdx = 0;
   },
 
   renderListeningChallenge() {
@@ -258,22 +321,26 @@ const GrammarAndDialogueController = {
       .slice(0, 3);
     const options = [current, ...distractors].sort(() => 0.5 - Math.random());
     const safeWord = current.word.replace(/'/g, "\\'");
-    const safeSentence = (isLearningZh ? current.example_zh : current.example_vi).replace(/'/g, "\\'");
+    const safeSentence = (isLearningZh ? (current.example_zh || current.word) : (current.example_vi || current.word)).replace(/'/g, "\\'");
+    const lvlDisplay = this.selectedListeningLevel === 'all' ? (current.level || 'Tổng hợp') : this.selectedListeningLevel.toUpperCase();
 
     mount.innerHTML = `
       <div class="quiz-arena" style="text-align:center;">
-        <span class="badge badge-jade">Bài luyện nghe ${this.listeningIdx + 1} / ${this.listeningItems.length}</span>
-        <h2 style="margin: 14px 0 8px;">🎧 ${isLearningZh ? 'Nghe phát âm và chọn từ + nghĩa đúng' : '听标准发音并选择正确词条'}</h2>
+        <div style="display:flex; justify-content:center; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+          <span class="badge badge-rose">🎯 ${isLearningZh ? 'Cấp độ' : '难度等级'}: ${lvlDisplay}</span>
+          <span class="badge badge-jade">${isLearningZh ? 'Câu' : '题目'} ${this.listeningIdx + 1} / ${this.listeningItems.length}</span>
+        </div>
+        <h2 style="margin: 10px 0 8px;">🎧 ${isLearningZh ? 'Nghe phát âm và chọn đáp án chính xác' : '听标准发音并选择正确词条'}</h2>
         <p style="color: var(--text-secondary); margin-bottom: 22px;">
-          ${isLearningZh ? 'Bấm nút loa bên dưới để nghe từ vựng hoặc câu ví dụ:' : '点击下方扬声器按钮聆听词汇或完整例句：'}
+          ${isLearningZh ? 'Bấm nút loa bên dưới để nghe từ vựng hoặc câu ví dụ tự nhiên:' : '点击下方扬声器按钮聆听单词或完整真实例句：'}
         </p>
 
-        <div style="display:flex; justify-content:center; gap:14px; margin-bottom: 24px;">
-          <button type="button" class="btn btn-primary" style="padding: 16px 28px; font-size: 1.08rem;" onclick="AudioEngine.speak('${safeWord}', '${speechLang}', '${current.pronunciation}')">
+        <div style="display:flex; justify-content:center; gap:14px; margin-bottom: 24px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-primary" style="padding: 15px 28px; font-size: 1.05rem;" onclick="AudioEngine.speak('${safeWord}', '${speechLang}', '${current.pronunciation}')">
             🔊 ${isLearningZh ? 'Phát âm Từ vựng' : '播放单词音频'}
           </button>
-          <button type="button" class="btn btn-outline" style="padding: 16px 24px;" onclick="AudioEngine.speak('${safeSentence}', '${speechLang}')">
-            🗣️ ${isLearningZh ? 'Nghe cả câu ví dụ' : '播放完整例句'}
+          <button type="button" class="btn btn-outline" style="padding: 15px 24px;" onclick="AudioEngine.speak('${safeSentence}', '${speechLang}')">
+            🗣️ ${isLearningZh ? 'Nghe câu thực tế' : '播放完整例句'}
           </button>
         </div>
 
@@ -299,7 +366,7 @@ const GrammarAndDialogueController = {
     `;
 
     // Auto-speak on render
-    setTimeout(() => window.AudioEngine.speak(current.word, speechLang, current.pronunciation), 250);
+    setTimeout(() => window.AudioEngine.speak(current.word, speechLang, current.pronunciation), 300);
   },
 
   verifyListeningAnswer(btn, isCorrect) {

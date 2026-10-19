@@ -578,25 +578,15 @@ const VocabularyController = {
         <hr style="border:none; border-top:1px solid var(--border-color); margin: 24px 0;" />
 
         ${insight ? `
-          <!-- Layer 1: Word DNA & Memory Hook -->
+          <!-- Section 1: Word DNA & Memory Hook with Clean Line Breaks -->
           <div style="background:var(--brand-primary-soft); border-left:5px solid var(--brand-primary); padding:18px 20px; border-radius:14px; margin-bottom:20px;">
-            <h3 style="color:var(--brand-primary); margin-bottom:6px;">🧬 1. Giải mã Gốc từ & Mẹo nhớ 1 lần thuộc ngay</h3>
-            <p style="font-size:1rem; line-height:1.7;">${insight.memoryHook}</p>
+            <h3 style="color:var(--brand-primary); margin-bottom:8px;">🧬 1. Giải mã chữ & Gốc từ</h3>
+            <div style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:8px;">${insight.scriptComparison}</div>
+            <div>${insight.noteFormatted || ''}</div>
           </div>
 
-          <!-- Layer 2: Textbook (SGK) vs Street/Office Real-Life -->
-          <h3 style="margin-bottom: 12px;">🎭 2. So sánh: Trong Sách Giáo Khoa (SGK) vs Ngoài Đời Thực</h3>
-          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:16px; margin-bottom:22px;">
-            <div style="background:var(--bg-primary); border:1.5px solid var(--border-color); padding:18px; border-radius:16px; line-height:1.65;">
-              ${insight.textbookStyle}
-            </div>
-            <div style="background:var(--brand-secondary-soft); border:1.5px solid rgba(5,150,105,0.35); padding:18px; border-radius:16px; line-height:1.65;">
-              ${insight.streetRealLife}
-            </div>
-          </div>
-
-          <!-- Layer 3: Interactive Mini Real-Life Chat -->
-          <h3 style="margin-bottom: 12px;">💬 3. Đoạn Chat Thực Chiến (WeChat / LINE / Zalo)</h3>
+          <!-- Section 2: Interactive Mini Real-Life Chat -->
+          <h3 style="margin-bottom: 12px;">💬 2. Đoạn Chat Thực Chiến (WeChat / LINE / Zalo)</h3>
           <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:22px;">
             ${insight.miniDialogue.map(line => `
               <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--bg-primary); padding:14px 18px; border-radius:14px; border:1px solid var(--border-color);">

@@ -9,6 +9,7 @@ const translations = {
     directionBadge: '🇻🇳 Người Việt học Tiếng Trung 🇨🇳',
     home: 'Trang chủ',
     vocabulary: 'Từ vựng',
+    specialized: 'Chuyên ngành',
     grammar: 'Ngữ pháp',
     conversation: 'Hội thoại',
     listening: 'Luyện nghe',
@@ -92,6 +93,7 @@ const translations = {
     directionBadge: '🇨🇳 中国人学习越南语 🇻🇳',
     home: '首页',
     vocabulary: '词汇',
+    specialized: '专业词汇',
     grammar: '语法',
     conversation: '对话',
     listening: '听力',
@@ -724,6 +726,45 @@ const ChineseScriptEngine = {
 // DEEP WORD INSIGHT ENGINE (VỪA CHUẨN SGK, VỪA THỰC TẾ ĐỜI THƯỜNG + MẸO NHỚ)
 // ============================================================================
 const DeepWordInsightEngine = {
+  formatInsightLines(rawText) {
+    if (!rawText) return '';
+    const cleaned = rawText
+      .replace(/<br\s*\/?>/gi, '\n')
+      .replace(/([.!?])\s*(📘|🔥|💡|🧬)/g, '$1\n$2')
+      .replace(/\s+(📘|🔥|💡|🧬)/g, '\n$1');
+
+    const lines = cleaned.split('\n').map(l => l.trim()).filter(Boolean);
+    if (!lines.length) return '';
+
+    return lines.map(line => {
+      let icon = '';
+      let content = line;
+      if (line.startsWith('🧬')) {
+        icon = '🧬';
+        content = line.replace(/^🧬\s*/, '');
+      } else if (line.startsWith('📘')) {
+        icon = '📘';
+        content = line.replace(/^📘\s*/, '');
+      } else if (line.startsWith('🔥')) {
+        icon = '🔥';
+        content = line.replace(/^🔥\s*/, '');
+      } else if (line.startsWith('💡')) {
+        icon = '💡';
+        content = line.replace(/^💡\s*/, '');
+      }
+
+      if (icon) {
+        return `
+          <div class="insight-row" style="display:flex; align-items:flex-start; gap:10px; margin-top:8px; padding:10px 14px; background:var(--bg-primary); border-radius:12px; border:1px solid var(--border-color); font-size:0.92rem; line-height:1.6;">
+            <span style="font-size:1.25rem; flex-shrink:0; line-height:1.2;">${icon}</span>
+            <div style="flex:1;">${content}</div>
+          </div>
+        `;
+      }
+      return `<div style="margin-top:6px; line-height:1.6; font-size:0.92rem;">${line}</div>`;
+    }).join('');
+  },
+
   buildInsight(item, isLearningZh = true) {
     if (!item) return null;
     const word = item.word || '';
@@ -737,31 +778,19 @@ const DeepWordInsightEngine = {
     const scriptPair = ChineseScriptEngine.getScriptPair(zhSource);
     const twComp = ChineseScriptEngine.getTaiwanComparison(zhSource);
 
-    // 1. Memory Hook & Word DNA
-    let memoryHook = '';
+    // 1. Script & Tone Summary
+    let scriptComparison = '';
     if (isLearningZh) {
-      memoryHook = `<strong>${word}</strong> (${phonetic}) nghĩa là <strong>"${meaning}"</strong>. ` +
-        (scriptPair.differs
-          ? `🇨🇳 Đại Lục viết Giản thể là <strong>${scriptPair.simp}</strong>, còn 🇹🇼 Đài Loan / Hồng Kông viết Phồn thể là <strong>${scriptPair.trad}</strong>. `
-          : `Chữ này ở cả 🇨🇳 Đại Lục (简体) và 🇹🇼 Đài Loan (繁體) đều viết giống hệt nhau! `) +
-        (item.usage_note ? `<br/>${item.usage_note}` : '');
+      scriptComparison = scriptPair.differs
+        ? `🇨🇳 Đại Lục viết Giản thể là <strong>${scriptPair.simp}</strong> • 🇹🇼 Đài Loan / Hồng Kông viết Phồn thể là <strong>${scriptPair.trad}</strong>.`
+        : `Chữ này ở cả 🇨🇳 Đại Lục (简体) và 🇹🇼 Đài Loan (繁體) đều viết giống nhau.`;
     } else {
-      memoryHook = `越南语词条 <strong>"${word}"</strong> 对应中文的 <strong>“${scriptPair.simp}”</strong>（台湾繁体：<strong>${scriptPair.trad}</strong>）。` +
-        (item.usage_note ? `<br/>${item.usage_note}` : '');
+      scriptComparison = `Việt ⇄ Trung: <strong>"${word}"</strong> ⇄ <strong>“${scriptPair.simp}”</strong> (🇹🇼 繁體: <strong>${scriptPair.trad}</strong>).`;
     }
 
-    // 2. Textbook (Chuẩn SGK) vs Street/Office Real-Life
-    const textbookStyle = isLearningZh
-      ? `📘 <strong>Ví dụ chuẩn mực (${item.level || 'HSK'}):</strong><br/><em>"${exTarget}"</em><br/><span style="color:var(--text-secondary);">${exNative}</span>`
-      : `📘 <strong>标准实用例句 (${item.level || 'CEFR'}):</strong><br/><em>"${exTarget}"</em><br/><span style="color:var(--text-secondary);">${exNative}</span>`;
+    const noteFormatted = this.formatInsightLines(item.usage_note);
 
-    const streetRealLife = isLearningZh
-      ? (twComp
-          ? `🇹🇼 <strong>So sánh Đại Lục 🇨🇳 & Đài Loan 🇹🇼:</strong><br/>Đại Lục dùng <strong>${twComp.mainland}</strong>, còn Đài Loan dùng <strong>${twComp.taiwan}</strong>.<br/>${twComp.note_vi}`
-          : `🌶️ <strong>Mẹo phản xạ thực tế:</strong><br/>Ngoài đời thực (WeChat, LINE, quán ăn, văn phòng), người bản xứ không nói câu dài dòng như sách giáo khoa mà ưu tiên cụm ngắn gọn chứa <strong>"${word}"</strong> kèm ngữ khí tự nhiên.`)
-      : `🌶️ <strong>越南本地人实战技巧:</strong><br/>在西贡或河内日常交流中，可在句尾灵活加上语气助词 <strong>"ạ"</strong>（对长辈/客户表礼貌）或 <strong>"nhé / nha"</strong>（对朋友同事表亲切）。`;
-
-    // 3. Natural 2-Turn Real-Life Dialogue (No meta-questions!)
+    // 2. Natural 2-Turn Real-Life Dialogue (No meta-questions)
     const replyMapZh = {
       '你好': { target: '你好！往前走两百米左转就到地铁站啦。', sub: 'Chào bạn! Đi thẳng 200m rồi rẽ trái là tới ga tàu điện ngầm nha.' },
       '您好': { target: '辛苦了！放我办公桌上吧，我马上看。', sub: 'Vất vả cho em rồi! Cứ để trên bàn làm việc của anh, anh xem ngay.' },
@@ -800,9 +829,8 @@ const DeepWordInsightEngine = {
       topic,
       scriptPair,
       twComp,
-      memoryHook,
-      textbookStyle,
-      streetRealLife,
+      scriptComparison,
+      noteFormatted,
       miniDialogue
     };
   },
@@ -813,7 +841,7 @@ const DeepWordInsightEngine = {
       <div id="deepInsightModal" class="unified-modal-overlay" role="dialog" aria-modal="true" onclick="if(event.target===this)DeepWordInsightEngine.closeModal()">
         <div class="unified-modal-sheet" style="max-width: 680px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-            <span class="badge badge-rose">✨ Giải Mã Từ Vựng Sống Động (SGK × Đời Thực × 简/繁)</span>
+            <span class="badge badge-rose">✨ Giải Mã Từ Vựng Sống Động (Đời Thực × 简/繁)</span>
             <button type="button" onclick="DeepWordInsightEngine.closeModal()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-secondary);">✕</button>
           </div>
           <div id="deepInsightModalBody"></div>
@@ -856,31 +884,22 @@ const DeepWordInsightEngine = {
           </button>
         </div>
 
-        <!-- Layer 1: Word DNA & Memory Hook -->
-        <div style="background:var(--brand-primary-soft); border-left:4px solid var(--brand-primary); padding:14px 16px; border-radius:12px; margin-bottom:14px; font-size:0.94rem; line-height:1.65;">
-          <div style="font-weight:800; color:var(--brand-primary); margin-bottom:4px;">🧬 1. Giải mã Gốc từ & Mẹo nhớ 1 lần thuộc ngay</div>
-          <div>${insight.memoryHook}</div>
+        <!-- Section 1: Word DNA & Memory Hook with Clean Line Breaks per Icon -->
+        <div style="background:var(--brand-primary-soft); border-left:4px solid var(--brand-primary); padding:16px 18px; border-radius:14px; margin-bottom:16px;">
+          <div style="font-weight:800; color:var(--brand-primary); font-size:1rem; margin-bottom:6px;">🧬 1. Giải mã chữ & Đời thực</div>
+          <div style="font-size:0.92rem; color:var(--text-secondary); margin-bottom:6px;">${insight.scriptComparison}</div>
+          <div>${insight.noteFormatted || ''}</div>
         </div>
 
-        <!-- Layer 2: Textbook vs Real-Life Street/Office Comparison -->
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap:12px; margin-bottom:14px;">
-          <div style="background:var(--bg-primary); border:1px solid var(--border-color); padding:14px; border-radius:14px; font-size:0.9rem; line-height:1.6;">
-            ${insight.textbookStyle}
-          </div>
-          <div style="background:var(--brand-secondary-soft); border:1px solid rgba(5,150,105,0.3); padding:14px; border-radius:14px; font-size:0.9rem; line-height:1.6;">
-            ${insight.streetRealLife}
-          </div>
-        </div>
-
-        <!-- Layer 3: Mini Real-Life Chat Dialogue -->
-        <div style="background:var(--bg-primary); border:1px solid var(--border-color); padding:16px; border-radius:14px;">
-          <div style="font-weight:800; margin-bottom:10px;">💬 3. Đoạn Chat Thực Chiến (WeChat / LINE / Zalo)</div>
+        <!-- Section 2: Mini Real-Life Chat Dialogue -->
+        <div style="background:var(--bg-primary); border:1px solid var(--border-color); padding:16px 18px; border-radius:14px;">
+          <div style="font-weight:800; margin-bottom:12px; font-size:1rem;">💬 2. Đoạn Chat Thực Chiến (WeChat / LINE / Zalo)</div>
           <div style="display:flex; flex-direction:column; gap:10px;">
             ${insight.miniDialogue.map(line => `
               <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; background:var(--bg-secondary); padding:10px 14px; border-radius:12px; border:1px solid var(--border-color);">
                 <div>
                   <span style="font-size:0.75rem; font-weight:800; color:var(--brand-primary);">${line.speaker}</span>
-                  <div style="font-weight:800; font-size:0.98rem;">${ChineseScriptEngine.formatText(line.target)}</div>
+                  <div style="font-weight:800; font-size:0.98rem; margin-top:2px;">${ChineseScriptEngine.formatText(line.target)}</div>
                   <div style="font-size:0.84rem; color:var(--text-secondary);">${line.sub}</div>
                 </div>
                 <button type="button" class="btn btn-sm btn-outline" onclick="AudioEngine.speak('${line.target.replace(/'/g, "\\'")}', '${line.lang}')">🔊</button>

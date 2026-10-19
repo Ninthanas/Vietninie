@@ -22,17 +22,67 @@ const QuizController = {
     { id: 'speed_flash', icon: '⚡', vi: '8. Flashcard Challenge', zh: '8. 极速闪卡挑战' }
   ],
 
+  quizLevels: [
+    { id: 'all', vi: '🌟 Tất cả cấp độ', zh: '🌟 全部等级' },
+    { id: 'A1', vi: '🌱 A1 (HSK 1)', zh: '🌱 A1 / HSK 1' },
+    { id: 'A2', vi: '🌿 A2 (HSK 2)', zh: '🌿 A2 / HSK 2' },
+    { id: 'B1', vi: '🌳 B1 (HSK 3)', zh: '🌳 B1 / HSK 3' },
+    { id: 'B2', vi: '🎋 B2 (HSK 4)', zh: '🎋 B2 / HSK 4' },
+    { id: 'C1', vi: '🏆 C1 (HSK 5)', zh: '🏆 C1 / HSK 5' },
+    { id: 'C2', vi: '👑 C2 (HSK 6)', zh: '👑 C2 / HSK 6' }
+  ],
+  selectedLevel: 'all',
+
   async init() {
     if (!document.getElementById('quizModesMount')) return;
     this.vocabPool = await window.DataService.getActiveVocabulary();
+    this.selectedLevel = localStorage.getItem('sentruc_quiz_level') || localStorage.getItem('sentruc_placement_level') || 'all';
+    this.renderLevelSelector();
     this.renderModeSelector();
     this.startNewQuiz(this.activeMode);
 
     window.addEventListener('sentruc:lang-changed', async () => {
       this.vocabPool = await window.DataService.getActiveVocabulary();
+      this.renderLevelSelector();
       this.renderModeSelector();
       this.startNewQuiz(this.activeMode);
     });
+  },
+
+  renderLevelSelector() {
+    const mount = document.getElementById('quizLevelMount');
+    if (!mount) return;
+    const isVi = window.LanguageManager ? window.LanguageManager.getNativeLang() === 'vi' : true;
+    mount.innerHTML = this.quizLevels.map(lvl => {
+      const active = (lvl.id === this.selectedLevel) || (lvl.id.toUpperCase() === (this.selectedLevel || '').toUpperCase());
+      return `
+        <button type="button" class="btn btn-sm ${active ? 'btn-primary' : 'btn-outline'}" style="padding:6px 14px; border-radius:99px; font-weight:700; font-size:0.86rem;" onclick="QuizController.setLevel('${lvl.id}')">
+          ${isVi ? lvl.vi : lvl.zh}
+        </button>
+      `;
+    }).join('');
+  },
+
+  setLevel(level) {
+    this.selectedLevel = level;
+    localStorage.setItem('sentruc_quiz_level', level);
+    this.renderLevelSelector();
+    this.startNewQuiz(this.activeMode);
+    const isVi = window.LanguageManager ? window.LanguageManager.getNativeLang() === 'vi' : true;
+    window.AppUI.showToast(isVi ? `🎯 Đã chọn cấp độ Quiz: ${level.toUpperCase()}` : `🎯 已切换测验等级：${level.toUpperCase()}`);
+  },
+
+  getActivePool() {
+    if (!this.selectedLevel || this.selectedLevel === 'all') {
+      return this.vocabPool;
+    }
+    const t = this.selectedLevel.toUpperCase();
+    const filtered = this.vocabPool.filter(i => {
+      const lvl = (i.level || '').toUpperCase();
+      const cefr = (i.cefr || '').toUpperCase();
+      return lvl.includes(t) || cefr === t;
+    });
+    return filtered.length >= 4 ? filtered : this.vocabPool;
   },
 
   renderModeSelector() {
@@ -53,14 +103,16 @@ const QuizController = {
     this.score = 0;
     this.renderModeSelector();
 
+    const pool = this.getActivePool();
+
     if (modeId === 'matching') {
-      this.renderMatchingGame();
+      this.renderMatchingGame(pool);
       return;
     }
 
-    // Generate 10 randomized questions from the 2,000+ vocabulary pool
-    const shuffled = [...this.vocabPool].sort(() => 0.5 - Math.random());
-    const picked = shuffled.slice(0, this.totalQuestions);
+    // Generate 10 randomized questions from filtered pool
+    const shuffled = [...pool].sort(() => 0.5 - Math.random());
+    const picked = shuffled.slice(0, Math.min(this.totalQuestions, pool.length));
     const isLearningZh = window.LanguageManager.getLearningLang() === 'zh';
 
     this.questions = picked.map(item => {
@@ -170,8 +222,11 @@ const QuizController = {
 
     arena.innerHTML = `
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="badge badge-rose">${isLearningZh ? `Câu ${this.currentIndex + 1} / ${this.questions.length}` : `第 ${this.currentIndex + 1} / ${this.questions.length} 题`}</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+          <div style="display:flex; gap:6px; align-items:center;">
+            <span class="badge badge-rose">${isLearningZh ? `Câu ${this.currentIndex + 1} / ${this.questions.length}` : `第 ${this.currentIndex + 1} / ${this.questions.length} 题`}</span>
+            <span class="badge badge-indigo">🎯 ${this.selectedLevel === 'all' ? (isLearningZh ? 'Tổng hợp' : '综合') : this.selectedLevel.toUpperCase()}</span>
+          </div>
           <span class="badge badge-jade">${isLearningZh ? `Điểm: ${this.score}` : `当前得分: ${this.score}`}</span>
         </div>
 

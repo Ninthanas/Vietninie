@@ -1,0 +1,1972 @@
+{
+  "categories": [
+    {
+      "id": "game",
+      "icon": "🎮",
+      "name_vi": "Ngành Game & Phát triển Game",
+      "name_zh": "游戏行业与研发",
+      "description": "20 thuật ngữ cốt lõi ngành game, phân biệt 开发/发行/运营 và mẫu câu phỏng vấn ứng tuyển."
+    },
+    {
+      "id": "pm",
+      "icon": "📋",
+      "name_vi": "Quản lý Dự án (PM)",
+      "name_zh": "项目管理 (PM)",
+      "description": "20 thuật ngữ PM thực chiến, phân công công việc, hạn chót và 8 cụm từ dùng ngay hằng ngày."
+    },
+    {
+      "id": "partner_comm",
+      "icon": "🤝",
+      "name_vi": "Đối tác & Liên phòng ban",
+      "name_zh": "跨部门协作与合作伙伴",
+      "description": "20 thuật ngữ giao tiếp đối tác Trung Quốc, biên bản họp, đồng bộ thông tin & xử lý thiếu thông tin."
+    },
+    {
+      "id": "market_research",
+      "icon": "📊",
+      "name_vi": "Nghiên cứu Thị trường & Phân tích",
+      "name_zh": "市场调研与游戏分析",
+      "description": "15 thuật ngữ phân tích sản phẩm cạnh tranh, giữ chân người dùng và câu trả lời phỏng vấn phân tích game."
+    },
+    {
+      "id": "docs_tools",
+      "icon": "📁",
+      "name_vi": "Tài liệu, Dịch thuật & Công cụ",
+      "name_zh": "文档翻译与办公工具",
+      "description": "16 thuật ngữ tài liệu, phiên dịch, quản lý phiên bản và cách gọi tên công cụ (Jira, Notion, Excel, AI)."
+    },
+    {
+      "id": "interview_skills",
+      "icon": "🎯",
+      "name_vi": "Năng lực, Tính cách & Phỏng vấn",
+      "name_zh": "个人能力与面试表达",
+      "description": "16 năng lực nổi bật, tư duy logic, chịu áp lực và cách mô tả bản thân ghi điểm với nhà tuyển dụng."
+    },
+    {
+      "id": "marketing_sales",
+      "icon": "📈",
+      "name_vi": "Marketing & Sales Bán hàng",
+      "name_zh": "市场营销与商务销售",
+      "description": "16 chỉ số thương mại, chạy quảng cáo, tỷ lệ chuyển đổi (CAC, ROI, LTV) và đàm phán hợp đồng."
+    }
+  ],
+  "game_core_distinction": {
+    "title_vi": "Phân biệt 3 vị trí cốt lõi trong ngành Game",
+    "title_zh": "游戏行业三大核心分工辨析",
+    "roles": [
+      {
+        "zh": "开发",
+        "zh_tw": "開發",
+        "pinyin": "kāifā",
+        "role_vi": "Phát triển / Xây dựng sản phẩm",
+        "desc_vi": "Tập trung tạo ra trò chơi: lập trình (Programming), thiết kế màn chơi/hệ thống (Game Design), đồ họa (Art/3D), kiểm thử (QA/Test).",
+        "keywords": [
+          "Game Designer",
+          "Unity/Unreal Dev",
+          "Client/Server Engineer",
+          "Concept Art"
+        ]
+      },
+      {
+        "zh": "发行",
+        "zh_tw": "發行",
+        "pinyin": "fāxíng",
+        "role_vi": "Phát hành / Đưa ra thị trường",
+        "desc_vi": "Chịu trách nhiệm đưa game ra công chúng: đăng ký bản quyền/giấy phép, đưa lên App Store/Google Play, chạy chiến dịch marketing, quảng cáo tiếp thị người chơi mới.",
+        "keywords": [
+          "Publisher",
+          "User Acquisition (UA)",
+          "App Store Ops",
+          "PR & Media"
+        ]
+      },
+      {
+        "zh": "运营",
+        "zh_tw": "運營",
+        "pinyin": "yùnyíng",
+        "role_vi": "Vận hành & Phát triển sau ra mắt",
+        "desc_vi": "Duy trì sức sống của game: tổ chức sự kiện tuần/lễ (Live-ops), chăm sóc cộng đồng người chơi, theo dõi retention/doanh thu, tiếp nhận và xử lý feedback người chơi.",
+        "keywords": [
+          "Live-Ops",
+          "Community Manager",
+          "Game Master",
+          "Data Analyst"
+        ]
+      }
+    ]
+  },
+  "pm_action_phrases": [
+    {
+      "zh": "跟踪项目进度",
+      "zh_tw": "跟蹤項目進度",
+      "pinyin": "gēnzōng xiàngmù jìndù",
+      "vi": "Theo dõi tiến độ dự án",
+      "context_vi": "Dùng khi mở đầu họp giao ban hoặc báo cáo tiến trình hằng ngày."
+    },
+    {
+      "zh": "确认截止日期",
+      "zh_tw": "確認截止日期",
+      "pinyin": "quèrèn jiézhǐ rìqī",
+      "vi": "Xác nhận hạn chót (Deadline)",
+      "context_vi": "Dùng khi chốt thời hạn bàn giao tính năng hoặc tài liệu với đối tác."
+    },
+    {
+      "zh": "更新任务状态",
+      "zh_tw": "更新任務狀態",
+      "pinyin": "gēngxīn rènwu zhuàngtài",
+      "vi": "Cập nhật trạng thái công việc",
+      "context_vi": "Dùng khi cập nhật thẻ trên Jira, Trello hoặc trong nhóm chat dự án."
+    },
+    {
+      "zh": "按时完成任务",
+      "zh_tw": "按時完成任務",
+      "pinyin": "ànshí wánchéng rènwu",
+      "vi": "Hoàn thành nhiệm vụ đúng hạn",
+      "context_vi": "Dùng để nhấn mạnh cam kết tiến độ hoặc đánh giá hiệu suất."
+    },
+    {
+      "zh": "及时跟进",
+      "zh_tw": "及時跟進",
+      "pinyin": "jíshí gēnjìn",
+      "vi": "Theo dõi, xử lý kịp thời",
+      "context_vi": "Dùng khi có việc phát sinh cần xử lý gấp để không bị nghẽn (bottleneck)."
+    },
+    {
+      "zh": "识别潜在风险",
+      "zh_tw": "識別潛在風險",
+      "pinyin": "shíbié qiánzài fēngxiǎn",
+      "vi": "Nhận diện rủi ro tiềm ẩn",
+      "context_vi": "Dùng khi rà soát trước giai đoạn release hoặc thay đổi yêu cầu đột xuất."
+    },
+    {
+      "zh": "解决问题",
+      "zh_tw": "解決問題",
+      "pinyin": "jiějué wèntí",
+      "vi": "Giải quyết vấn đề",
+      "context_vi": "Dùng khi thảo luận phương án xử lý bug hoặc xung đột tài nguyên."
+    },
+    {
+      "zh": "协调资源",
+      "zh_tw": "協調資源",
+      "pinyin": "xiétiáo zīyuán",
+      "vi": "Điều phối nguồn lực",
+      "context_vi": "Dùng khi cần bổ sung nhân sự designer/dev giữa các team để kịp tiến độ."
+    }
+  ],
+  "interview_scenarios": [
+    {
+      "id": "interview_game_intro",
+      "category": "game",
+      "topic_vi": "Giới thiệu vị trí ứng tuyển ngành Game",
+      "topic_zh": "游戏行业应聘岗位自我陈述",
+      "question_zh": "请简要谈谈你对游戏行业哪些环节最感兴趣，以及为什么应聘这个岗位？",
+      "question_vi": "Xin hãy chia sẻ ngắn gọn bạn quan tâm nhất đến khâu nào trong ngành game và lý do ứng tuyển vị trí này?",
+      "answer_zh": "我对游戏发行和游戏运营很感兴趣，也希望了解一款游戏从开发到上线的整个流程。",
+      "answer_zh_tw": "我對遊戲發行和遊戲運營很感興趣，也希望了解一款遊戲從開發到上線的整個流程。",
+      "answer_pinyin": "Wǒ duì yóuxì fāxíng hé yóuxì yùnyíng hěn gǎn xìngqù, yě xīwàng liǎojiě yì kuǎn yóuxì cóng kāifā dào shàngxiàn de zhěnggè liúchéng.",
+      "answer_vi": "Em rất quan tâm đến việc phát hành và vận hành game, đồng thời mong muốn tìm hiểu toàn bộ quy trình từ phát triển đến ra mắt một trò chơi.",
+      "tips_vi": "Nhấn mạnh sự hiểu biết về vòng đời toàn diện của sản phẩm game từ R&D đến Live-ops."
+    },
+    {
+      "id": "interview_incomplete_info",
+      "category": "partner_comm",
+      "topic_vi": "Xử lý tình huống đối tác cung cấp thiếu thông tin",
+      "topic_zh": "合作伙伴提供信息不完整时的应对处理",
+      "question_zh": "如果合作伙伴或需求方给的信息不完整，你会怎么处理？",
+      "question_vi": "Nếu đối tác hoặc bên yêu cầu cung cấp thông tin chưa đầy đủ, bạn sẽ xử lý thế nào?",
+      "answer_zh": "如果信息不完整，我会先确认缺少哪些信息，再及时联系相关人员进行确认，并跟进后续进展，避免影响项目进度。",
+      "answer_zh_tw": "如果信息不完整，我先確認缺少哪些信息，再及時聯繫相關人員進行確認，並跟進後續進展，避免影響項目進度。",
+      "answer_pinyin": "Rúguǒ xìnxī bù wánzhěng, wǒ huì xiān quèrèn quēshǎo nǎxiē xìnxī, zài jíshí liánxì xiāngguān rényuán jìnxíng quèrèn, bìng gēnjìn hòuxù jìnzhǎn, bìmiǎn yǐngxiǎng xiàngmù jìndù.",
+      "answer_vi": "Nếu thông tin chưa đầy đủ, em sẽ xác định phần thông tin còn thiếu trước, sau đó liên hệ người liên quan để xác nhận và theo dõi tiến triển nhằm tránh ảnh hưởng đến tiến độ dự án.",
+      "tips_vi": "Câu trả lời thể hiện tính chủ động (主动性), tư duy logic (逻辑思维) và tinh thần trách nhiệm bảo vệ tiến độ (进度)."
+    },
+    {
+      "id": "interview_game_research",
+      "category": "market_research",
+      "topic_vi": "Quy trình nghiên cứu và phân tích một tựa game mới",
+      "topic_zh": "调研一款新游戏的标准分析流程",
+      "question_zh": "如果被交给一项调研一款游戏的人物，你会从哪里开始着手？",
+      "question_vi": "Nếu được giao nghiên cứu một tựa game, bạn sẽ bắt đầu từ đâu?",
+      "answer_zh": "我会先了解游戏的目标用户、核心功能和主要玩法，然后查看玩家评价，并与同类游戏进行比较，最后整理分析结果和改进建议。",
+      "answer_zh_tw": "我先了解遊戲的目標用戶、核心功能和主要玩法，然後查看玩家評價，並與同類遊戲進行比較，最後整理分析結果和改進建議。",
+      "answer_pinyin": "Wǒ huì xiān liǎojiě yóuxì de mùbiāo yònghù, héxīn gōngnéng hé zhǔyào wánfǎ, ránhòu chákàn wánjiā píngjià, bìng yǔ tónglèi yóuxì jìnxíng bǐjiào, zuìhòu zhěnglǐ fēnxī jiéguǒ hé gǎijìn jiànyì.",
+      "answer_vi": "Em sẽ tìm hiểu người dùng mục tiêu, tính năng cốt lõi và cách chơi chính của game trước, sau đó xem đánh giá của người chơi, so sánh với các game cùng loại, cuối cùng tổng hợp kết quả phân tích và đề xuất cải tiến.",
+      "tips_vi": "Khung tư duy 4 bước: 1. Target & Core Loop -> 2. Voice of Player -> 3. Benchmark -> 4. Actionable Next Steps."
+    }
+  ],
+  "workplace_tools": [
+    {
+      "tool": "Excel",
+      "zh": "Excel / 电子表格软件",
+      "zh_tw": "Excel / 電子表格軟體",
+      "pinyin": "diànzǐ biǎogé ruǎnjiàn",
+      "usage_vi": "Quản lý số liệu, bảng biểu thống kê, phân tích dữ liệu chỉ số game / bán hàng."
+    },
+    {
+      "tool": "PowerPoint",
+      "zh": "PowerPoint / 演示文稿软件",
+      "zh_tw": "PowerPoint / 演示文稿軟體",
+      "pinyin": "yǎnshì wéngǎo ruǎnjiàn",
+      "usage_vi": "Soạn slide báo cáo tiến độ (周报/月报), kế hoạch ra mắt hoặc bài thuyết trình dự án."
+    },
+    {
+      "tool": "Notion",
+      "zh": "Notion / 知识库与协作文档",
+      "zh_tw": "Notion / 知識庫與協作文檔",
+      "pinyin": "zhīshikù yǔ xiézuò wéndàng",
+      "usage_vi": "Quản lý tài liệu dự án (Wiki), biên bản họp (会议纪要) và quy trình làm việc (SOP)."
+    },
+    {
+      "tool": "Jira",
+      "zh": "Jira / 敏捷任务跟踪系统",
+      "zh_tw": "Jira / 敏捷任務跟蹤系統",
+      "pinyin": "mǐnjié rènwu gēnzōng xìtǒng",
+      "usage_vi": "Theo dõi tiến độ Sprint, gán task (任务分配), báo cáo lỗi (Bug) và cập nhật trạng thái."
+    },
+    {
+      "tool": "AI Tools",
+      "zh": "AI工具 / 人工智能工具",
+      "zh_tw": "AI工具 / 人工智能工具",
+      "pinyin": "réngōng zhìnéng gōngjù",
+      "usage_vi": "Hỗ trợ dịch thuật nhanh (翻译), tóm tắt tài liệu họp, phân tích dữ liệu và tự động hóa tác vụ."
+    },
+    {
+      "tool": "Feishu / Lark",
+      "zh": "飞书 / 协同办公平台",
+      "zh_tw": "飛書 / 協同辦公平臺",
+      "pinyin": "Fēishū / xiétóng bàngōng píngtái",
+      "usage_vi": "Công cụ giao tiếp công việc cực kỳ phổ biến tại các công ty công nghệ và game Trung Quốc."
+    },
+    {
+      "tool": "WeChat Work / DingTalk",
+      "zh": "企业微信 / 钉钉",
+      "zh_tw": "企業微信 / 釘釘",
+      "pinyin": "Qǐyè Wēixìn / Dīngdīng",
+      "usage_vi": "Liên lạc chính thức với đối tác Trung Quốc, phê duyệt quy trình và họp trực tuyến."
+    }
+  ],
+  "words": [
+    {
+      "id": "spec_w_1",
+      "zh": "游戏",
+      "zh_tw": "遊戲",
+      "pinyin": "yóuxì",
+      "vi": "Trò chơi / game",
+      "category": "game",
+      "explanation": "Thuật ngữ nền tảng chỉ mọi sản phẩm trò chơi điện tử.",
+      "example": {
+        "zh": "我们团队正在研发一款全新的策略游戏。",
+        "pinyin": "Wǒmen tuánduì zhèngzài yánfā yì kuǎn quánxīn de cèlüè yóuxì.",
+        "vi": "Đội ngũ của chúng tôi đang nghiên cứu phát triển một tựa game chiến thuật hoàn toàn mới."
+      }
+    },
+    {
+      "id": "spec_w_2",
+      "zh": "游戏行业",
+      "zh_tw": "遊戲行業",
+      "pinyin": "yóuxì hángyè",
+      "vi": "Ngành game",
+      "category": "game",
+      "explanation": "Chỉ toàn bộ thị trường công nghiệp phát triển và phân phối trò chơi.",
+      "example": {
+        "zh": "游戏行业近几年在东南亚市场发展非常迅速。",
+        "pinyin": "Yóuxì hángyè jìn jǐ nián zài dōngnányà shìchǎng fāzhǎn fēicháng xùnsù.",
+        "vi": "Ngành game những năm gần đây phát triển rất nhanh chóng tại thị trường Đông Nam Á."
+      }
+    },
+    {
+      "id": "spec_w_3",
+      "zh": "游戏开发",
+      "zh_tw": "遊戲開發",
+      "pinyin": "yóuxì kāifā",
+      "vi": "Phát triển game",
+      "category": "game",
+      "explanation": "Giai đoạn thiết kế kịch bản, lập trình tính năng và tạo tài nguyên mỹ thuật.",
+      "example": {
+        "zh": "游戏开发周期通常需要六个月到两年不等。",
+        "pinyin": "Yóuxì kāifā zhōuqī tōngcháng xūyào liù gè yuè dào liǎng nián bùděng.",
+        "vi": "Chu kỳ phát triển game thường kéo dài từ sáu tháng đến hai năm."
+      }
+    },
+    {
+      "id": "spec_w_4",
+      "zh": "游戏研发",
+      "zh_tw": "遊戲研發",
+      "pinyin": "yóuxì yánfā",
+      "vi": "Nghiên cứu và phát triển game (R&D)",
+      "category": "game",
+      "explanation": "Viết tắt của 研究与开发, chú trọng cả giải pháp công nghệ và nội dung mới.",
+      "example": {
+        "zh": "公司加大了在AI游戏研发方面的资金投入。",
+        "pinyin": "Gōngsī jiādà le zài AI yóuxì yánfā fāngmiàn de zījīn tóurù.",
+        "vi": "Công ty đã tăng cường vốn đầu tư vào mảng nghiên cứu và phát triển game AI."
+      }
+    },
+    {
+      "id": "spec_w_5",
+      "zh": "游戏发行",
+      "zh_tw": "遊戲發行",
+      "pinyin": "yóuxì fāxíng",
+      "vi": "Phát hành game",
+      "category": "game",
+      "explanation": "Đưa sản phẩm tiếp cận thị trường thông qua các kênh phân phối và chiến dịch truyền thông.",
+      "example": {
+        "zh": "海外游戏发行需要考虑当地玩家的文化习俗与支付方式。",
+        "pinyin": "Hǎiwài yóuxì fāxíng xūyào kǎolǜ dāngdì wánjiā de wénhuà xísú yǔ zhīfù fāngshì.",
+        "vi": "Phát hành game ở nước ngoài cần tính đến phong tục văn hóa và phương thức thanh toán của người chơi bản địa."
+      }
+    },
+    {
+      "id": "spec_w_6",
+      "zh": "游戏运营",
+      "zh_tw": "遊戲運營",
+      "pinyin": "yóuxì yùnyíng",
+      "vi": "Vận hành game",
+      "category": "game",
+      "explanation": "Quản lý và duy trì sản phẩm sau khi ra mắt: sự kiện, cộng đồng, retention.",
+      "example": {
+        "zh": "游戏运营的核心目标是提升玩家留存率和活跃度。",
+        "pinyin": "Yóuxì yùnyíng de héxīn mùbiāo shì tíshēng wánjiā liúcún lǜ hé huóyuè dù.",
+        "vi": "Mục tiêu cốt lõi của vận hành game là nâng cao tỷ lệ giữ chân và độ hoạt động của người chơi."
+      }
+    },
+    {
+      "id": "spec_w_7",
+      "zh": "游戏开发商",
+      "zh_tw": "遊戲開發商",
+      "pinyin": "yóuxì kāifāshāng",
+      "vi": "Nhà phát triển game",
+      "category": "game",
+      "explanation": "Tổ chức hoặc studio trực tiếp chế tác phần mềm trò chơi.",
+      "example": {
+        "zh": "作为独立游戏开发商，他们专注于高品质的独立玩法。",
+        "pinyin": "Zuòwéi dúlì yóuxì kāifāshāng, tāmen zhuānzhù yú gāo pǐnzhì de dúlì wánfǎ.",
+        "vi": "Là nhà phát triển game độc lập, họ tập trung vào lối chơi độc đáo chất lượng cao."
+      }
+    },
+    {
+      "id": "spec_w_8",
+      "zh": "游戏发行商",
+      "zh_tw": "遊戲發行商",
+      "pinyin": "yóuxì fāxíngshāng",
+      "vi": "Nhà phát hành game",
+      "category": "game",
+      "explanation": "Công ty trung gian phụ trách quảng bá, pháp lý và đưa game lên các store.",
+      "example": {
+        "zh": "中国许多大型发行商正在寻找高潜力的海外本土合作伙伴。",
+        "pinyin": "Zhōngguó xǔduō dàxíng fāxíngshāng zhèngzài xúnzhǎo gāo qiánlì de hǎiwài běntǔ hézuò huǒbàn.",
+        "vi": "Nhiều nhà phát hành lớn của Trung Quốc đang tìm kiếm đối tác bản địa giàu tiềm năng ở nước ngoài."
+      }
+    },
+    {
+      "id": "spec_w_9",
+      "zh": "游戏工作室",
+      "zh_tw": "遊戲工作室",
+      "pinyin": "yóuxì gōngzuòshì",
+      "vi": "Studio game",
+      "category": "game",
+      "explanation": "Đơn vị sản xuất chuyên môn hóa (Game Studio).",
+      "example": {
+        "zh": "该游戏工作室由一群资深程序与主美创办。",
+        "pinyin": "Gāi yóuxì gōngzuòshì yóu yì qún zīshēn chéngxù yǔ zhǔměi chuàngbàn.",
+        "vi": "Studio game này được thành lập bởi một nhóm lập trình viên và giám đốc mỹ thuật kỳ cựu."
+      }
+    },
+    {
+      "id": "spec_w_10",
+      "zh": "游戏产品",
+      "zh_tw": "遊戲產品",
+      "pinyin": "yóuxì chǎnpǐn",
+      "vi": "Sản phẩm game",
+      "category": "game",
+      "explanation": "Bản thân trò chơi hoàn chỉnh được thương mại hóa.",
+      "example": {
+        "zh": "每一款游戏产品在上线前都需要经过多轮测试。",
+        "pinyin": "Měi yì kuǎn yóuxì chǎnpǐn zài shàngxiàn qián dōu xūyào jīngguò duō lún cèshì.",
+        "vi": "Mỗi một sản phẩm game trước khi ra mắt đều cần trải qua nhiều vòng kiểm thử."
+      }
+    },
+    {
+      "id": "spec_w_11",
+      "zh": "玩家",
+      "zh_tw": "玩家",
+      "pinyin": "wánjiā",
+      "vi": "Người chơi",
+      "category": "game",
+      "explanation": "Người dùng trải nghiệm và chi tiêu trong game.",
+      "example": {
+        "zh": "了解玩家的真实痛点是优化游戏体验的前提。",
+        "pinyin": "Liǎojiě wánjiā de zhēnshí tòngdiǎn shì yōuhuà yóuxì tǐyàn de qiántí.",
+        "vi": "Thấu hiểu nỗi đau thực sự của người chơi là tiền đề để tối ưu hóa trải nghiệm game."
+      }
+    },
+    {
+      "id": "spec_w_12",
+      "zh": "游戏体验",
+      "zh_tw": "遊戲體驗",
+      "pinyin": "yóuxì tǐyàn",
+      "vi": "Trải nghiệm chơi game (UX)",
+      "category": "game",
+      "explanation": "Cảm giác mượt mà, hấp dẫn và thỏa mãn của người chơi.",
+      "example": {
+        "zh": "修复卡顿与掉帧能显著提升新手玩家的游戏体验。",
+        "pinyin": "Xiūfù kǎdùn yǔ diàozhēn néng xiǎnzhù tíshēng xīnshǒu wánjiā de yóuxì tǐyàn.",
+        "vi": "Sửa lỗi giật lag và tụt khung hình giúp cải thiện rõ rệt trải nghiệm của tân thủ."
+      }
+    },
+    {
+      "id": "spec_w_13",
+      "zh": "游戏版本",
+      "zh_tw": "遊戲版本",
+      "pinyin": "yóuxì bǎnběn",
+      "vi": "Phiên bản game",
+      "category": "game",
+      "explanation": "Mã số cập nhật của phần mềm (ví dụ: v1.0.2).",
+      "example": {
+        "zh": "我们将在下周发布游戏的新测试版本。",
+        "pinyin": "Wǒmen jiāng zài xià zhōu fābù yóuxì de xīn cèshì bǎnběn.",
+        "vi": "Chúng tôi sẽ phát hành phiên bản thử nghiệm mới của game vào tuần tới."
+      }
+    },
+    {
+      "id": "spec_w_14",
+      "zh": "游戏更新",
+      "zh_tw": "遊戲更新",
+      "pinyin": "yóuxì gēngxīn",
+      "vi": "Cập nhật game",
+      "category": "game",
+      "explanation": "Việc vá lỗi, bổ sung nhân vật hoặc tính năng mới.",
+      "example": {
+        "zh": "本次游戏更新将推出全新副本与节日庆典活动。",
+        "pinyin": "Běncì yóuxì gēngxīn jiāng tuīchū quánxīn fùběn yǔ jiérì qìngdiǎn huódòng.",
+        "vi": "Bản cập nhật game lần này sẽ ra mắt phó bản mới toanh và sự kiện lễ hội."
+      }
+    },
+    {
+      "id": "spec_w_15",
+      "zh": "游戏上线",
+      "zh_tw": "遊戲上線",
+      "pinyin": "yóuxì shàngxiàn",
+      "vi": "Đưa game lên nền tảng / ra mắt trực tuyến",
+      "category": "game",
+      "explanation": "Thời khắc phát hành chính thức lên server phục vụ người chơi.",
+      "example": {
+        "zh": "游戏上线首日同时在线玩家突破了十万人。",
+        "pinyin": "Yóuxì shàngxiàn shǒurì tóngshí zàixiàn wánjiā tūpò le shí wàn rén.",
+        "vi": "Ngày đầu game ra mắt, số người chơi online cùng lúc đã vượt mốc 100.000."
+      }
+    },
+    {
+      "id": "spec_w_16",
+      "zh": "游戏测试",
+      "zh_tw": "遊戲測試",
+      "pinyin": "yóuxì cèshì",
+      "vi": "Kiểm thử game (QA/QC)",
+      "category": "game",
+      "explanation": "Tìm lỗi bug, kiểm tra cân bằng chỉ số trước khi public.",
+      "example": {
+        "zh": "测试团队提交了关于新手引导流程的三十项缺陷报告。",
+        "pinyin": "Cèshì tuánduì tíjiāo le guānyú xīnshǒu yǐndǎo liúchéng de sānshí xiàng quēxiàn bàogào.",
+        "vi": "Đội ngũ test đã nộp báo cáo 30 mục lỗi liên quan đến luồng hướng dẫn tân thủ."
+      }
+    },
+    {
+      "id": "spec_w_17",
+      "zh": "游戏活动",
+      "zh_tw": "遊戲活動",
+      "pinyin": "yóuxì huódòng",
+      "vi": "Sự kiện trong game (Event)",
+      "category": "game",
+      "explanation": "Các event định kỳ nhằm kích thích tương tác và doanh thu.",
+      "example": {
+        "zh": "周末限时双倍经验活动吸引了大量老玩家回归。",
+        "pinyin": "Zhōumò xiànshí shuāngbèi jīngyàn huódòng xīyǐn le dàliàng lǎo wánjiā huíguī.",
+        "vi": "Sự kiện nhân đôi kinh nghiệm giới hạn cuối tuần đã thu hút đông đảo người chơi cũ quay lại."
+      }
+    },
+    {
+      "id": "spec_w_18",
+      "zh": "游戏内容",
+      "zh_tw": "遊戲內容",
+      "pinyin": "yóuxì nèiróng",
+      "vi": "Nội dung game",
+      "category": "game",
+      "explanation": "Cốt truyện, hệ thống nhiệm vụ, trang bị và tính năng trong game.",
+      "example": {
+        "zh": "我们需要定期填充新的游戏内容以防止玩家流失。",
+        "pinyin": "Wǒmen xūyào dìngqī tiánchōng xīn de yóuxì nèiróng yǐ fángzhǐ wánjiā liúshī.",
+        "vi": "Chúng ta cần định kỳ bổ sung nội dung game mới để tránh người chơi bỏ game."
+      }
+    },
+    {
+      "id": "spec_w_19",
+      "zh": "游戏功能",
+      "zh_tw": "遊戲功能",
+      "pinyin": "yóuxì gōngnéng",
+      "vi": "Tính năng game",
+      "category": "game",
+      "explanation": "Các cơ chế cụ thể như bang hội, chat liên server, giao dịch.",
+      "example": {
+        "zh": "跨服好友是本次版本重点打造的核心游戏功能。",
+        "pinyin": "Kuàfú hǎoyǒu shì běncì bǎnběn zhòngdiǎn dǎzào de héxīn yóuxì gōngnéng.",
+        "vi": "Kết bạn liên server là tính năng game cốt lõi được tập trung xây dựng trong phiên bản này."
+      }
+    },
+    {
+      "id": "spec_w_20",
+      "zh": "玩家反馈",
+      "zh_tw": "玩家反饋",
+      "pinyin": "wánjiā fǎnkuì",
+      "vi": "Phản hồi của người chơi",
+      "category": "game",
+      "explanation": "Ý kiến đóng góp, khen chê từ cộng đồng hoặc bảng khảo sát.",
+      "example": {
+        "zh": "运营人员每天都会整理社区中的玩家反馈并同步给开发团队。",
+        "pinyin": "Yùnyíng rényuán měitiān dōu huì zhěnglǐ shèqū zhōng de wánjiā fǎnkuì bìng tóngbù gěi kāifā tuánduì.",
+        "vi": "Nhân viên vận hành hằng ngày đều tổng hợp phản hồi của người chơi trên cộng đồng để đồng bộ cho team dev."
+      }
+    },
+    {
+      "id": "spec_w_21",
+      "zh": "项目管理",
+      "zh_tw": "項目管理",
+      "pinyin": "xiàngmù guǎnlǐ",
+      "vi": "Quản lý dự án",
+      "category": "pm",
+      "explanation": "Phương pháp lập kế hoạch, điều phối và giám sát để đạt mục tiêu trong hạn mức ngân sách và thời gian.",
+      "example": {
+        "zh": "良好的项目管理能让跨国跨团队协作更加顺畅高效。",
+        "pinyin": "Liánghǎo de xiàngmù guǎnlǐ néng ràng kuàguó kuà tuánduì xiézuò gèngjiā shùnchàng gāoxiào.",
+        "vi": "Quản lý dự án tốt giúp việc hợp tác xuyên quốc gia và liên phòng ban diễn ra trôi chảy, hiệu quả hơn."
+      }
+    },
+    {
+      "id": "spec_w_22",
+      "zh": "项目经理",
+      "zh_tw": "項目經理",
+      "pinyin": "xiàngmù jīnglǐ",
+      "vi": "Project Manager (PM)",
+      "category": "pm",
+      "explanation": "Người phụ trách điều phối tiến độ, phạm vi công việc và tài nguyên của dự án.",
+      "example": {
+        "zh": "项目经理需要同时与策划、技术和运营团队保持密切沟通。",
+        "pinyin": "Xiàngmù jīnglǐ xūyào tóngshí yǔ cèhuà, jìshù hé yùnyíng tuánduì bǎochí mìqiè gōutōng.",
+        "vi": "Project Manager cần duy trì liên lạc chặt chẽ đồng thời với cả team thiết kế, kỹ thuật và vận hành."
+      }
+    },
+    {
+      "id": "spec_w_23",
+      "zh": "项目协调",
+      "zh_tw": "項目協調",
+      "pinyin": "xiàngmù xiétiáo",
+      "vi": "Điều phối dự án",
+      "category": "pm",
+      "explanation": "Giải quyết các xung đột lịch trình và kết nối các phòng ban.",
+      "example": {
+        "zh": "她主要负责海外本地化团队与国内研发团队的项目协调工作。",
+        "pinyin": "Tā zhǔyào fùzé hǎiwài běndìhuà tuánduì yǔ guónèi yánfā tuánduì de xiàngmù xiétiáo gōngzuò.",
+        "vi": "Cô ấy chủ yếu phụ trách công việc điều phối dự án giữa team bản địa hóa nước ngoài và team R&D trong nước."
+      }
+    },
+    {
+      "id": "spec_w_24",
+      "zh": "项目进度",
+      "zh_tw": "項目進度",
+      "pinyin": "xiàngmù jìndù",
+      "vi": "Tiến độ dự án",
+      "category": "pm",
+      "explanation": "Tỷ lệ hoàn thành công việc so với kế hoạch ban đầu.",
+      "example": {
+        "zh": "每周五例会我们都会一起同步最新的项目进度。",
+        "pinyin": "Měi zhōuwǔ lìhuì wǒmen dōu huì yìqǐ tóngbù zuìxīn de xiàngmù jìndù.",
+        "vi": "Trong buổi họp định kỳ thứ Sáu hằng tuần, chúng tôi đều cùng nhau đồng bộ tiến độ dự án mới nhất."
+      }
+    },
+    {
+      "id": "spec_w_25",
+      "zh": "项目计划",
+      "zh_tw": "項目計劃",
+      "pinyin": "xiàngmù jìhuà",
+      "vi": "Kế hoạch dự án",
+      "category": "pm",
+      "explanation": "Văn bản quy định rõ timeline, milestone và phân bổ nhân sự.",
+      "example": {
+        "zh": "根据项目计划，本月底必须完成核心功能的所有测试。",
+        "pinyin": "Gēnjù xiàngmù jìhuà, běn yuèdǐ bìxū wánchéng héxīn gōngnéng de suǒyǒu cèshì.",
+        "vi": "Theo kế hoạch dự án, cuối tháng này bắt buộc phải hoàn thành toàn bộ kiểm thử cho các tính năng cốt lõi."
+      }
+    },
+    {
+      "id": "spec_w_26",
+      "zh": "项目目标",
+      "zh_tw": "項目目標",
+      "pinyin": "xiàngmù mùbiāo",
+      "vi": "Mục tiêu dự án",
+      "category": "pm",
+      "explanation": "Kết quả kỳ vọng cần đạt được (OKRs / KPIs).",
+      "example": {
+        "zh": "我们今年的项目目标是在东南亚市场获取一百万活跃用户。",
+        "pinyin": "Wǒmen jīnnián de xiàngmù mùbiāo shì zài dōngnányà shìchǎng huòqǔ yì bǎi wàn huóyuè yònghù.",
+        "vi": "Mục tiêu dự án năm nay của chúng tôi là đạt được 1 triệu người dùng hoạt động tại thị trường Đông Nam Á."
+      }
+    },
+    {
+      "id": "spec_w_27",
+      "zh": "项目里程碑",
+      "zh_tw": "項目里程碑",
+      "pinyin": "xiàngmù lǐchéngbēi",
+      "vi": "Cột mốc dự án (Milestone)",
+      "category": "pm",
+      "explanation": "Các mốc thời gian then chốt đánh dấu hoàn thành giai đoạn lớn.",
+      "example": {
+        "zh": "封测开启是本项目上半年的关键里程碑。",
+        "pinyin": "Fēngcè kāiqǐ shì běn xiàngmù shàng bànnián de guānjiàn lǐchéngbēi.",
+        "vi": "Mở đợt thử nghiệm Closed Beta là cột mốc then chốt trong nửa đầu năm của dự án này."
+      }
+    },
+    {
+      "id": "spec_w_28",
+      "zh": "任务",
+      "zh_tw": "任務",
+      "pinyin": "rènwu",
+      "vi": "Nhiệm vụ / đầu việc",
+      "category": "pm",
+      "explanation": "Từng đầu mục công việc cụ thể được giao cho cá nhân.",
+      "example": {
+        "zh": "请在今天下班前完成各自看板上的分配任务。",
+        "pinyin": "Qǐng zài jīntiān xiàbān qián wánchéng gèzì kǎnbǎn shang de fēnpèi rènwu.",
+        "vi": "Vui lòng hoàn thành các nhiệm vụ được giao trên bảng Kanban của từng người trước giờ tan làm hôm nay."
+      }
+    },
+    {
+      "id": "spec_w_29",
+      "zh": "待办事项",
+      "zh_tw": "待辦事項",
+      "pinyin": "dàibàn shìxiàng",
+      "vi": "Việc cần làm (To-do list)",
+      "category": "pm",
+      "explanation": "Danh sách các việc cần giải quyết theo thứ tự ưu tiên.",
+      "example": {
+        "zh": "我习惯每天上班第一件事是整理当天的待办事项。",
+        "pinyin": "Wǒ xíguàn měitiān shàngbān dì-yī jiàn shì shì zhěnglǐ dāngtiān de dàibàn shìxiàng.",
+        "vi": "Tôi có thói quen việc đầu tiên khi đi làm mỗi ngày là sắp xếp danh sách việc cần làm trong ngày."
+      }
+    },
+    {
+      "id": "spec_w_30",
+      "zh": "截止日期",
+      "zh_tw": "截止日期",
+      "pinyin": "jiézhǐ rìqī",
+      "vi": "Hạn chót (Deadline)",
+      "category": "pm",
+      "explanation": "Thời hạn cuối cùng phải bàn giao sản phẩm hoặc kết quả.",
+      "example": {
+        "zh": "请务必在截止日期之前提交完整的需求文档。",
+        "pinyin": "Qǐng wùbì zài jiézhǐ rìqī zhīqián tíjiāo wánzhěng de xūqiú wéndàng.",
+        "vi": "Xin hãy chắc chắn nộp tài liệu yêu cầu hoàn chỉnh trước hạn chót."
+      }
+    },
+    {
+      "id": "spec_w_31",
+      "zh": "时间安排",
+      "zh_tw": "時間安排",
+      "pinyin": "shíjiān ānpái",
+      "vi": "Lịch trình / sắp xếp thời gian",
+      "category": "pm",
+      "explanation": "Phân bổ thời lượng cho từng khâu công việc hợp lý.",
+      "example": {
+        "zh": "合理的时间安排能有效减少临近上线时的加班压力。",
+        "pinyin": "Hélǐ de shíjiān ānpái néng yǒuxiào jiǎnshǎo línjìn shàngxiàn shí de jiābān yālì.",
+        "vi": "Sắp xếp thời gian hợp lý có thể giảm bớt hiệu quả áp lực tăng ca khi cận kề ngày ra mắt."
+      }
+    },
+    {
+      "id": "spec_w_32",
+      "zh": "交付成果",
+      "zh_tw": "交付成果",
+      "pinyin": "jiāofù chéngguǒ",
+      "vi": "Sản phẩm bàn giao (Deliverable)",
+      "category": "pm",
+      "explanation": "Bản build, tài liệu hoặc báo cáo cụ thể được nghiệm thu.",
+      "example": {
+        "zh": "本次里程碑的交付成果包括测试包体和接口文档。",
+        "pinyin": "Běncì lǐchéngbēi de jiāofù chéngguǒ bāokuò cèshì bāotǐ hé jiēkǒu wéndàng.",
+        "vi": "Sản phẩm bàn giao của cột mốc lần này bao gồm gói cài đặt thử nghiệm và tài liệu API."
+      }
+    },
+    {
+      "id": "spec_w_33",
+      "zh": "任务分配",
+      "zh_tw": "任務分配",
+      "pinyin": "rènwu fēnpèi",
+      "vi": "Phân công nhiệm vụ",
+      "category": "pm",
+      "explanation": "Giao việc đúng người, đúng chuyên môn và đúng thời hạn.",
+      "example": {
+        "zh": "项目经理根据每个成员的专长进行了清晰的任务分配。",
+        "pinyin": "Xiàngmù jīnglǐ gēnjù měi gè chéngyuán de zhuāncháng jìnxíng le qīngxī de rènwu fēnpèi.",
+        "vi": "Project Manager đã tiến hành phân công công việc rõ ràng dựa trên sở trường của từng thành viên."
+      }
+    },
+    {
+      "id": "spec_w_34",
+      "zh": "进度跟踪",
+      "zh_tw": "進度跟蹤",
+      "pinyin": "jìndù gēnzōng",
+      "vi": "Theo dõi tiến độ",
+      "category": "pm",
+      "explanation": "Kiểm tra liên tục trạng thái công việc để phát hiện trễ hạn sớm.",
+      "example": {
+        "zh": "借助Jira看板，我们可以实时进行项目进度跟踪。",
+        "pinyin": "Jièzhù Jira kǎnbǎn, wǒmen kěyǐ shíshí jìnxíng xiàngmù jìndù gēnzōng.",
+        "vi": "Nhờ bảng Kanban trên Jira, chúng tôi có thể theo dõi tiến độ dự án theo thời gian thực."
+      }
+    },
+    {
+      "id": "spec_w_35",
+      "zh": "进度更新",
+      "zh_tw": "進度更新",
+      "pinyin": "jìndù gēngxīn",
+      "vi": "Cập nhật tiến độ",
+      "category": "pm",
+      "explanation": "Thông báo tình trạng mới nhất của đầu việc cho các bên liên quan.",
+      "example": {
+        "zh": "开发同学请在每日站会上同步最新的进度更新。",
+        "pinyin": "Kāifā tóngxué qǐng zài měirì zhànhuì shang tóngbù zuìxīn de jìndù gēngxīn.",
+        "vi": "Các bạn lập trình viên vui lòng đồng bộ cập nhật tiến độ mới nhất trong cuộc họp đứng hằng ngày."
+      }
+    },
+    {
+      "id": "spec_w_36",
+      "zh": "延期",
+      "zh_tw": "延期",
+      "pinyin": "yánqī",
+      "vi": "Trì hoãn / chậm thời hạn",
+      "category": "pm",
+      "explanation": "Lùi thời hạn so với kế hoạch ban đầu do phát sinh rủi ro.",
+      "example": {
+        "zh": "如果发现任务有延期风险，请尽早向上级或相关团队预警。",
+        "pinyin": "Rúguǒ fāxiàn rènwu yǒu yánqī fēngxiǎn, qǐng jǐnzǎo xiàng shàngjí huò xiāngguān tuánduì yùjǐng.",
+        "vi": "Nếu phát hiện nhiệm vụ có nguy cơ trễ hạn, xin hãy cảnh báo sớm cho cấp trên hoặc team liên quan."
+      }
+    },
+    {
+      "id": "spec_w_37",
+      "zh": "优先级",
+      "zh_tw": "優先級",
+      "pinyin": "yōuxiānjí",
+      "vi": "Mức độ ưu tiên (Priority)",
+      "category": "pm",
+      "explanation": "Xếp hạng việc nào cần làm trước (P0/P1/P2).",
+      "example": {
+        "zh": "我们必须先集中精力攻克高优先级的阻塞型Bug。",
+        "pinyin": "Wǒmen bìxū xiān jízhōng jīnglì gōngkè gāo yōuxiānjí de zǔsè xíng Bug.",
+        "vi": "Chúng ta bắt buộc phải tập trung giải quyết các bug dạng blocker có độ ưu tiên cao trước."
+      }
+    },
+    {
+      "id": "spec_w_38",
+      "zh": "工作流程",
+      "zh_tw": "工作流程",
+      "pinyin": "gōngzuò liúchéng",
+      "vi": "Quy trình làm việc (Workflow / SOP)",
+      "category": "pm",
+      "explanation": "Chuỗi các bước từ nhận yêu cầu -> triển khai -> kiểm duyệt -> xuất bản.",
+      "example": {
+        "zh": "明确标准的工作流程可以大幅减少跨团队扯皮现象。",
+        "pinyin": "Míngquè biāozhǔn de gōngzuò liúchéng kěyǐ dàfú jiǎnshǎo kuà tuánduì chěpí xiànxiàng.",
+        "vi": "Làm rõ quy trình làm việc chuẩn hóa có thể giảm đáng kể tình trạng đùn đẩy trách nhiệm giữa các team."
+      }
+    },
+    {
+      "id": "spec_w_39",
+      "zh": "风险管理",
+      "zh_tw": "風險管理",
+      "pinyin": "fēngxiǎn guǎnlǐ",
+      "vi": "Quản lý rủi ro",
+      "category": "pm",
+      "explanation": "Dự báo các tình huống xấu có thể xảy ra và chuẩn bị sẵn phương án dự phòng.",
+      "example": {
+        "zh": "风险管理是保证大中型项目按时交付的核心能力之一。",
+        "pinyin": "Fēngxiǎn guǎnlǐ shì bǎozhèng dàzhōngxíng xiàngmù ànshí jiāofù de héxīn nénglì zhīyī.",
+        "vi": "Quản lý rủi ro là một trong những năng lực cốt lõi để đảm bảo các dự án vừa và lớn bàn giao đúng hạn."
+      }
+    },
+    {
+      "id": "spec_w_40",
+      "zh": "问题跟进",
+      "zh_tw": "問題跟進",
+      "pinyin": "wèntí gēnjìn",
+      "vi": "Theo dõi, xử lý vấn đề (Issue tracking)",
+      "category": "pm",
+      "explanation": "Ghi nhận và đôn đốc giải quyết triệt để các khúc mắc phát sinh.",
+      "example": {
+        "zh": "客服收集到的充值异常问题正在由专人进行深入跟进。",
+        "pinyin": "Kèfú shōují dào de chōngzhí yìcháng wèntí zhèngzài yóu zhuānrén jìnxíng shēnrù gēnjìn.",
+        "vi": "Sự cố nạp tiền bất thường do CSKH thu thập đang được người chuyên trách theo sát xử lý."
+      }
+    },
+    {
+      "id": "spec_w_41",
+      "zh": "合作伙伴",
+      "zh_tw": "合作夥伴",
+      "pinyin": "hézuò huǒbàn",
+      "vi": "Đối tác",
+      "category": "partner_comm",
+      "explanation": "Cá nhân hoặc tổ chức cùng hợp tác vì lợi ích song phương.",
+      "example": {
+        "zh": "我们与国内顶尖的游戏发行商建立了长期的合作伙伴关系。",
+        "pinyin": "Wǒmen yǔ guónèi dǐngjiān de yóuxì fāxíngshāng jiànlì le chángqī de hézuò huǒbàn guānxi.",
+        "vi": "Chúng tôi đã thiết lập mối quan hệ đối tác lâu dài với các nhà phát hành game hàng đầu trong nước."
+      }
+    },
+    {
+      "id": "spec_w_42",
+      "zh": "游戏开发团队",
+      "zh_tw": "遊戲開發團隊",
+      "pinyin": "yóuxì kāifā tuánduì",
+      "vi": "Đội ngũ phát triển game",
+      "category": "partner_comm",
+      "explanation": "Team chịu trách nhiệm toàn bộ mặt kỹ thuật và nội dung game.",
+      "example": {
+        "zh": "我们需要定期向游戏开发团队反馈海外本地化测试的体验。",
+        "pinyin": "Wǒmen xūyào dìngqī xiàng yóuxì kāifā tuánduì fǎnkuì hǎiwài běndìhuà cèshì de tǐyàn.",
+        "vi": "Chúng tôi cần định kỳ phản hồi trải nghiệm kiểm thử bản địa hóa nước ngoài cho team phát triển game."
+      }
+    },
+    {
+      "id": "spec_w_43",
+      "zh": "内部团队",
+      "zh_tw": "內部團隊",
+      "pinyin": "nèibù tuánduì",
+      "vi": "Đội ngũ nội bộ",
+      "category": "partner_comm",
+      "explanation": "Các thành viên trong cùng một công ty hoặc chi nhánh.",
+      "example": {
+        "zh": "在与外部合作伙伴对接前，内部团队需先统一步调。",
+        "pinyin": "Zài yǔ wàibù hézuò huǒbàn duìjiē qián, nèibù tuánduì xū xiān tǒngyī bùdiào.",
+        "vi": "Trước khi làm việc với đối tác bên ngoài, đội ngũ nội bộ cần thống nhất quan điểm trước."
+      }
+    },
+    {
+      "id": "spec_w_44",
+      "zh": "相关部门",
+      "zh_tw": "相關部門",
+      "pinyin": "xiāngguān bùmén",
+      "vi": "Các phòng ban liên quan",
+      "category": "partner_comm",
+      "explanation": "Các bộ phận có dính líu đến dự án như Pháp chế, Tài chính, Marketing.",
+      "example": {
+        "zh": "请抄送邮件给法务和财务等相关部门以便审核合同。",
+        "pinyin": "Qǐng chāosòng yóujiàn gěi fǎwù hé cáiwù děng xiāngguān bùmén yǐbiàn shěnhè hétong.",
+        "vi": "Vui lòng CC email cho các phòng ban liên quan như Pháp chế và Tài chính để xét duyệt hợp đồng."
+      }
+    },
+    {
+      "id": "spec_w_45",
+      "zh": "跨部门合作",
+      "zh_tw": "跨部門合作",
+      "pinyin": "kuà bùmén hézuò",
+      "vi": "Phối hợp liên phòng ban",
+      "category": "partner_comm",
+      "explanation": "Làm việc nhịp nhàng giữa các team có chuyên môn khác nhau.",
+      "example": {
+        "zh": "成功上线一款大型项目非常考验跨部门合作的效率。",
+        "pinyin": "Chénggōng shàngxiàn yì kuǎn dàxíng xiàngmù fēicháng kǎoyàn kuà bùmén hézuò de xiàolǜ.",
+        "vi": "Ra mắt thành công một dự án quy mô lớn đòi hỏi sự phối hợp liên phòng ban cực kỳ hiệu quả."
+      }
+    },
+    {
+      "id": "spec_w_46",
+      "zh": "沟通",
+      "zh_tw": "溝通",
+      "pinyin": "gōutōng",
+      "vi": "Giao tiếp / trao đổi",
+      "category": "partner_comm",
+      "explanation": "Truyền đạt và lắng nghe thông tin rõ ràng, minh bạch.",
+      "example": {
+        "zh": "遇到需求歧义时，当面或语音沟通往往比发长文本更有效。",
+        "pinyin": "Yù dào xūqiú qíyì shí, dāngmiàn huò yǔyīn gōutōng wǎngwǎng bǐ fā cháng wénběn gèng yǒuxiào.",
+        "vi": "Khi gặp yêu cầu không rõ nghĩa, trao đổi trực tiếp hoặc gọi thoại thường hiệu quả hơn nhắn tin dài."
+      }
+    },
+    {
+      "id": "spec_w_47",
+      "zh": "协调",
+      "zh_tw": "協調",
+      "pinyin": "xiétiáo",
+      "vi": "Điều phối",
+      "category": "partner_comm",
+      "explanation": "Cân bằng quyền lợi và điều chỉnh công việc giữa các bên.",
+      "example": {
+        "zh": "PM的核心价值之一就是在有限资源下做好各方利益的协调。",
+        "pinyin": "PM de héxīn jiàzhí zhīyī jiùshì zài yǒuxiàn zīyuán xià zuò hǎo gèfāng lìyì de xiétiáo.",
+        "vi": "Một trong những giá trị cốt lõi của PM là điều phối tốt lợi ích các bên trong điều kiện tài nguyên có hạn."
+      }
+    },
+    {
+      "id": "spec_w_48",
+      "zh": "信息同步",
+      "zh_tw": "信息同步",
+      "pinyin": "xìnxī tóngbù",
+      "vi": "Đồng bộ thông tin",
+      "category": "partner_comm",
+      "explanation": "Đảm bảo mọi người trong dự án đều nắm được thông tin mới nhất.",
+      "example": {
+        "zh": "每次需求调整后，必须第一时间向所有成员进行信息同步。",
+        "pinyin": "Měi cì xūqiú tiáozhěng hòu, bìxū dì-yī shíjiān xiàng suǒyǒu chéngyuán jìnxíng xìnxī tóngbù.",
+        "vi": "Mỗi khi điều chỉnh yêu cầu, bắt buộc phải đồng bộ thông tin đến tất cả thành viên sớm nhất."
+      }
+    },
+    {
+      "id": "spec_w_49",
+      "zh": "确认需求",
+      "zh_tw": "確認需求",
+      "pinyin": "quèrèn xūqiú",
+      "vi": "Xác nhận yêu cầu",
+      "category": "partner_comm",
+      "explanation": "Hỏi rõ và chốt lại phạm vi mong muốn trước khi bắt tay làm.",
+      "example": {
+        "zh": "在开始编码前，我们先召开会议确认具体的技术需求。",
+        "pinyin": "Zài kāishǐ biānmǎ qián, wǒmen xiān zhàokāi huìyì quèrèn jùtǐ de jìshù xūqiú.",
+        "vi": "Trước khi bắt đầu viết code, chúng ta họp trước để xác nhận các yêu cầu kỹ thuật cụ thể."
+      }
+    },
+    {
+      "id": "spec_w_50",
+      "zh": "明确要求",
+      "zh_tw": "明確要求",
+      "pinyin": "míngquè yāoqiú",
+      "vi": "Làm rõ yêu cầu",
+      "category": "partner_comm",
+      "explanation": "Quy định các tiêu chí định lượng, không để mơ hồ.",
+      "example": {
+        "zh": "需求方需要给出明确的验收标准和提交格式。",
+        "pinyin": "Xūqiú fāng xūyào gěi chū míngquè de yànshōu biāozhǔn hé tíjiāo géshì.",
+        "vi": "Bên đưa ra yêu cầu cần đưa ra tiêu chuẩn nghiệm thu và định dạng bàn giao rõ ràng."
+      }
+    },
+    {
+      "id": "spec_w_51",
+      "zh": "反馈",
+      "zh_tw": "反饋",
+      "pinyin": "fǎnkuì",
+      "vi": "Phản hồi",
+      "category": "partner_comm",
+      "explanation": "Ý kiến nhận xét, đánh giá kết quả công việc đã thực hiện.",
+      "example": {
+        "zh": "期待你们在试玩体验后给予我们宝贵的修改反馈。",
+        "pinyin": "Qīdài nǐmen zài shìwán tǐyàn hòu jǐyǔ wǒmen bǎoguì de xiūgǎi fǎnkuì.",
+        "vi": "Rất mong sau khi chơi thử trải nghiệm, các bạn sẽ gửi lại cho chúng tôi những phản hồi chỉnh sửa quý báu."
+      }
+    },
+    {
+      "id": "spec_w_52",
+      "zh": "会议纪要",
+      "zh_tw": "會議紀要",
+      "pinyin": "huìyì jìyào",
+      "vi": "Biên bản họp (Meeting minutes)",
+      "category": "partner_comm",
+      "explanation": "Ghi chép tóm tắt nội dung, kết luận và phân công sau cuộc họp.",
+      "example": {
+        "zh": "散会后十五分钟内，PM会将整理好的会议纪要发给所有人。",
+        "pinyin": "Sànhuì hòu shíwǔ fēnzhōng nèi, PM huì jiāng zhěnglǐ hǎo de huìyì jìyào fā gěi suǒyǒu rén.",
+        "vi": "Trong vòng 15 phút sau khi tan họp, PM sẽ gửi biên bản họp đã sắp xếp cho tất cả mọi người."
+      }
+    },
+    {
+      "id": "spec_w_53",
+      "zh": "行动项",
+      "zh_tw": "行動項",
+      "pinyin": "xíngdòng xiàng",
+      "vi": "Action items / đầu việc sau họp",
+      "category": "partner_comm",
+      "explanation": "Các việc cụ thể ai làm, hạn chót khi nào sinh ra từ cuộc họp.",
+      "example": {
+        "zh": "会议纪要末尾必须列出清晰的行动项与对应责任人。",
+        "pinyin": "Huìyì jìyào mòwěi bìxū liè chū qīngxī de xíngdòng xiàng yǔ duìyìng zérènrén.",
+        "vi": "Phần cuối biên bản họp bắt buộc phải liệt kê các action item rõ ràng kèm theo người phụ trách tương ứng."
+      }
+    },
+    {
+      "id": "spec_w_54",
+      "zh": "责任人",
+      "zh_tw": "責任人",
+      "pinyin": "zérènrén",
+      "vi": "Người chịu trách nhiệm",
+      "category": "partner_comm",
+      "explanation": "Người trực tiếp đứng mũi chịu sào cho kết quả của đầu việc.",
+      "example": {
+        "zh": "每个任务卡片上都必须明确标注唯一的主责任人。",
+        "pinyin": "Měi gè rènwu kǎpiàn shang dōu bìxū míngquè biāozhù wéiyī de zhǔ zérènrén.",
+        "vi": "Trên mỗi thẻ nhiệm vụ đều phải ghi rõ duy nhất một người chịu trách nhiệm chính."
+      }
+    },
+    {
+      "id": "spec_w_55",
+      "zh": "跟进事项",
+      "zh_tw": "跟進事項",
+      "pinyin": "gēnjìn shìxiàng",
+      "vi": "Theo dõi các đầu việc (Follow-up items)",
+      "category": "partner_comm",
+      "explanation": "Danh mục các việc đang theo dõi cho đến khi đóng.",
+      "example": {
+        "zh": "这是今天例会遗留下来的三项关键跟进事项。",
+        "pinyin": "Zhè shì jīntiān lìhuì yíliú xiàlái de sān xiàng guānjiàn gēnjìn shìxiàng.",
+        "vi": "Đây là 3 việc cần theo dõi then chốt còn lại từ cuộc họp định kỳ hôm nay."
+      }
+    },
+    {
+      "id": "spec_w_56",
+      "zh": "信息不完整",
+      "zh_tw": "信息不完整",
+      "pinyin": "xìnxī bù wánzhěng",
+      "vi": "Thông tin chưa đầy đủ",
+      "category": "partner_comm",
+      "explanation": "Thiếu dữ liệu, tài liệu chưa rõ ràng gây cản trở triển khai.",
+      "example": {
+        "zh": "如果需求文档信息不完整，切忌盲目猜测，必须及时沟通。",
+        "pinyin": "Rúguǒ xūqiú wéndàng xìnxī bù wánzhěng, qièjì mángmù cāicè, bìxū jíshí gōutōng.",
+        "vi": "Nếu tài liệu yêu cầu thông tin chưa đầy đủ, tuyệt đối không đoán mò mà phải trao đổi ngay."
+      }
+    },
+    {
+      "id": "spec_w_57",
+      "zh": "需求变更",
+      "zh_tw": "需求變更",
+      "pinyin": "xūqiú biàngēng",
+      "vi": "Thay đổi yêu cầu (Change request)",
+      "category": "partner_comm",
+      "explanation": "Sửa đổi thiết kế giữa chừng sau khi đã thống nhất trước đó.",
+      "example": {
+        "zh": "临近上线时的频繁需求变更会给版本质量带来极大隐患。",
+        "pinyin": "Línjìn shàngxiàn shí de pínfán xūqiú biàngēng huì gěi bǎnběn zhìliàng dàilái jídà yǐnhuàn.",
+        "vi": "Việc thay đổi yêu cầu liên tục khi cận ngày ra mắt sẽ tiềm ẩn rủi ro rất lớn cho chất lượng phiên bản."
+      }
+    },
+    {
+      "id": "spec_w_58",
+      "zh": "达成共识",
+      "zh_tw": "達成共識",
+      "pinyin": "dáchéng gòngshí",
+      "vi": "Đạt được sự thống nhất",
+      "category": "partner_comm",
+      "explanation": "Các bên cùng đồng ý với một giải pháp hoặc hướng đi chung.",
+      "example": {
+        "zh": "经过深入讨论，双方团队最终在发布计划上达成了共识。",
+        "pinyin": "Jīngguò shēnrù tǎolùn, shuāngfāng tuánduì zuìzhōng zài fābù jìhuà shang dáchéng le gòngshí.",
+        "vi": "Sau khi thảo luận sâu, đội ngũ hai bên cuối cùng đã đạt được sự thống nhất về kế hoạch phát hành."
+      }
+    },
+    {
+      "id": "spec_w_59",
+      "zh": "汇报进展",
+      "zh_tw": "彙報進展",
+      "pinyin": "huìbào jìnzhǎn",
+      "vi": "Báo cáo tiến triển",
+      "category": "partner_comm",
+      "explanation": "Trình bày kết quả và khó khăn lên cấp trên hoặc đối tác.",
+      "example": {
+        "zh": "我每周五下午都会向项目总监汇报当周的核心进展。",
+        "pinyin": "Wǒ měi zhōuwǔ xiàwǔ dōu huì xiàng xiàngmù zǒngjiān huìbào dāng zhōu de héxīn jìnzhǎn.",
+        "vi": "Chiều thứ Sáu hằng tuần tôi đều báo cáo những tiến triển cốt lõi trong tuần cho Giám đốc dự án."
+      }
+    },
+    {
+      "id": "spec_w_60",
+      "zh": "及时回复",
+      "zh_tw": "及時回復",
+      "pinyin": "jíshí huífù",
+      "vi": "Phản hồi kịp thời",
+      "category": "partner_comm",
+      "explanation": "Trả lời tin nhắn, email nhanh chóng thể hiện tính chuyên nghiệp.",
+      "example": {
+        "zh": "收到合作方的咨询邮件时，应尽量在两小时内给予及时回复。",
+        "pinyin": "Shōudào hézuòfāng de zīxún yóujiàn shí, yīng jǐnliàng zài liǎng xiǎoshí nèi jǐyǔ jíshí huífù.",
+        "vi": "Khi nhận được email thắc mắc của đối tác, nên cố gắng phản hồi kịp thời trong vòng 2 tiếng."
+      }
+    },
+    {
+      "id": "spec_w_61",
+      "zh": "市场调研",
+      "zh_tw": "市場調研",
+      "pinyin": "shìchǎng diàoyán",
+      "vi": "Nghiên cứu thị trường",
+      "category": "market_research",
+      "explanation": "Thu thập và phân tích dữ liệu quy mô, hành vi người tiêu dùng.",
+      "example": {
+        "zh": "出海进入新地区前，必须做好充分的用户画像与市场调研。",
+        "pinyin": "Chūhǎi jìnrù xīn dìqū qián, bìxū zuò hǎo chōngfèn de yònghù huàxiàng yǔ shìchǎng diàoyán.",
+        "vi": "Trước khi xuất ngoại sang khu vực mới, cần nghiên cứu thị trường và chân dung người dùng thật kỹ."
+      }
+    },
+    {
+      "id": "spec_w_62",
+      "zh": "竞品分析",
+      "zh_tw": "競品分析",
+      "pinyin": "jìngpǐn fēnxī",
+      "vi": "Phân tích sản phẩm cạnh tranh (Competitor analysis)",
+      "category": "market_research",
+      "explanation": "So sánh điểm mạnh yếu, tính năng và giá cả với đối thủ trên thị trường.",
+      "example": {
+        "zh": "通过竞品分析，我们可以找出同类游戏尚未满足的用户痛点。",
+        "pinyin": "Tōngguò jìngpǐn fēnxī, wǒmen kěyǐ zhǎochū tónglèi yóuxì shàngwèi mǎnzú de yònghù tòngdiǎn.",
+        "vi": "Thông qua phân tích đối thủ, chúng ta có thể tìm ra những nỗi đau người dùng mà các game cùng loại chưa giải quyết được."
+      }
+    },
+    {
+      "id": "spec_w_63",
+      "zh": "行业趋势",
+      "zh_tw": "行業趨勢",
+      "pinyin": "hángyè qūshì",
+      "vi": "Xu hướng ngành",
+      "category": "market_research",
+      "explanation": "Hướng đi tương lai của dòng sản phẩm hoặc công nghệ mới.",
+      "example": {
+        "zh": "掌握行业趋势有助于团队在立项时做出更具前瞻性的决策。",
+        "pinyin": "Zhǎngwò hángyè qūshì yǒuzhù yú tuánduì zài lìxiàng shí zuò chū gèng jù qiánzhānxìng de juécè.",
+        "vi": "Nắm vững xu hướng ngành giúp đội ngũ đưa ra những quyết định đón đầu hơn khi lập dự án."
+      }
+    },
+    {
+      "id": "spec_w_64",
+      "zh": "目标用户",
+      "zh_tw": "目標用戶",
+      "pinyin": "mùbiāo yònghù",
+      "vi": "Người dùng mục tiêu (Target audience)",
+      "category": "market_research",
+      "explanation": "Đối tượng cụ thể mà sản phẩm hướng tới phục vụ.",
+      "example": {
+        "zh": "这款放置类卡牌游戏的目标用户主要是二十到三十五岁的上班族。",
+        "pinyin": "Zhè kuǎn fàngzhì lèi kǎpái yóuxì de mùbiāo yònghù zhǔyào shì èrshí dào sānshíwǔ suì de shàngbānzú.",
+        "vi": "Người dùng mục tiêu của tựa game thẻ bài nhàn rỗi này chủ yếu là dân văn phòng từ 20 đến 35 tuổi."
+      }
+    },
+    {
+      "id": "spec_w_65",
+      "zh": "用户需求",
+      "zh_tw": "用戶需求",
+      "pinyin": "yònghù xūqiú",
+      "vi": "Nhu cầu người dùng",
+      "category": "market_research",
+      "explanation": "Mong muốn, sở thích hoặc vấn đề người dùng muốn giải quyết.",
+      "example": {
+        "zh": "深入挖掘用户需求，才能打造出真正具有长线粘性的玩法。",
+        "pinyin": "Shēnrù wājué yònghù xūqiú, cáinéng dǎzào chū zhēnzhèng jùyǒu chángxiàn niánxìng de wánfǎ.",
+        "vi": "Khai thác sâu nhu cầu người dùng mới có thể tạo ra lối chơi gắn kết dài lâu thực sự."
+      }
+    },
+    {
+      "id": "spec_w_66",
+      "zh": "用户体验",
+      "zh_tw": "用戶體驗",
+      "pinyin": "yònghù tǐyàn",
+      "vi": "Trải nghiệm người dùng (UX)",
+      "category": "market_research",
+      "explanation": "Mức độ dễ dùng, thoải mái và cảm xúc khi tương tác với sản phẩm.",
+      "example": {
+        "zh": "界面设计必须以用户体验为中心，精简多余的操作链路。",
+        "pinyin": "Jièmiàn shèjì bìxū yǐ yònghù tǐyàn wéi zhōngxīn, jīngjiǎn duōyú de cāozuò liànlù.",
+        "vi": "Thiết kế giao diện phải lấy trải nghiệm người dùng làm trung tâm, tinh gọn các bước thao tác thừa thãi."
+      }
+    },
+    {
+      "id": "spec_w_67",
+      "zh": "用户留存",
+      "zh_tw": "用戶留存",
+      "pinyin": "yònghù liúcún",
+      "vi": "Khả năng giữ chân người dùng (Retention)",
+      "category": "market_research",
+      "explanation": "Khả năng giữ người chơi quay lại vào các ngày tiếp theo.",
+      "example": {
+        "zh": "次日留存率是衡量游戏新手引导是否成功的关键指标。",
+        "pinyin": "Cìrì liúcún lǜ shì héngliáng yóuxì xīnshǒu yǐndǎo shìfǒu chénggōng de guānjiàn zhǐbiāo.",
+        "vi": "Tỷ lệ giữ chân ngày hôm sau (D1 retention) là chỉ số then chốt đo lường hướng dẫn tân thủ có thành công hay không."
+      }
+    },
+    {
+      "id": "spec_w_68",
+      "zh": "活跃用户",
+      "zh_tw": "活躍用戶",
+      "pinyin": "huóyuè yònghù",
+      "vi": "Người dùng hoạt động (Active users)",
+      "category": "market_research",
+      "explanation": "Lượng người mở app và tương tác trong chu kỳ ngày/tháng.",
+      "example": {
+        "zh": "新版本上线后，日活跃用户数量有了显著的攀升。",
+        "pinyin": "Xīn bǎnběn shàngxiàn hòu, rì huóyuè yònghù shùliàng yǒu le xiǎnzhù de pānshēng.",
+        "vi": "Sau khi ra mắt phiên bản mới, lượng người dùng hoạt động hằng ngày (DAU) đã tăng vọt rõ rệt."
+      }
+    },
+    {
+      "id": "spec_w_69",
+      "zh": "用户评价",
+      "zh_tw": "用戶評價",
+      "pinyin": "yònghù píngjià",
+      "vi": "Đánh giá của người dùng",
+      "category": "market_research",
+      "explanation": "Số sao và review của người dùng trên các kho ứng dụng.",
+      "example": {
+        "zh": "高评分与正面的用户评价能够大幅降低自然获客的成本。",
+        "pinyin": "Gāo píngfēn yǔ zhèngmiàn de yònghù píngjià nénggòu dàfú jiàngdī zìrán huòkè de chéngběn.",
+        "vi": "Số sao cao và những đánh giá tích cực của người dùng giúp giảm mạnh chi phí kéo khách tự nhiên."
+      }
+    },
+    {
+      "id": "spec_w_70",
+      "zh": "数据分析",
+      "zh_tw": "數據分析",
+      "pinyin": "shùjù fēnxī",
+      "vi": "Phân tích dữ liệu",
+      "category": "market_research",
+      "explanation": "Sử dụng công cụ số học để tìm ra quy luật hành vi người dùng.",
+      "example": {
+        "zh": "依靠数据分析而不是主观臆断来决定下一步版本的优化方向。",
+        "pinyin": "Yīkào shùjù fēnxī ér bú shì zhǔguān yìduàn lái juédìng xià yí bù bǎnběn de yōuhuà fāngxiàng.",
+        "vi": "Dựa vào phân tích dữ liệu chứ không phán đoán chủ quan để quyết định hướng tối ưu cho bản tiếp theo."
+      }
+    },
+    {
+      "id": "spec_w_71",
+      "zh": "核心功能",
+      "zh_tw": "核心功能",
+      "pinyin": "héxīn gōngnéng",
+      "vi": "Tính năng cốt lõi",
+      "category": "market_research",
+      "explanation": "Tính năng độc đáo định hình giá trị của trò chơi.",
+      "example": {
+        "zh": "即时战斗与公会团战是本款MMO的核心功能。",
+        "pinyin": "Jíshí zhàndòu yǔ gōnghuì tuánzhàn shì běn kuǎn MMO de héxīn gōngnéng.",
+        "vi": "Chiến đấu thời gian thực và công thành bang hội là các tính năng cốt lõi của tựa game MMO này."
+      }
+    },
+    {
+      "id": "spec_w_72",
+      "zh": "优缺点",
+      "zh_tw": "優缺點",
+      "pinyin": "yōu quē diǎn",
+      "vi": "Ưu điểm và nhược điểm",
+      "category": "market_research",
+      "explanation": "Mặt mạnh và mặt hạn chế của một giải pháp hoặc sản phẩm.",
+      "example": {
+        "zh": "在调研报告中，请客观列出竞品与我方产品的优缺点对比。",
+        "pinyin": "Zài diàoyán bàogào zhōng, qǐng kèguān liè chū jìngpǐn yǔ wǒfāng chǎnpǐn de yōu quē diǎn duìbǐ.",
+        "vi": "Trong báo cáo nghiên cứu, xin hãy liệt kê khách quan so sánh ưu nhược điểm giữa sản phẩm đối thủ và sản phẩm ta."
+      }
+    },
+    {
+      "id": "spec_w_73",
+      "zh": "市场表现",
+      "zh_tw": "市場表現",
+      "pinyin": "shìchǎng biǎoxiàn",
+      "vi": "Kết quả trên thị trường",
+      "category": "market_research",
+      "explanation": "Thứ hạng doanh thu, lượt tải trên các bảng xếp hạng.",
+      "example": {
+        "zh": "该游戏在港澳台地区的市场表现远远超出了最初的预期。",
+        "pinyin": "Gāi yóuxì zài Gǎng-Ào-Tái dìqū de shìchǎng biǎoxiàn yuǎnyuǎn chāochū le zuìchū de yùqī.",
+        "vi": "Kết quả thể hiện trên thị trường của tựa game này tại Hong Kong, Ma Cao, Đài Loan vượt xa kỳ vọng ban đầu."
+      }
+    },
+    {
+      "id": "spec_w_74",
+      "zh": "商业目标",
+      "zh_tw": "商業目標",
+      "pinyin": "shāngyè mùbiāo",
+      "vi": "Mục tiêu kinh doanh",
+      "category": "market_research",
+      "explanation": "Chỉ số doanh thu, thị phần cần đạt cho dự án.",
+      "example": {
+        "zh": "所有的功能迭代都必须紧密围绕项目的年度商业目标展开。",
+        "pinyin": "Suǒyǒu de gōngnéng diédài dōu bìxū jǐnmì wéirào xiàngmù de niándù shāngyè mùbiāo zhǎnkāi.",
+        "vi": "Mọi đợt cải tiến tính năng đều phải bám sát mục tiêu kinh doanh cả năm của dự án."
+      }
+    },
+    {
+      "id": "spec_w_75",
+      "zh": "项目报告",
+      "zh_tw": "項目報告",
+      "pinyin": "xiàngmù bàogào",
+      "vi": "Báo cáo dự án",
+      "category": "market_research",
+      "explanation": "Văn bản tổng kết phân tích, kết luận và khuyến nghị.",
+      "example": {
+        "zh": "他提交了一份关于东南亚SLG游戏生态的深度项目报告。",
+        "pinyin": "Tā tíjiāo le yí fèn guānyú dōngnányà SLG yóuxì shēngtài de shēndù xiàngmù bàogào.",
+        "vi": "Anh ấy đã nộp một bản báo cáo dự án chuyên sâu về hệ sinh thái game SLG tại Đông Nam Á."
+      }
+    },
+    {
+      "id": "spec_w_76",
+      "zh": "文件",
+      "zh_tw": "文件",
+      "pinyin": "wénjiàn",
+      "vi": "Tài liệu / tệp tin",
+      "category": "docs_tools",
+      "explanation": "Tệp tin nói chung trên máy tính hoặc tài liệu văn bản.",
+      "example": {
+        "zh": "请在附件中查收我刚才提到的说明文件。",
+        "pinyin": "Qǐng zài fùjiàn zhōng cháshōu wǒ gāngcái tídào de shuōmíng wénjiàn.",
+        "vi": "Vui lòng kiểm tra nhận tệp tin giải thích tôi vừa nhắc tới trong tệp đính kèm."
+      }
+    },
+    {
+      "id": "spec_w_77",
+      "zh": "文档",
+      "zh_tw": "文檔",
+      "pinyin": "wéndàng",
+      "vi": "Tài liệu văn bản (Documentation)",
+      "category": "docs_tools",
+      "explanation": "Văn bản hướng dẫn, thiết kế sản phẩm (PRD/GDD).",
+      "example": {
+        "zh": "开发人员需要严格对照策划文档来实现游戏逻辑。",
+        "pinyin": "Kāifā rényuán xūyào yángé duìzhào cèhuà wéndàng lái shíxiàn yóuxì luójí.",
+        "vi": "Đội ngũ lập trình cần đối chiếu nghiêm ngặt tài liệu thiết kế để triển khai logic game."
+      }
+    },
+    {
+      "id": "spec_w_78",
+      "zh": "项目资料",
+      "zh_tw": "項目資料",
+      "pinyin": "xiàngmù zīliào",
+      "vi": "Tài liệu dự án",
+      "category": "docs_tools",
+      "explanation": "Kho hồ sơ, hợp đồng, thiết kế liên quan tới dự án.",
+      "example": {
+        "zh": "所有的项目资料已经上传到公司共享知识库中了。",
+        "pinyin": "Suǒyǒu de xiàngmù zīliào yǐjīng shàngchuán dào gōngsī gòngxiǎng zhīshikù zhōng le.",
+        "vi": "Toàn bộ tài liệu dự án đã được tải lên kho tri thức dùng chung của công ty."
+      }
+    },
+    {
+      "id": "spec_w_79",
+      "zh": "翻译",
+      "zh_tw": "翻譯",
+      "pinyin": "fānyì",
+      "vi": "Biên dịch (Translation)",
+      "category": "docs_tools",
+      "explanation": "Chuyển ngữ văn bản viết từ ngôn ngữ này sang ngôn ngữ khác.",
+      "example": {
+        "zh": "游戏内所有剧情对话的本地化翻译已进入最终校对阶段。",
+        "pinyin": "Yóuxì nèi suǒyǒu jùqíng duìhuà de běndìhuà fānyì yǐ jìnrù zuìzhōng jiàoduì jiēduàn.",
+        "vi": "Bản dịch bản địa hóa toàn bộ thoại cốt truyện trong game đã bước vào giai đoạn hiệu đính cuối cùng."
+      }
+    },
+    {
+      "id": "spec_w_80",
+      "zh": "口译",
+      "zh_tw": "口譯",
+      "pinyin": "kǒuyì",
+      "vi": "Phiên dịch (Interpretation)",
+      "category": "docs_tools",
+      "explanation": "Dịch trực tiếp bằng lời nói trong các cuộc họp hoặc hội thảo.",
+      "example": {
+        "zh": "在与外方技术团队沟通时，我们需要一名专业的随堂口译。",
+        "pinyin": "Zài yǔ wàifāng jìshù tuánduì gōutōng shí, wǒmen xūyào yì míng zhuānyè de suítáng kǒuyì.",
+        "vi": "Khi trao đổi với team kỹ thuật nước ngoài, chúng ta cần một phiên dịch viên chuyên nghiệp đi cùng."
+      }
+    },
+    {
+      "id": "spec_w_81",
+      "zh": "书面沟通",
+      "zh_tw": "書面溝通",
+      "pinyin": "shūmiàn gōutōng",
+      "vi": "Giao tiếp bằng văn bản",
+      "category": "docs_tools",
+      "explanation": "Gửi email, tin nhắn văn bản giúp lưu vết bằng chứng rõ ràng.",
+      "example": {
+        "zh": "重要事项达成一致后，建议再发邮件进行一次书面沟通确认。",
+        "pinyin": "Zhòngyào shìxiàng dáchéng yízhì hòu, jiànyì zài fā yóujiàn jìnxíng yí cì shūmiàn gōutōng quèrèn.",
+        "vi": "Sau khi thống nhất việc quan trọng, nên gửi thêm email để xác nhận bằng văn bản một lần nữa."
+      }
+    },
+    {
+      "id": "spec_w_82",
+      "zh": "会议材料",
+      "zh_tw": "會議材料",
+      "pinyin": "huìyì cáiliào",
+      "vi": "Tài liệu cuộc họp",
+      "category": "docs_tools",
+      "explanation": "Slide, báo cáo số liệu chuẩn bị trước cho buổi họp.",
+      "example": {
+        "zh": "请参会人员提前阅读发在群里的会议材料。",
+        "pinyin": "Qǐng cānhuì rényuán tíqián yuèdú fā zài qún lǐ de huìyì cáiliào.",
+        "vi": "Kính mời các thành viên tham gia họp đọc trước tài liệu cuộc họp được gửi trong nhóm."
+      }
+    },
+    {
+      "id": "spec_w_83",
+      "zh": "工作汇报",
+      "zh_tw": "工作彙報",
+      "pinyin": "gōngzuò huìbào",
+      "vi": "Báo cáo công việc",
+      "category": "docs_tools",
+      "explanation": "Tóm tắt thành quả làm việc gửi cho sếp hoặc đối tác.",
+      "example": {
+        "zh": "每周五撰写工作汇报不仅是对上交待，也是自我复盘的好机会。",
+        "pinyin": "Měi zhōuwǔ zhuànxiě gōngzuò huìbào bùjǐn shì duì shàng jiāodài, yě shì zìwǒ fùpán de hǎo jīhuì.",
+        "vi": "Viết báo cáo công việc vào thứ Sáu không chỉ để bàn giao cho sếp mà còn là dịp tốt để tự nhìn nhận lại."
+      }
+    },
+    {
+      "id": "spec_w_84",
+      "zh": "数据整理",
+      "zh_tw": "數據整理",
+      "pinyin": "shùjù zhěnglǐ",
+      "vi": "Tổng hợp, sắp xếp dữ liệu",
+      "category": "docs_tools",
+      "explanation": "Làm sạch, định dạng và sắp xếp số liệu thô thành bảng biểu.",
+      "example": {
+        "zh": "实习生花了半天时间完成各渠道留存率的数据整理。",
+        "pinyin": "Shíxíshēng huā le bàntiān shíjiān wánchéng gè qúdào liúcún lǜ de shùjù zhěnglǐ.",
+        "vi": "Bạn thực tập sinh đã dành nửa ngày để hoàn thành việc tổng hợp dữ liệu retention của các kênh."
+      }
+    },
+    {
+      "id": "spec_w_85",
+      "zh": "文档管理",
+      "zh_tw": "文檔管理",
+      "pinyin": "wéndàng guǎnlǐ",
+      "vi": "Quản lý tài liệu",
+      "category": "docs_tools",
+      "explanation": "Phân loại, cấp quyền và lưu trữ tài liệu khoa học.",
+      "example": {
+        "zh": "规范的文档管理能防止重要技术资产的意外丢失。",
+        "pinyin": "Guīfàn de wéndàng guǎnlǐ néng fángzhǐ zhòngyào jìshù zīchǎn de yìwài diūshī.",
+        "vi": "Quản lý tài liệu bài bản có thể ngăn chặn việc thất thoát tài sản kỹ thuật quan trọng ngoài ý muốn."
+      }
+    },
+    {
+      "id": "spec_w_86",
+      "zh": "版本管理",
+      "zh_tw": "版本管理",
+      "pinyin": "bǎnběn guǎnlǐ",
+      "vi": "Quản lý phiên bản (Git/SVN)",
+      "category": "docs_tools",
+      "explanation": "Kiểm soát các thay đổi mã nguồn và tài nguyên theo thời gian.",
+      "example": {
+        "zh": "请确保代码提交遵循团队制定的版本管理规范。",
+        "pinyin": "Qǐng quēbǎo dàimǎ tíjiāo zūnxún tuánduì zhìdìng de bǎnběn guǎnlǐ guīfàn.",
+        "vi": "Vui lòng đảm bảo các commit code tuân thủ quy tắc quản lý phiên bản do đội ngũ đề ra."
+      }
+    },
+    {
+      "id": "spec_w_87",
+      "zh": "表格",
+      "zh_tw": "表格",
+      "pinyin": "biǎogé",
+      "vi": "Bảng biểu (Table)",
+      "category": "docs_tools",
+      "explanation": "Khung hiển thị hàng và cột thông tin trực quan.",
+      "example": {
+        "zh": "请将各语种的翻译进度填入以下统计表格中。",
+        "pinyin": "Qǐng jiāng gè yǔzhǒng de fānyì jìndù tiánrù yǐxià tǒngjì biǎogé zhōng.",
+        "vi": "Xin hãy điền tiến độ dịch thuật của các ngôn ngữ vào bảng thống kê dưới đây."
+      }
+    },
+    {
+      "id": "spec_w_88",
+      "zh": "电子表格",
+      "zh_tw": "電子表格",
+      "pinyin": "diànzǐ biǎogé",
+      "vi": "Bảng tính (Spreadsheet/Excel)",
+      "category": "docs_tools",
+      "explanation": "File tính toán số liệu tự động như Microsoft Excel, Google Sheets.",
+      "example": {
+        "zh": "这款电子表格支持多用户同时在线协同编辑。",
+        "pinyin": "Zhè kuǎn diànzǐ biǎogé zhīchí duō yònghù tóngshí zàixiàn xiétóng biānjí.",
+        "vi": "Bảng tính điện tử này hỗ trợ nhiều người dùng cùng lúc chỉnh sửa trực tuyến."
+      }
+    },
+    {
+      "id": "spec_w_89",
+      "zh": "演示文稿",
+      "zh_tw": "演示文稿",
+      "pinyin": "yǎnshì wéngǎo",
+      "vi": "Bài trình chiếu (Presentation/PPT)",
+      "category": "docs_tools",
+      "explanation": "Slide thuyết trình trình bày ý tưởng trước khách hàng hoặc team.",
+      "example": {
+        "zh": "主策划用精美的演示文稿向大家讲解了新游戏的核心玩法。",
+        "pinyin": "Zhǔ cèhuà yòng jīngměi de yǎnshì wéngǎo xiàng dàjiā jiǎngjiě le xīn yóuxì de héxīn wánfǎ.",
+        "vi": "Trưởng thiết kế đã dùng bài trình chiếu đẹp mắt để diễn giải cho mọi người về lối chơi cốt lõi của game mới."
+      }
+    },
+    {
+      "id": "spec_w_90",
+      "zh": "人工智能工具",
+      "zh_tw": "人工智能工具",
+      "pinyin": "réngōng zhìnéng gōngjù",
+      "vi": "Công cụ AI",
+      "category": "docs_tools",
+      "explanation": "Phần mềm ứng dụng trí tuệ nhân tạo tăng tốc công việc.",
+      "example": {
+        "zh": "合理利用人工智能工具可以成倍提升内容编写与排查Bug的效率。",
+        "pinyin": "Hélǐ lìyòng réngōng zhìnéng gōngjù kěyǐ chéngbèi tíshēng nèiróng biānxiě yǔ páichá Bug de xiàolǜ.",
+        "vi": "Sử dụng hợp lý các công cụ AI có thể nâng cao gấp bội hiệu quả viết nội dung và truy vết lỗi."
+      }
+    },
+    {
+      "id": "spec_w_91",
+      "zh": "协作工具",
+      "zh_tw": "協作工具",
+      "pinyin": "xiézuò gōngjù",
+      "vi": "Công cụ cộng tác",
+      "category": "docs_tools",
+      "explanation": "Nền tảng làm việc nhóm như Slack, Lark/Feishu, Trello.",
+      "example": {
+        "zh": "现代跨国企业非常依赖现代化协作工具来保持高效沟通。",
+        "pinyin": "Xiàndài kuàguó qǐyè fēicháng yīlài xiàndàihuà xiézuò gōngjù lái bǎochí gāoxiào gōutōng.",
+        "vi": "Các doanh nghiệp đa quốc gia hiện đại rất phụ thuộc vào các công cụ cộng tác để duy trì liên lạc hiệu quả."
+      }
+    },
+    {
+      "id": "spec_w_92",
+      "zh": "责任心",
+      "zh_tw": "責任心",
+      "pinyin": "zérènxīn",
+      "vi": "Tinh thần trách nhiệm",
+      "category": "interview_skills",
+      "explanation": "Luôn theo sát công việc đến cùng và không trốn tránh khi gặp khó.",
+      "example": {
+        "zh": "我有很强的责任心，答应交付的事情一定会认真负责到底。",
+        "pinyin": "Wǒ yǒu hěn qiáng de zérènxīn, dāying jiāofù de shìqing yídìng huì rènzhēn fùzé dàodǐ.",
+        "vi": "Em có tinh thần trách nhiệm rất cao, những việc đã cam kết bàn giao chắc chắn sẽ làm đến nơi đến chốn."
+      }
+    },
+    {
+      "id": "spec_w_93",
+      "zh": "主动性",
+      "zh_tw": "主動性",
+      "pinyin": "zhǔdòngxìng",
+      "vi": "Tính chủ động (Proactivity)",
+      "category": "interview_skills",
+      "explanation": "Tự phát hiện việc cần làm và đề xuất giải pháp trước khi được nhắc.",
+      "example": {
+        "zh": "在工作中我始终保持高度的主动性，积极寻找优化流程的可能。",
+        "pinyin": "Zài gōngzuò zhōng wǒ shǐzhōng bǎochí gāodù de zhǔdòngxìng, jījí xúnzhǎo yōuhuà liúchéng de kěnéng.",
+        "vi": "Trong công việc em luôn giữ tính chủ động cao, tích cực tìm kiếm cơ hội tối ưu hóa quy trình."
+      }
+    },
+    {
+      "id": "spec_w_94",
+      "zh": "沟通能力",
+      "zh_tw": "溝通能力",
+      "pinyin": "gōutōng nénglì",
+      "vi": "Khả năng giao tiếp",
+      "category": "interview_skills",
+      "explanation": "Truyền tải ý nghĩ gãy gọn và biết cách lắng nghe thấu đáo.",
+      "example": {
+        "zh": "跨国协同最看重的就是跨文化背景下的沟通能力。",
+        "pinyin": "Kuàguó xiétóng zuì kànzhòng de jiùshì kuà wénhuà bèijǐng xià de gōutōng nénglì.",
+        "vi": "Hợp tác xuyên quốc gia coi trọng nhất chính là khả năng giao tiếp trong bối cảnh đa văn hóa."
+      }
+    },
+    {
+      "id": "spec_w_95",
+      "zh": "组织能力",
+      "zh_tw": "組織能力",
+      "pinyin": "zǔzhī nénglì",
+      "vi": "Khả năng tổ chức",
+      "category": "interview_skills",
+      "explanation": "Sắp xếp sự kiện, điều phối công việc có trật tự và khoa học.",
+      "example": {
+        "zh": "她具备出色的组织能力，曾成功统筹过多场百人规模的发布会。",
+        "pinyin": "Tā jùbèi chūsè de zǔzhī nénglì, céng chénggōng tǒngchóu guò duō chǎng bǎi rén guīmó de fābùhuì.",
+        "vi": "Cô ấy có khả năng tổ chức xuất sắc, từng điều phối thành công nhiều buổi họp báo quy mô hàng trăm người."
+      }
+    },
+    {
+      "id": "spec_w_96",
+      "zh": "协调能力",
+      "zh_tw": "協調能力",
+      "pinyin": "xiétiáo nénglì",
+      "vi": "Khả năng điều phối",
+      "category": "interview_skills",
+      "explanation": "Hòa giải xung đột và gắn kết các bộ phận cùng hướng về mục tiêu.",
+      "example": {
+        "zh": "优秀的协调能力让他成为连接技术与业务部门的最佳桥梁。",
+        "pinyin": "Yōuxiù de xiétiáo nénglì ràng tā chéngwéi liánjiē jìshù yǔ yèwù bùmén de zuì jiā qiáoliáng.",
+        "vi": "Khả năng điều phối xuất sắc biến anh ấy thành cây cầu nối tốt nhất giữa phòng kỹ thuật và phòng kinh doanh."
+      }
+    },
+    {
+      "id": "spec_w_97",
+      "zh": "逻辑思维",
+      "zh_tw": "邏輯思維",
+      "pinyin": "luójí sīwéi",
+      "vi": "Tư duy logic",
+      "category": "interview_skills",
+      "explanation": "Phân tích vấn đề rành mạch theo nguyên nhân - hệ quả - giải pháp.",
+      "example": {
+        "zh": "面对复杂混乱的突发Bug，清晰的逻辑思维至关重要。",
+        "pinyin": "Miànduì fùzá hùnluàn de tūfā Bug, qīngxī de luójí sīwéi zhìguān zhòngyào.",
+        "vi": "Trước những lỗi phát sinh phức tạp, tư duy logic rành mạch là điều tối quan trọng."
+      }
+    },
+    {
+      "id": "spec_w_98",
+      "zh": "学习能力",
+      "zh_tw": "學習能力",
+      "pinyin": "xuéxí nénglì",
+      "vi": "Khả năng học hỏi",
+      "category": "interview_skills",
+      "explanation": "Tiếp thu kiến thức và công nghệ mới một cách nhanh chóng.",
+      "example": {
+        "zh": "游戏行业迭代极快，持续的学习能力是立足之本。",
+        "pinyin": "Yóuxì hángyè diédài jí kuài, chíxù de xuéxí nénglì shì lìzú zhī běn.",
+        "vi": "Ngành game thay đổi cực nhanh, năng lực học hỏi liên tục là gốc rễ để phát triển bền vững."
+      }
+    },
+    {
+      "id": "spec_w_99",
+      "zh": "适应能力",
+      "zh_tw": "適應能力",
+      "pinyin": "shìyìng nénglì",
+      "vi": "Khả năng thích nghi",
+      "category": "interview_skills",
+      "explanation": "Dễ dàng hòa nhập vào môi trường và quy trình làm việc mới.",
+      "example": {
+        "zh": "良好的适应能力帮助我迅速融入了这家多国语言的初创团队。",
+        "pinyin": "Liánghǎo de shìyìng nénglì bāngzhù wǒ xùnsù róngrù le zhè jiā duō guó yǔyán de chūchuàng tuánduì.",
+        "vi": "Khả năng thích nghi tốt giúp em nhanh chóng hòa nhập vào đội ngũ startup đa ngôn ngữ này."
+      }
+    },
+    {
+      "id": "spec_w_100",
+      "zh": "细心",
+      "zh_tw": "細心",
+      "pinyin": "xìxīn",
+      "vi": "Cẩn thận, tỉ mỉ",
+      "category": "interview_skills",
+      "explanation": "Chú ý đến từng chi tiết nhỏ để hạn chế tối đa sai sót.",
+      "example": {
+        "zh": "校对本地化文本和核对数据时必须格外细心。",
+        "pinyin": "Jiàoduì běndìhuà wénběn hé h किसानोंéduì shùjù shí bìxū gèwài xìxīn.",
+        "vi": "Khi đối chiếu văn bản bản địa hóa và số liệu bắt buộc phải đặc biệt cẩn thận."
+      }
+    },
+    {
+      "id": "spec_w_101",
+      "zh": "有条理",
+      "zh_tw": "有條理",
+      "pinyin": "yǒu tiáolǐ",
+      "vi": "Có tổ chức, có hệ thống",
+      "category": "interview_skills",
+      "explanation": "Làm việc theo lớp lang, cấu trúc trật tự rõ ràng.",
+      "example": {
+        "zh": "他的工作汇报总是非常清晰有条理，让人一目了然。",
+        "pinyin": "Tā de gōngzuò huìbào zǒngshì fēicháng qīngxī yǒu tiáolǐ, ràng rén yímùliǎorán.",
+        "vi": "Báo cáo công việc của anh ấy luôn rất rõ ràng, có hệ thống, khiến người xem nhìn là hiểu ngay."
+      }
+    },
+    {
+      "id": "spec_w_102",
+      "zh": "多任务处理",
+      "zh_tw": "多任務處理",
+      "pinyin": "duō rènwu chǔlǐ",
+      "vi": "Xử lý nhiều nhiệm vụ (Multitasking)",
+      "category": "interview_skills",
+      "explanation": "Khả năng xoay xở giải quyết nhiều đầu việc đồng thời.",
+      "example": {
+        "zh": "项目经理往往需要具备强大的多任务处理能力。",
+        "pinyin": "Xiàngmù jīnglǐ wǎngwǎng xūyào jùbèi qiángdà de duō rènwu chǔlǐ nénglì.",
+        "vi": "Người quản lý dự án thường phải sở hữu năng lực xử lý đa nhiệm rất mạnh mẽ."
+      }
+    },
+    {
+      "id": "spec_w_103",
+      "zh": "时间管理",
+      "zh_tw": "時間管理",
+      "pinyin": "shíjiān guǎnlǐ",
+      "vi": "Quản lý thời gian",
+      "category": "interview_skills",
+      "explanation": "Phân chia thời gian làm việc hiệu quả, tránh trì hoãn.",
+      "example": {
+        "zh": "良好的时间管理技巧让我能在多重DDL面前游刃有余。",
+        "pinyin": "Liánghǎo de shíjiān guǎnlǐ jìqiǎo ràng wǒ néng zài duōchóng DDL miànqián yóurèn-yǒuyú.",
+        "vi": "Kỹ năng quản lý thời gian tốt giúp em xử lý nhẹ nhàng trước nhiều deadline dồn dập."
+      }
+    },
+    {
+      "id": "spec_w_104",
+      "zh": "解决问题的能力",
+      "zh_tw": "解決問題的能力",
+      "pinyin": "jiějué wèntí de nénglì",
+      "vi": "Khả năng giải quyết vấn đề (Problem-solving)",
+      "category": "interview_skills",
+      "explanation": "Tập trung vào phương án khắc phục thay vì than phiền khó khăn.",
+      "example": {
+        "zh": "面试官非常看重应聘者在逆境中解决问题的能力。",
+        "pinyin": "Miànshìguān fēicháng kànzhòng yìngpìnzhě zài nìjìng zhōng jiějué wèntí de nénglì.",
+        "vi": "Người phỏng vấn rất coi trọng khả năng giải quyết vấn đề của ứng viên trong các tình huống khó khăn."
+      }
+    },
+    {
+      "id": "spec_w_105",
+      "zh": "抗压能力",
+      "zh_tw": "抗壓能力",
+      "pinyin": "kàngyā nénglì",
+      "vi": "Khả năng chịu áp lực",
+      "category": "interview_skills",
+      "explanation": "Giữ vững bình tĩnh và năng suất cao ngay cả khi công việc dồn dập.",
+      "example": {
+        "zh": "在项目上线冲刺阶段，强大的抗压能力能够稳住军心。",
+        "pinyin": "Zài xiàngmù shàngxiàn chōngcì jiēduàn, qiángdà de kàngyā nénglì nénggòu wěn zhù jūnxīn.",
+        "vi": "Trong giai đoạn nước rút ra mắt dự án, khả năng chịu áp lực mạnh mẽ sẽ giúp giữ vững tinh thần cả đội."
+      }
+    },
+    {
+      "id": "spec_w_106",
+      "zh": "以结果为导向",
+      "zh_tw": "以結果為導向",
+      "pinyin": "yǐ jiéguǒ wéi dǎoxiàng",
+      "vi": "Định hướng kết quả (Result-oriented)",
+      "category": "interview_skills",
+      "explanation": "Lấy mục tiêu cuối cùng làm thước đo cho mọi nỗ lực và hành động.",
+      "example": {
+        "zh": "我们团队始终坚持以结果为导向，用实际数据证明价值。",
+        "pinyin": "Wǒmen tuánduì shǐzhōng jiānchí yǐ jiéguǒ wéi dǎoxiàng, yòng shíjì shùjù zhèngmíng jiàzhí.",
+        "vi": "Đội ngũ của chúng tôi luôn kiên định lấy kết quả làm định hướng, dùng số liệu thực tế để chứng minh giá trị."
+      }
+    },
+    {
+      "id": "spec_w_107",
+      "zh": "快速学习",
+      "zh_tw": "快速學習",
+      "pinyin": "kuàisù xuéxí",
+      "vi": "Học hỏi nhanh (Fast learner)",
+      "category": "interview_skills",
+      "explanation": "Nắm bắt công cụ hoặc nghiệp vụ mới trong thời gian rất ngắn.",
+      "example": {
+        "zh": "作为一个快速学习者，我仅用两周就掌握了公司内部的配置系统。",
+        "pinyin": "Zuòwéi yí gè kuàisù xuéxí zhě, wǒ jǐn yòng liǎng zhōu jiù zhǎngwò le gōngsī nèibù de pèizhì xìtǒng.",
+        "vi": "Là người học hỏi nhanh, em chỉ mất 2 tuần để làm chủ hệ thống cấu hình nội bộ của công ty."
+      }
+    },
+    {
+      "id": "spec_w_108",
+      "zh": "市场营销",
+      "zh_tw": "市場營銷",
+      "pinyin": "shìchǎng yíngxiāo",
+      "vi": "Tiếp thị / Marketing",
+      "category": "marketing_sales",
+      "explanation": "Tổng thể các hoạt động quảng bá, định vị và xúc tiến tiêu thụ sản phẩm.",
+      "example": {
+        "zh": "市场营销团队正在策划一场面向东南亚年轻群体的破圈活动。",
+        "pinyin": "Shìchǎng yíngxiāo tuánduì zhèngzài cèhuà yì chǎng miànxiàng dōngnányà niánqīng qúntǐ de pòquān huódòng.",
+        "vi": "Đội ngũ tiếp thị đang lên kế hoạch cho một chiến dịch viral hướng đến giới trẻ Đông Nam Á."
+      }
+    },
+    {
+      "id": "spec_w_109",
+      "zh": "销售业绩",
+      "zh_tw": "銷售業績",
+      "pinyin": "xiàoshòu yèjì",
+      "vi": "Doanh số bán hàng / KPI Sales",
+      "category": "marketing_sales",
+      "explanation": "Kết quả doanh thu bán ra đạt được so với chỉ tiêu giao.",
+      "example": {
+        "zh": "本季度销售团队超额百分之二十完成了既定的销售业绩。",
+        "pinyin": "Běn jīdù xiàoshòu tuánduì chāo'é bǎifēnzhī èrshí wánchéng le jìdìng de xiàoshòu yèjì.",
+        "vi": "Quý này đội ngũ bán hàng đã hoàn thành vượt mức 20% chỉ tiêu doanh số đã đề ra."
+      }
+    },
+    {
+      "id": "spec_w_110",
+      "zh": "客户转化率",
+      "zh_tw": "客戶轉化率",
+      "pinyin": "kèhù zhuǎnhuà lǜ",
+      "vi": "Tỷ lệ chuyển đổi khách hàng (Conversion rate)",
+      "category": "marketing_sales",
+      "explanation": "Tỷ lệ khách hàng tiềm năng thực hiện hành vi mua hàng / nạp tiền.",
+      "example": {
+        "zh": "优化落地页文案将广告点击的客户转化率提升了三个百分点。",
+        "pinyin": "Yōuhuà luòdì yè wén'àn jiāng guǎnggào diǎnjī de kèhù zhuǎnhuà lǜ tíshēng le sān gè bǎifēndiǎn.",
+        "vi": "Tối ưu nội dung trang đích đã giúp tăng 3% tỷ lệ chuyển đổi từ lượt nhấp quảng cáo."
+      }
+    },
+    {
+      "id": "spec_w_111",
+      "zh": "广告投放",
+      "zh_tw": "廣告投放",
+      "pinyin": "guǎnggào tóufàng",
+      "vi": "Chạy quảng cáo (Ad placement)",
+      "category": "marketing_sales",
+      "explanation": "Đưa mẫu quảng cáo lên các nền tảng số như Meta, TikTok, Google.",
+      "example": {
+        "zh": "合理的广告投放策略能够以最低的成本覆盖核心受众。",
+        "pinyin": "Hélǐ de guǎnggào tóufàng cèlüè nénggòu yǐ zuìdī de chéngběn fùgài héxīn shòuzhòng.",
+        "vi": "Chiến lược chạy quảng cáo hợp lý có thể tiếp cận tệp khách hàng cốt lõi với chi phí thấp nhất."
+      }
+    },
+    {
+      "id": "spec_w_112",
+      "zh": "获客成本",
+      "zh_tw": "獲客成本",
+      "pinyin": "huòkè chéngběn",
+      "vi": "Chi phí sở hữu khách hàng (CAC)",
+      "category": "marketing_sales",
+      "explanation": "Tổng chi phí marketing chia cho số lượng khách hàng mới thu được.",
+      "example": {
+        "zh": "控制好单用户获客成本是维持产品长期盈利的生命线。",
+        "pinyin": "Kòngzhì hǎo dān yònghù huòkè chéngběn shì wéichí chǎnpǐn chángqī yínglì de shēngmìngxiàn.",
+        "vi": "Kiểm soát tốt chi phí sở hữu khách hàng là đường sống để duy trì lợi nhuận lâu dài cho sản phẩm."
+      }
+    },
+    {
+      "id": "spec_w_113",
+      "zh": "用户留存率",
+      "zh_tw": "用戶留存率",
+      "pinyin": "yònghù liúcún lǜ",
+      "vi": "Tỷ lệ giữ chân người dùng (Retention rate)",
+      "category": "marketing_sales",
+      "explanation": "Tỷ lệ khách hàng tiếp tục sử dụng dịch vụ sau một khoảng thời gian.",
+      "example": {
+        "zh": "比起盲目买量，提高老用户的留存率才是真正的赚钱之道。",
+        "pinyin": "Bǐqǐ mángmù mǎiliàng, tígāo lǎo yònghù de liúcún lǜ cái shì zhēnzhèng de zhuànqián zhī dào.",
+        "vi": "So với mua user mù quáng, nâng cao tỷ lệ giữ chân khách hàng cũ mới là con đường kiếm lợi nhuận bền vững."
+      }
+    },
+    {
+      "id": "spec_w_114",
+      "zh": "投资回报率",
+      "zh_tw": "投資回報率",
+      "pinyin": "tóuzī huíbào lǜ",
+      "vi": "Tỷ suất hoàn vốn (ROI)",
+      "category": "marketing_sales",
+      "explanation": "Lợi nhuận ròng thu về trên tổng số vốn đầu tư bỏ ra.",
+      "example": {
+        "zh": "本次推广活动的投资回报率达到了预期的两倍以上。",
+        "pinyin": "Běncì tuīguǎng huódòng de tóuzī huíbào lǜ dádào le yùqī de liǎng bèi yǐshàng.",
+        "vi": "Tỷ suất hoàn vốn ROI của chiến dịch quảng bá lần này đã đạt hơn gấp đôi mức kỳ vọng."
+      }
+    },
+    {
+      "id": "spec_w_115",
+      "zh": "用户生命周期价值",
+      "zh_tw": "用戶生命週期價值",
+      "pinyin": "yònghù shēngmìng zhōuqī jiàzhí",
+      "vi": "Giá trị vòng đời khách hàng (LTV)",
+      "category": "marketing_sales",
+      "explanation": "Tổng doanh thu dự kiến một khách hàng mang lại trong suốt thời gian gắn bó.",
+      "example": {
+        "zh": "只要LTV显著大于CAC，买量投放模型就具有极强的扩张性。",
+        "pinyin": "Zhǐyào LTV xiǎnzhù dàyú CAC, mǎiliàng tóufàng móxíng jiù jùyǒu jí qiáng de kuòzhāng xìng.",
+        "vi": "Chỉ cần LTV lớn hơn rõ rệt so với CAC, mô hình đổ tiền quảng cáo mua user sẽ có khả năng mở rộng cực lớn."
+      }
+    },
+    {
+      "id": "spec_w_116",
+      "zh": "品牌推广",
+      "zh_tw": "品牌推廣",
+      "pinyin": "pǐnpái tuīguǎng",
+      "vi": "Quảng bá thương hiệu (Branding)",
+      "category": "marketing_sales",
+      "explanation": "Nâng cao độ nhận diện và uy tín của nhãn hàng trong tâm trí khách hàng.",
+      "example": {
+        "zh": "赞助电子竞技赛事是游戏公司进行品牌推广的高效手段。",
+        "pinyin": "Zànzhù diànzǐ jìngjì sàishì shì yóuxì gōngsī jìnxíng pǐnpái tuīguǎng de gāoxiào shǒuduàn.",
+        "vi": "Tài trợ các giải đấu thể thao điện tử là phương thức quảng bá thương hiệu hiệu quả của các công ty game."
+      }
+    },
+    {
+      "id": "spec_w_117",
+      "zh": "渠道拓展",
+      "zh_tw": "渠道拓展",
+      "pinyin": "qúdào tuòzhǎn",
+      "vi": "Mở rộng kênh phân phối",
+      "category": "marketing_sales",
+      "explanation": "Tìm kiếm thêm đối tác đại lý, cổng thanh toán hoặc nền tảng mới.",
+      "example": {
+        "zh": "商务经理正在积极负责海外第三方支付渠道的拓展与谈判。",
+        "pinyin": "Shāngwù jīnglǐ zhèngzài jījí fùzé hǎiwài dì-sān fāng zhīfù qúdào de tuòzhǎn yǔ tánpàn.",
+        "vi": "Giám đốc thương mại đang tích cực phụ trách mở rộng và đàm phán các kênh thanh toán bên thứ ba tại nước ngoài."
+      }
+    },
+    {
+      "id": "spec_w_118",
+      "zh": "商务谈判",
+      "zh_tw": "商務談判",
+      "pinyin": "shāngwù tánpàn",
+      "vi": "Đàm phán thương mại",
+      "category": "marketing_sales",
+      "explanation": "Thương thảo về điều khoản hợp đồng, chia sẻ doanh thu và quyền lợi.",
+      "example": {
+        "zh": "他在跨国商务谈判中展现出了极高的专业素养与灵活性。",
+        "pinyin": "Tā zài kuàguó shāngwù tánpàn zhōng zhǎnxiàn chū le jí gāo de zhuānyè sùyǎng yǔ línghuóxìng.",
+        "vi": "Anh ấy đã thể hiện tính chuyên nghiệp và sự linh hoạt rất cao trong các cuộc đàm phán thương mại xuyên quốc gia."
+      }
+    },
+    {
+      "id": "spec_w_119",
+      "zh": "促销售卖",
+      "zh_tw": "促銷售賣",
+      "pinyin": "cùxiāo shòumài",
+      "vi": "Khuyến mãi bán hàng (Promotion campaign)",
+      "category": "marketing_sales",
+      "explanation": "Tung ra các ưu đãi giảm giá, tặng quà kích thích mua sắm.",
+      "example": {
+        "zh": "双十一期间的促销售卖活动让平台流水实现了成倍爆发。",
+        "pinyin": "Shuāng shí-yī qījiān de cùxiāo shòumài huódòng ràng píngtái liúshuǐ shíxiàn le chéngbèi bàofā.",
+        "vi": "Các hoạt động xúc tiến khuyến mãi trong đợt Sale 11/11 đã giúp dòng tiền doanh thu của nền tảng bùng nổ gấp bội."
+      }
+    },
+    {
+      "id": "spec_w_120",
+      "zh": "意向客户",
+      "zh_tw": "意向客戶",
+      "pinyin": "yìxiàng kèhù",
+      "vi": "Khách hàng tiềm năng (Leads)",
+      "category": "marketing_sales",
+      "explanation": "Người dùng đã để lại thông tin hoặc thể hiện sự quan tâm tới sản phẩm.",
+      "example": {
+        "zh": "销售代表正在对展会上收集到的意向客户逐一进行电话回访。",
+        "pinyin": "Xiàoshòu dàibiǎo zhèngzài duì zhǎnhuì shang shōují dào de yìxiàng kèhù zhúyī jìnxíng diànhuà huífǎng.",
+        "vi": "Đại diện kinh doanh đang gọi điện chăm sóc từng khách hàng tiềm năng thu thập được tại hội chợ triển lãm."
+      }
+    },
+    {
+      "id": "spec_w_121",
+      "zh": "签单率",
+      "zh_tw": "簽單率",
+      "pinyin": "qiāndān lǜ",
+      "vi": "Tỷ lệ chốt hợp đồng (Deal closing rate)",
+      "category": "marketing_sales",
+      "explanation": "Tỷ lệ các cuộc đàm phán thành công đi đến ký kết chính thức.",
+      "example": {
+        "zh": "提供个性化定制方案能够显著提高B2B大客户的签单率。",
+        "pinyin": "Tígōng gèxìnghuà dìngzhì fāng'àn nénggòu xiǎnzhù tígāo B2B dà kèhù de qiāndān lǜ.",
+        "vi": "Cung cấp phương án may đo cá nhân hóa có thể nâng cao rõ rệt tỷ lệ chốt hợp đồng với các khách hàng doanh nghiệp lớn."
+      }
+    },
+    {
+      "id": "spec_w_122",
+      "zh": "售后服务",
+      "zh_tw": "售後服務",
+      "pinyin": "shòuhòu fúwù",
+      "vi": "Dịch vụ hậu mãi / Chăm sóc sau bán",
+      "category": "marketing_sales",
+      "explanation": "Hỗ trợ kỹ thuật, giải quyết khiếu nại sau khi khách hàng đã mua.",
+      "example": {
+        "zh": "优质周到的售后服务是维持高续约率和良好口碑的关键。",
+        "pinyin": "Yōuzhì zhōudào de shòuhòu fúwù shì wéichí gāo xùyuē lǜ hé liánghǎo kǒubēi de guānjiàn.",
+        "vi": "Dịch vụ hậu mãi chu đáo chất lượng cao là chìa khóa để duy trì tỷ lệ tái ký cao và danh tiếng tốt."
+      }
+    },
+    {
+      "id": "spec_w_123",
+      "zh": "商业变现",
+      "zh_tw": "商業變現",
+      "pinyin": "shāngyè biànxiàn",
+      "vi": "Thương mại hóa / Tạo doanh thu (Monetization)",
+      "category": "marketing_sales",
+      "explanation": "Mô hình biến lượng truy cập và người dùng thành dòng tiền thực tế.",
+      "example": {
+        "zh": "除了游戏内内购道具，激励视频广告也是重要的商业变现途径。",
+        "pinyin": "Chúle yóuxì nèi nèigòu dàojù, jīlì shìpín guǎnggào yě shì zhòngyào de shāngyè biànxiàn tújìng.",
+        "vi": "Bên cạnh vật phẩm nạp trong game, quảng cáo video nhận thưởng cũng là một kênh thương mại hóa kiếm tiền quan trọng."
+      }
+    }
+  ]
+}
