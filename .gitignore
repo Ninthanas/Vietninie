@@ -1,5 +1,24 @@
+# Environment variables
 .env
 backend/.env
+*.env
+
+# Python bytecode & cache
 __pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
 *.pyc
+
+# IDEs & OS artifacts
 .idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Temporary & log files
+*.log
+scratch_*.py
+temp_*.txt

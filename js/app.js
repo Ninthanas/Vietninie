@@ -2,7 +2,11 @@
 // MAIN APP CONTROLLER (NAVBAR, ONBOARDING, DARK MODE, 4-MIRROR AUDIO,
 // AUTH LOGIN/LOGOUT, 30-Q PLACEMENT TEST, 4-STEP CORE LESSONS & HOME)
 // ============================================================================
-const API_BASE_URL = 'http://localhost:8000';
+const isLocalEnv = typeof window !== 'undefined' && (
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
+  window.location.protocol === 'http:'
+);
+const API_BASE_URL = isLocalEnv ? 'http://localhost:8000' : '';
 
 // ============================================================================
 // SERVERLESS TURSO CLOUD DATABASE BRIDGE (WORKS DIRECTLY ON GITHUB PAGES!)
@@ -340,6 +344,7 @@ const AuthManager = {
   },
 
   async verifyTokenWithBackend() {
+    if (!isLocalEnv || !this.token) return;
     try {
       const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
         headers: { 'Authorization': `Bearer ${this.token}` }
@@ -488,42 +493,7 @@ const AuthManager = {
       return;
     }
 
-    const endpoint = this.mode === 'login' ? '/api/auth/login' : '/api/auth/register';
-    const payload = this.mode === 'login'
-      ? { username, password }
-      : { username, password, display_name: displayName };
-
-    try {
-      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        if (err) {
-          err.style.display = 'block';
-          err.textContent = data.detail || (isVi ? 'Đăng nhập thất bại, vui lòng kiểm tra lại!' : '认证失败，请重试！');
-        }
-        return;
-      }
-
-      this.token = data.access_token;
-      this.user = {
-        user_id: data.user_id,
-        username: data.username,
-        display_name: data.display_name || displayName
-      };
-      localStorage.setItem('vn_auth_token', this.token);
-      localStorage.setItem('vn_auth_user', JSON.stringify(this.user));
-      this.updateHeaderUI();
-      this.closeModal();
-      AppUI.showToast(isVi
-        ? `🎉 Chào mừng ${this.user.display_name} đã đăng nhập (Đồng bộ Turso Cloud)!`
-        : `🎉 欢迎回来，${this.user.display_name}（已连接 Turso 云数据库）！`);
-      window.dispatchEvent(new CustomEvent('sentruc:auth-changed'));
-    } catch (networkErr) {
-      // Directly connect to Serverless Turso Cloud DB (Works 100% on GitHub Pages without localhost:8000!)
+    const executeTursoCloud = async () => {
       try {
         const cloudData = this.mode === 'login'
           ? await TursoCloudBridge.loginUser(username, password)
@@ -543,32 +513,78 @@ const AuthManager = {
           ? `☁️ Đã kết nối Turso Cloud DB: Chào mừng ${this.user.display_name}!`
           : `☁️ 已同步至 Turso 云端数据库：欢迎 ${this.user.display_name}！`);
         window.dispatchEvent(new CustomEvent('sentruc:auth-changed'));
-        return;
+        return true;
       } catch (tursoErr) {
-        if (tursoErr && tursoErr.message && (tursoErr.message.includes('Mật khẩu') || tursoErr.message.includes('tồn tại') || tursoErr.message.includes('Không tìm thấy'))) {
+        if (tursoErr && tursoErr.message && (tursoErr.message.includes('Mật khẩu') || tursoErr.message.includes('tồn tại') || tursoErr.message.includes('Không tìm thấy') || tursoErr.message.includes('UNIQUE constraint'))) {
           if (err) {
             err.style.display = 'block';
             err.textContent = tursoErr.message;
           }
+          return true; // handled error
+        }
+        return false;
+      }
+    };
+
+    if (!isLocalEnv) {
+      const handled = await executeTursoCloud();
+      if (handled) return;
+    } else {
+      const endpoint = this.mode === 'login' ? '/api/auth/login' : '/api/auth/register';
+      const payload = this.mode === 'login'
+        ? { username, password }
+        : { username, password, display_name: displayName };
+
+      try {
+        const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          if (err) {
+            err.style.display = 'block';
+            err.textContent = data.detail || (isVi ? 'Đăng nhập thất bại, vui lòng kiểm tra lại!' : '认证失败，请重试！');
+          }
           return;
         }
-      }
 
-      // Offline fallback if user has no internet at all
-      const localUsers = JSON.parse(localStorage.getItem('vn_local_users') || '{}');
-      this.user = { user_id: 'local_' + Date.now(), username, display_name: displayName };
-      this.token = 'local-jwt-' + username;
-      localUsers[username] = { password, profile: this.user };
-      localStorage.setItem('vn_local_users', JSON.stringify(localUsers));
-      localStorage.setItem('vn_auth_token', this.token);
-      localStorage.setItem('vn_auth_user', JSON.stringify(this.user));
-      this.updateHeaderUI();
-      this.closeModal();
-      AppUI.showToast(isVi
-        ? `✅ Đã đăng nhập tài khoản: ${this.user.display_name}!`
-        : `✅ 已登录账户：${this.user.display_name}！`);
-      window.dispatchEvent(new CustomEvent('sentruc:auth-changed'));
+        this.token = data.access_token;
+        this.user = {
+          user_id: data.user_id,
+          username: data.username,
+          display_name: data.display_name || displayName
+        };
+        localStorage.setItem('vn_auth_token', this.token);
+        localStorage.setItem('vn_auth_user', JSON.stringify(this.user));
+        this.updateHeaderUI();
+        this.closeModal();
+        AppUI.showToast(isVi
+          ? `🎉 Chào mừng ${this.user.display_name} đã đăng nhập!`
+          : `🎉 欢迎回来，${this.user.display_name}！`);
+        window.dispatchEvent(new CustomEvent('sentruc:auth-changed'));
+        return;
+      } catch (networkErr) {
+        const handled = await executeTursoCloud();
+        if (handled) return;
+      }
     }
+
+    // Offline fallback if user has no internet at all
+    const localUsers = JSON.parse(localStorage.getItem('vn_local_users') || '{}');
+    this.user = { user_id: 'local_' + Date.now(), username, display_name: displayName };
+    this.token = 'local-jwt-' + username;
+    localUsers[username] = { password, profile: this.user };
+    localStorage.setItem('vn_local_users', JSON.stringify(localUsers));
+    localStorage.setItem('vn_auth_token', this.token);
+    localStorage.setItem('vn_auth_user', JSON.stringify(this.user));
+    this.updateHeaderUI();
+    this.closeModal();
+    AppUI.showToast(isVi
+      ? `✅ Đã đăng nhập tài khoản: ${this.user.display_name}!`
+      : `✅ 已登录账户：${this.user.display_name}！`);
+    window.dispatchEvent(new CustomEvent('sentruc:auth-changed'));
   },
 
   logout() {
@@ -666,19 +682,23 @@ const PlacementController = {
   async startTest() {
     this.currentIndex = 0;
     this.answers = {};
-    try {
-      const res = await fetch(`${API_BASE_URL}/api/placement/questions`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data.questions && data.questions.length > 0) {
-          this.questions = data.questions;
+    if (isLocalEnv) {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/placement/questions`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.questions && data.questions.length > 0) {
+            this.questions = data.questions;
+          } else {
+            this.questions = FALLBACK_PLACEMENT_QUESTIONS;
+          }
         } else {
           this.questions = FALLBACK_PLACEMENT_QUESTIONS;
         }
-      } else {
+      } catch (e) {
         this.questions = FALLBACK_PLACEMENT_QUESTIONS;
       }
-    } catch (e) {
+    } else {
       this.questions = FALLBACK_PLACEMENT_QUESTIONS;
     }
     this.renderQuestion();
@@ -739,18 +759,20 @@ const PlacementController = {
     }));
 
     let resultData = null;
-    try {
-      const headers = { 'Content-Type': 'application/json' };
-      if (AuthManager.token) headers['Authorization'] = `Bearer ${AuthManager.token}`;
-      const res = await fetch(`${API_BASE_URL}/api/placement/submit`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({ answers: payloadAnswers })
-      });
-      if (res.ok) {
-        resultData = await res.json();
-      }
-    } catch (e) {}
+    if (isLocalEnv) {
+      try {
+        const headers = { 'Content-Type': 'application/json' };
+        if (AuthManager.token) headers['Authorization'] = `Bearer ${AuthManager.token}`;
+        const res = await fetch(`${API_BASE_URL}/api/placement/submit`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({ answers: payloadAnswers })
+        });
+        if (res.ok) {
+          resultData = await res.json();
+        }
+      } catch (e) {}
+    }
 
     if (!resultData) {
       // Local calculation fallback
@@ -1127,22 +1149,28 @@ const CoreLessonController = {
 
     // Sync to Turso Backend or Direct Turso Cloud Bridge if logged in
     if (AuthManager.token && AuthManager.user) {
-      try {
-        const res = await fetch(`${API_BASE_URL}/api/lessons/${l.id}/attempt`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${AuthManager.token}`
-          },
-          body: JSON.stringify({
-            quiz_score: score,
-            quiz_total: total,
-            steps_completed: 4,
-            completed: true
-          })
-        });
-        if (!res.ok) throw new Error('fallback to TursoCloudBridge');
-      } catch (e) {
+      if (isLocalEnv) {
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/lessons/${l.id}/attempt`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${AuthManager.token}`
+            },
+            body: JSON.stringify({
+              quiz_score: score,
+              quiz_total: total,
+              steps_completed: 4,
+              completed: true
+            })
+          });
+          if (!res.ok) throw new Error('fallback to TursoCloudBridge');
+        } catch (e) {
+          try {
+            await TursoCloudBridge.saveLessonAttempt(AuthManager.user.user_id, l.id, score, total);
+          } catch (cloudErr) {}
+        }
+      } else {
         try {
           await TursoCloudBridge.saveLessonAttempt(AuthManager.user.user_id, l.id, score, total);
         } catch (cloudErr) {}
