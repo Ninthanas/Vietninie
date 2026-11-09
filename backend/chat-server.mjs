@@ -9,6 +9,7 @@ export function createChatServer(env = process.env, fetcher = fetch) {
   const send = (status,body) => {res.writeHead(status, {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(body));};
   if (origin && !origins.includes(origin)) return send(403,{error:'Nguồn truy cập không được phép.'});
   if(origin) {res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');}
+  if(req.url === '/health' && req.method === 'GET') return send(200,{status:'ok'});
   if(req.url !== '/api/chat') return send(404,{error:'Not found'});
   if(req.method === 'OPTIONS') {res.setHeader('Access-Control-Allow-Methods','POST');res.setHeader('Access-Control-Allow-Headers','Content-Type');res.writeHead(204);return res.end();}
   if(req.method !== 'POST') return send(405,{error:'Method not allowed'});
@@ -33,4 +34,4 @@ export function createChatServer(env = process.env, fetcher = fetch) {
   } catch {send(502,{error:'Không kết nối được dịch vụ AI. Hãy thử lại sau.'});} finally {active--;}
  });
 }
-if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href) createChatServer().listen(Number(process.env.CHAT_PORT || 8787),'0.0.0.0',()=>console.log('Chat server ready'));
+if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href) createChatServer().listen(Number(process.env.PORT || process.env.CHAT_PORT || 8787),'0.0.0.0',()=>console.log('Chat server ready'));

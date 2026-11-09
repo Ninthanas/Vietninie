@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vietninie-chat
+    runtime: node
+    plan: free
+    buildCommand: node --check backend/chat-server.mjs
+    startCommand: node backend/chat-server.mjs
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-flash-latest
+      - key: CHAT_ALLOWED_ORIGINS
+        value: https://ninthanas.github.io
