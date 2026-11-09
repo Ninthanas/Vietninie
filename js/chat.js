@@ -15,13 +15,13 @@
   root.querySelector('form').onsubmit = async e => {
     e.preventDefault(); const content = input.value.trim(); if (!content || busy) return;
     busy = true; submit.disabled = true; add('user', content); input.value = '';
-    const status = add('assistant', 'Đang trả lời…');
+    const status = add('assistant', 'Đang kết nối Gemini… Lần đầu có thể cần khoảng một phút.');
     const messages = [...history, {role:'user', content}].slice(-12);
     try {
       const configured = window.VIETNINIE_CHAT_URL;
       const local = ['localhost','127.0.0.1'].includes(location.hostname);
       if (!configured && !local) throw new Error('Chat AI chưa được kết nối. Bạn có thể tiếp tục dùng các bài học trên website.');
-      const response = await fetch(configured || 'http://localhost:8787/api/chat', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({messages}), signal:AbortSignal.timeout(45000)});
+      const response = await fetch(configured || 'http://localhost:8787/api/chat', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({messages}), signal:AbortSignal.timeout(120000)});
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Chưa thể trả lời. Vui lòng thử lại.');
       if (typeof data.reply !== 'string' || !data.reply.trim()) throw new Error('AI chưa trả về câu trả lời. Hãy thử lại.');
