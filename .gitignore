@@ -22,3 +22,5 @@ Thumbs.db
 *.log
 scratch_*.py
 temp_*.txt
+
+backend/chat.env
