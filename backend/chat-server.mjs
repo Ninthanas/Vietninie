@@ -26,7 +26,12 @@ export function createChatServer(env = process.env, fetcher = fetch) {
     method:'POST', headers:{'x-goog-api-key':env.GEMINI_API_KEY,'Content-Type':'application/json'},
     body:JSON.stringify({systemInstruction:{parts:[{text:prompt}]},contents:messages.map(({role,content})=>({role:role==='assistant'?'model':'user',parts:[{text:content}]})),generationConfig:{maxOutputTokens:2048}}),signal:AbortSignal.timeout(35000)
    });
-   if(!upstream.ok) return send(upstream.status===429?429:502,{error:upstream.status===429?'Gemini đang hết lượt hoặc quá tải. Hãy thử lại sau.':'Dịch vụ AI tạm thời không khả dụng. Hãy thử lại sau.'});
+   if(!upstream.ok) {
+    console.error('Gemini request failed:', upstream.status);
+    const errors={401:'Khóa Gemini chưa được xác thực.',403:'Khóa Gemini chưa có quyền truy cập dịch vụ.',404:'Model Gemini chưa khả dụng.',400:'Cấu hình hoặc khóa Gemini không hợp lệ.',429:'Gemini đang hết lượt hoặc quá tải. Hãy thử lại sau.'};
+    return send(upstream.status===429?429:502,{error:errors[upstream.status] || 'Dịch vụ AI tạm thời không khả dụng. Hãy thử lại sau.'});
+   }
+
    const result=await upstream.json(), candidate=result.candidates?.[0];
    const reply=candidate?.content?.parts?.filter(p=>!p.thought && typeof p.text==='string').map(p=>p.text).join('');
    if(typeof reply!=='string'||!reply.trim()) return send(502,{error:'AI chưa trả về câu trả lời. Hãy thử lại.'});
