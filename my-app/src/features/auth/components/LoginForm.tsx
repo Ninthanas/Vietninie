@@ -44,7 +44,7 @@ export function LoginForm() {
           name="password"
           type="password"
           autoComplete={register ? 'new-password' : 'current-password'}
-          minLength={6}
+          minLength={register ? 10 : 6}
           required
         />
       </label>

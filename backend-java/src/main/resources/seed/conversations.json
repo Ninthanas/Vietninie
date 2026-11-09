@@ -1,0 +1,511 @@
+[
+  {
+    "id": 1,
+    "slug": "greetings",
+    "title_vi": "1. Chào hỏi & Gặp gỡ đầu ngày",
+    "title_zh": "1. 日常问候与早间寒暄",
+    "level": "A1 / HSK 1",
+    "scenario_vi": "Hai đồng nghiệp Minh (Việt Nam) và Lâm (Trung Quốc) gặp nhau tại sảnh văn phòng buổi sáng.",
+    "scenario_zh": "越南同事阿明与中国同事小林早上在办公大楼大厅相遇。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Minh",
+        "zh": "早上好，小林！今天气色真不错。",
+        "pinyin": "Zǎoshang hǎo, Xiǎo Lín! Jīntiān qìsè zhēn búcuò.",
+        "vi": "Chào buổi sáng Tiểu Lâm! Hôm nay trông thần sắc bạn tươi tắn quá."
+      },
+      {
+        "speaker": "B",
+        "name": "Lâm",
+        "zh": "早安，阿明！我刚喝了一杯越南冰奶咖啡，精神满满。",
+        "pinyin": "Zǎo ān, Ā Míng! Wǒ gāng hē le yì bēi Yuènán bīng nǎi kāfēi, jīngshén mǎnmǎn.",
+        "vi": "Chào buổi sáng Minh! Mình vừa uống một ly cà phê sữa đá Việt Nam, tỉnh táo tràn đầy năng lượng luôn."
+      },
+      {
+        "speaker": "A",
+        "name": "Minh",
+        "zh": "哈哈，你也爱上越南咖啡啦？最近工作忙不忙？",
+        "pinyin": "Hāhā, nǐ yě àishàng Yuènán kāfēi la? Zuìjìn gōngzuò máng bu máng?",
+        "vi": "Haha, bạn cũng mê cà phê Việt Nam rồi à? Dạo này công việc có bận không?"
+      },
+      {
+        "speaker": "B",
+        "name": "Lâm",
+        "zh": "稍微有点忙，不过一切都很顺利。谢谢你的关心！",
+        "pinyin": "Shāowēi yǒudiǎn máng, búguò yíqiè dōu hěn shùnlì. Xièxie nǐ de guānxīn!",
+        "vi": "Hơi bận một chút, nhưng mọi thứ đều rất suôn sẻ. Cảm ơn sự quan tâm của bạn nhé!"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "acquaintance",
+    "title_vi": "2. Làm quen & Giới thiệu bản thân",
+    "title_zh": "2. 初次相识与自我介绍",
+    "level": "A1 / HSK 1",
+    "scenario_vi": "Làm quen với người bạn mới tại buổi giao lưu văn hóa Việt - Trung.",
+    "scenario_zh": "在越中文化交流活动上结识新朋友。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Lan",
+        "zh": "你好，很高兴认识你！我叫阮兰，来自越南河内。",
+        "pinyin": "Nǐ hǎo, hěn gāoxìng rènshi nǐ! Wǒ jiào Ruǎn Lán, láizì Yuènán Hénèi.",
+        "vi": "Xin chào, rất vui được làm quen với bạn! Mình tên là Nguyễn Lan, đến từ Hà Nội, Việt Nam."
+      },
+      {
+        "speaker": "B",
+        "name": "Vương",
+        "zh": "你好阮兰！我叫王浩，是来自上海的软件工程师。",
+        "pinyin": "Nǐ hǎo Ruǎn Lán! Wǒ jiào Wáng Hào, shì láizì Shànghǎi de ruǎnjiàn gōngchéngshī.",
+        "vi": "Chào Nguyễn Lan! Mình tên là Vương Hạo, là kỹ sư phần mềm đến từ Thượng Hải."
+      },
+      {
+        "speaker": "A",
+        "name": "Lan",
+        "zh": "这是你第一次来越南吗？",
+        "pinyin": "Zhè shì nǐ dì yī cì lái Yuènán ma?",
+        "vi": "Đây là lần đầu tiên bạn đến Việt Nam phải không?"
+      },
+      {
+        "speaker": "B",
+        "name": "Vương",
+        "zh": "对，越南朋友非常热情，风景也特别美！",
+        "pinyin": "Duì, Yuènán péngyou fēicháng rèqíng, fēngjǐng yě tèbié měi!",
+        "vi": "Đúng vậy, các bạn Việt Nam vô cùng nhiệt tình, phong cảnh cũng cực kỳ đẹp!"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "shopping",
+    "title_vi": "3. Mua đồ & Mặc cả giá",
+    "title_zh": "3. 商场购物与砍价支付",
+    "level": "A2 / HSK 2",
+    "scenario_vi": "Mua áo khoác và quà lưu niệm tại cửa hàng, hỏi ưu đãi và quét mã thanh toán.",
+    "scenario_zh": "在商店购买外套与纪念品，询问折扣并扫码付款。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Khách",
+        "zh": "老板，请问这件白色外套多少钱？",
+        "pinyin": "Lǎobǎn, qǐngwèn zhè jiàn báisè wàitào duōshao qián?",
+        "vi": "Ông chủ ơi, cho hỏi chiếc áo khoác màu trắng này giá bao nhiêu tiền?"
+      },
+      {
+        "speaker": "B",
+        "name": "Chủ quán",
+        "zh": "这件质量非常好，原价三百块，今天打八折，两百四。",
+        "pinyin": "Zhè jiàn zhìliàng fēicháng hǎo, yuánjià sānbǎi kuài, jīntiān dǎ bā zhé, liǎngbǎi sì.",
+        "vi": "Chiếc này chất lượng cực tốt, giá gốc 300 tệ, hôm nay giảm 20% còn 240 tệ."
+      },
+      {
+        "speaker": "A",
+        "name": "Khách",
+        "zh": "我买两件可以再便宜一点吗？两百块一件行不行？",
+        "pinyin": "Wǒ mǎi liǎng jiàn kěyǐ zài piányi yìdiǎn ma? Liǎngbǎi kuài yí jiàn xíng bu xíng?",
+        "vi": "Mình mua 2 chiếc có thể bớt thêm chút nữa không? 200 tệ một chiếc được không ạ?"
+      },
+      {
+        "speaker": "B",
+        "name": "Chủ quán",
+        "zh": "好吧，看你是老顾客！支持扫码支付和银行卡。",
+        "pinyin": "Hǎo ba, kàn nǐ shì lǎo gùkè! Zhīchí sǎomǎ zhīfù hé yínhángkǎ.",
+        "vi": "Được thôi, nể bạn là khách quen đấy! Bên mình hỗ trợ quét mã QR và thẻ ngân hàng nhé."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "restaurant",
+    "title_vi": "4. Gọi món tại nhà hàng",
+    "title_zh": "4. 餐厅点菜与口味要求",
+    "level": "A2 / HSK 2",
+    "scenario_vi": "Gọi món đặc sản tại nhà hàng, dặn độ cay và thanh toán.",
+    "scenario_zh": "在特色餐厅点招牌菜，嘱咐辣度并结账。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Phục vụ",
+        "zh": "欢迎光临！请问两位想点些什么？这是菜单。",
+        "pinyin": "Huānyíng guānglín! Qǐngwèn liǎng wèi xiǎng diǎn xiē shénme? Zhè shì càidān.",
+        "vi": "Chào mừng quý khách! Xin hỏi hai vị muốn dùng món gì ạ? Đây là thực đơn."
+      },
+      {
+        "speaker": "B",
+        "name": "Thực khách",
+        "zh": "我们要一份烤鸭、一碗牛肉粉，再来两杯柠檬茶。",
+        "pinyin": "Wǒmen yào yí fèn kǎoyā, yì wǎn niúròufěn, zài lái liǎng bēi níngméngchá.",
+        "vi": "Cho chúng tôi một phần vịt quay, một tô phở bò, và thêm 2 ly trà chanh nhé."
+      },
+      {
+        "speaker": "A",
+        "name": "Phục vụ",
+        "zh": "好的，请问菜要辣的还是微辣？有什么忌口吗？",
+        "pinyin": "Hǎo de, qǐngwèn cài yào là de háishi wēilà? Yǒu shénme jìkǒu ma?",
+        "vi": "Vâng ạ, xin hỏi món ăn dùng cay vừa hay cay nhẹ? Có kiêng món gì không ạ?"
+      },
+      {
+        "speaker": "B",
+        "name": "Thực khách",
+        "zh": "微辣就好，不要放香菜。柠檬茶少冰少糖，谢谢！",
+        "pinyin": "Wēilà jiù hǎo, búyào fàng xiāngcài. Níngméngchá shǎo bīng shǎo táng, xièxie!",
+        "vi": "Cay nhẹ thôi nhé, đừng cho rau mùi. Trà chanh ít đá ít đường, cảm ơn bạn!"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "taxi",
+    "title_vi": "5. Đi Taxi & Đặt xe công nghệ",
+    "title_zh": "5. 乘坐出租车与网约车导航",
+    "level": "A2 / HSK 2",
+    "scenario_vi": "Xác nhận điểm đến với tài xế và hỏi thời gian di chuyển.",
+    "scenario_zh": "上车后与司机确认目的地及预计到达时间。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Tài xế",
+        "zh": "您好，请系好安全带。我们是去国际机场T2航站楼对吗？",
+        "pinyin": "Nín hǎo, qǐng jì hǎo ānquándài. Wǒmen shì qù guójì jīchǎng T2 hángzhànlóu duì ma?",
+        "vi": "Xin chào, vui lòng thắt dây an toàn. Chúng ta đi nhà ga T2 Sân bay Quốc tế đúng không ạ?"
+      },
+      {
+        "speaker": "B",
+        "name": "Hành khách",
+        "zh": "对的师傅，我赶十一点的航班，现在路上堵车吗？",
+        "pinyin": "Duì de shīfu, wǒ gǎn shíyī diǎn de hángbān, xiànzài lùshang dǔchē ma?",
+        "vi": "Đúng rồi bác tài ơi, tôi趕 chuyến bay 11 giờ, hiện giờ trên đường có kẹt xe không?"
+      },
+      {
+        "speaker": "A",
+        "name": "Tài xế",
+        "zh": "放心吧，我们走高架高速路，大约二十五分钟就能到。",
+        "pinyin": "Fàngxīn ba, wǒmen zǒu gāojià gāosùlù, dàyuē èrshíwǔ fēnzhōng jiù néng dào.",
+        "vi": "Yên tâm nhé, chúng ta đi đường cao tốc trên cao, khoảng 25 phút là tới nơi thôi."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "hotel",
+    "title_vi": "6. Nhận phòng Khách sạn (Check-in)",
+    "title_zh": "6. 酒店前台办理入住与咨询",
+    "level": "A2 / HSK 3",
+    "scenario_vi": "Làm thủ tục nhận phòng khách sạn, hỏi giờ ăn sáng và mật khẩu Wi-Fi.",
+    "scenario_zh": "在酒店前台出示护照办理入住，询问早餐与Wi-Fi。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Khách",
+        "zh": "你好，我在网上预订了一间海景双人间，这是我的护照。",
+        "pinyin": "Nǐ hǎo, wǒ zài wǎngshang yùdìng le yì jiān hǎijǐng shuāngrénjiān, zhè shì wǒ de hùzhào.",
+        "vi": "Xin chào, tôi đã đặt trên mạng một phòng đôi hướng biển, đây là hộ chiếu của tôi."
+      },
+      {
+        "speaker": "B",
+        "name": "Lễ tân",
+        "zh": "查到了，陈先生。您的房间在八楼806室，包含双人自助早餐。",
+        "pinyin": "Chádào le, Chén xiānsheng. Nín de fángjiān zài bā lóu 806 shì, bāohán shuāngrén zìzhù zǎocān.",
+        "vi": "Đã kiểm tra thấy rồi thưa anh Trần. Phòng của anh ở tầng 8 số 806, bao gồm buffet sáng cho 2 người."
+      },
+      {
+        "speaker": "A",
+        "name": "Khách",
+        "zh": "太好了！请问早餐几点开始？无线网密码是多少？",
+        "pinyin": "Tài hǎo le! Qǐngwèn zǎocān jǐ diǎn kāishǐ? Wúxiànwǎng mìmǎ shì duōshao?",
+        "vi": "Tuyệt quá! Cho hỏi bữa sáng bắt đầu lúc mấy giờ? Mật khẩu Wi-Fi là gì vậy?"
+      },
+      {
+        "speaker": "B",
+        "name": "Lễ tân",
+        "zh": "早餐是六点半到十点在一楼餐厅，Wi-Fi密码就印在房卡套上。",
+        "pinyin": "Zǎocān shì liù diǎn bàn dào shí diǎn zài yī lóu cāntīng, Wi-Fi mìmǎ jiù yìn zài fángkǎ tào shàng.",
+        "vi": "Bữa sáng từ 6h30 đến 10h tại nhà hàng tầng 1, mật khẩu Wi-Fi được in ngay trên vỏ thẻ phòng ạ."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "slug": "airport",
+    "title_vi": "7. Thủ tục Sân bay & Xuất nhập cảnh",
+    "title_zh": "7. 机场值机托运与海关边检",
+    "level": "B1 / HSK 3",
+    "scenario_vi": "Làm thủ tục lấy thẻ lên máy bay, chọn ghế ngồi cạnh cửa sổ và ký gửi hành lý.",
+    "scenario_zh": "在机场值机柜台选靠窗座位并办理行李托运。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Nhân viên",
+        "zh": "您好，请出示您的护照和电子机票。有行李需要托运吗？",
+        "pinyin": "Nín hǎo, qǐng chūshì nín de hùzhào hé diànzǐ jīpiào. Yǒu xíngli xūyào tuōyùn ma?",
+        "vi": "Xin chào, vui lòng xuất trình hộ chiếu và vé máy bay điện tử. Bạn có hành lý cần ký gửi không?"
+      },
+      {
+        "speaker": "B",
+        "name": "Hành khách",
+        "zh": "有的，这件大行李箱托运，小背包我随身携带。请帮我选靠窗的座位。",
+        "pinyin": "Yǒu de, zhè jiàn dà xínglixiāng tuōyùn, xiǎo bēibāo wǒ suíshēn xiédài. Qǐng bāng wǒ xuǎn kàochuāng de zuòwèi.",
+        "vi": "Có ạ, chiếc vali lớn này ký gửi, balo nhỏ tôi xách tay. Vui lòng chọn giúp tôi ghế ngồi cạnh cửa sổ nhé."
+      },
+      {
+        "speaker": "A",
+        "name": "Nhân viên",
+        "zh": "好的，这是您的登机牌，登机口在18号，十点二十开始登机。",
+        "pinyin": "Hǎo de, zhè shì nín de dēngjīpái, dēngjīkǒu zài 18 hào, shí diǎn èrshí kāishǐ dēngjī.",
+        "vi": "Vâng, đây là thẻ lên máy bay của bạn, cửa khởi hành số 18, 10 giờ 20 bắt đầu lên máy bay."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "going_to_work",
+    "title_vi": "8. Đi làm & Giao ban đầu tuần",
+    "title_zh": "8. 上班考勤与部门早会",
+    "level": "B1 / HSK 3",
+    "scenario_vi": "Trao đổi kế hoạch làm việc trong tuần tại văn phòng.",
+    "scenario_zh": "周一早上在办公室沟通本周重点工作计划。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Quản lý",
+        "zh": "大家早上好！这周我们部门的核心任务是完成新产品的上线测试。",
+        "pinyin": "Dàjiā zǎoshang hǎo! Zhè zhōu wǒmen bùmén de héxīn rènwu shì wánchéng xīn chǎnpǐn de shàngxiàn cèshì.",
+        "vi": "Chào buổi sáng mọi người! Nhiệm vụ trọng tâm tuần này của phòng chúng ta là hoàn thành kiểm thử ra mắt sản phẩm mới."
+      },
+      {
+        "speaker": "B",
+        "name": "Nhân viên",
+        "zh": "经理，越南语和中文双语界面的翻译核对今天下午就能全部完成。",
+        "pinyin": "Jīnglǐ, Yuènányǔ hé Zhōngwén shuāngyǔ jièmiàn de fānyì héduì jīntiān xiàwǔ jiù néng quánbù wánchéng.",
+        "vi": "Thưa sếp, phần rà soát bản dịch giao diện song ngữ Việt - Trung chiều nay là có thể hoàn tất toàn bộ ạ."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "school",
+    "title_vi": "9. Trường học & Thảo luận bài tập",
+    "title_zh": "9. 校园生活与备考交流",
+    "level": "A2 / HSK 3",
+    "scenario_vi": "Hai sinh viên rủ nhau lên thư viện ôn thi HSK và luyện nói tiếng Việt.",
+    "scenario_zh": "两名大学生相约去图书馆复习HSK并练习越南语口语。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Hương",
+        "zh": "下个月就要考HSK五级了，我们下午去图书馆一起复习吧？",
+        "pinyin": "Xià gè yuè jiù yào kǎo HSK wǔ jí le, wǒmen xiàwǔ qù túshūguǎn yìqǐ fùxí ba?",
+        "vi": "Tháng sau là thi HSK 5 rồi, chiều nay tụi mình lên thư viện ôn tập cùng nhau nhé?"
+      },
+      {
+        "speaker": "B",
+        "name": "Minh Triết",
+        "zh": "太好了！我教你汉字和语法，你帮我纠正越南语声调，一举两得！",
+        "pinyin": "Tài hǎo le! Wǒ jiāo nǐ Hànzì hé yǔfǎ, nǐ bāng wǒ jiūzhèng Yuènányǔ shēngdiào, yìjǔ liǎngdé!",
+        "vi": "Tuyệt quá! Mình dạy bạn chữ Hán và ngữ pháp, bạn giúp mình sửa thanh điệu tiếng Việt, một công đôi việc!"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "meeting_friends",
+    "title_vi": "10. Hẹn bạn đi uống trà sữa cuối tuần",
+    "title_zh": "10. 周末约朋友喝下午茶",
+    "level": "A2 / HSK 2",
+    "scenario_vi": "Hẹn giờ giấc và địa điểm gặp mặt cuối tuần.",
+    "scenario_zh": "周末约好朋友在新开的咖啡厅见面。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Mai",
+        "zh": "这周六你有空吗？湖边新开了一家超火的越南咖啡馆。",
+        "pinyin": "Zhè zhōuliù nǐ yǒu kòng ma? Húbiān xīn kāi le yì jiā chāo huǒ de Yuènán kāfēiguǎn.",
+        "vi": "Thứ Bảy tuần này cậu rảnh không? Bên bờ hồ mới mở một quán cà phê Việt Nam siêu hot luôn."
+      },
+      {
+        "speaker": "B",
+        "name": "Linh",
+        "zh": "有空呀！我们下午三点在地铁站出口见面吧，不见不散！",
+        "pinyin": "Yǒu kòng ya! Wǒmen xiàwǔ sān diǎn zài dìtiězhàn chūkǒu jiànmiàn ba, bújiàn búsàn!",
+        "vi": "Rảnh chứ! Tụi mình gặp nhau lúc 3 giờ chiều ở lối ra ga tàu điện ngầm nhé, không gặp không về!"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "hanging_out",
+    "title_vi": "11. Đi chơi & Khám phá phố đêm",
+    "title_zh": "11. 逛夜市与拍照打卡",
+    "level": "A2 / HSK 3",
+    "scenario_vi": "Dạo phố đi bộ, thưởng thức đồ ăn đường phố và chụp ảnh.",
+    "scenario_zh": "晚上逛步行街夜市，品尝街头小吃并拍照留念。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Tuấn",
+        "zh": "你看，前面夜市好热闹！我们去尝尝烤海鲜和芒果冰沙吧。",
+        "pinyin": "Nǐ kàn, qiánmiàn yèshì hǎo rènao! Wǒmen qù chángchang kǎo hǎixiān hé mángguǒ bīngshā ba.",
+        "vi": "Cậu nhìn kìa, chợ đêm phía trước nhộn nhịp quá! Chúng mình qua nếm thử hải sản nướng và sinh tố xoài đá xay đi."
+      },
+      {
+        "speaker": "B",
+        "name": "Tiểu Vy",
+        "zh": "好主意！这边的灯笼夜景太美了，快帮我拍几张照片发朋友圈！",
+        "pinyin": "Hǎo zhǔyi! Zhèbiān de dēnglong yèjǐng tài měi le, kuài bāng wǒ pāi jǐ zhāng zhàopiàn fā péngyouquān!",
+        "vi": "Ý hay đấy! Cảnh đêm đèn lồng bên này đẹp mê hồn, mau chụp giúp mình vài tấm ảnh đăng lên mạng nhé!"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "slug": "texting",
+    "title_vi": "12. Nhắn tin Chat Zalo / WeChat",
+    "title_zh": "12. 微信与Zalo日常秒回聊天",
+    "level": "B1 / HSK 3",
+    "scenario_vi": "Nhắn tin kết bạn, gửi tài liệu và thả sticker trên WeChat / Zalo.",
+    "scenario_zh": "加微信/Zalo好友，发送定位和表情包。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "An",
+        "zh": "我扫你的微信二维码加上啦！刚刚把合同PDF发你了，收到没？",
+        "pinyin": "Wǒ sǎo nǐ de Wēixìn èrwéimǎ jiā shàng la! Gānggāng bǎ hétong PDF fā nǐ le, shōudào méi?",
+        "vi": "Mình quét mã QR WeChat kết bạn với cậu rồi nhé! Vừa gửi file PDF hợp đồng cho cậu đấy, nhận được chưa?"
+      },
+      {
+        "speaker": "B",
+        "name": "Bình",
+        "zh": "收到啦！你这猫猫表情包也太可爱了吧，我马上看文件！",
+        "pinyin": "Shōudào la! Nǐ zhè māomāo biǎoqíngbāo yě tài kě ài le ba, wǒ mǎshàng kàn wénjiàn!",
+        "vi": "Nhận được rồi nha! Bộ sticker mèo của cậu dễ thương xỉu luôn, mình xem tài liệu ngay đây!"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "slug": "dating",
+    "title_vi": "13. Hẹn hò lãng mạn (Dating)",
+    "title_zh": "13. 浪漫约会与表达心意",
+    "level": "B1 / HSK 4",
+    "scenario_vi": "Buổi hẹn hò ăn tối lãng mạn và tặng hoa.",
+    "scenario_zh": "约会晚餐时赠送鲜花并表达好感。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Khánh",
+        "zh": "送给你这束粉玫瑰，祝你每天都像花儿一样开心。",
+        "pinyin": "Sòng gěi nǐ zhè shù fěn méigui, zhù nǐ měitiān dōu xiàng huār yíyàng kāixīn.",
+        "vi": "Tặng em bó hoa hồng phấn này, chúc em mỗi ngày đều vui vẻ rạng rỡ như đóa hoa."
+      },
+      {
+        "speaker": "B",
+        "name": "Tâm",
+        "zh": "哇，太惊喜了！和你在一起聊天总是感觉特别温暖放松。",
+        "pinyin": "Wā, tài jīngxǐ le! Hé nǐ zài yìqǐ liáotiān zǒngshì gǎnjué tèbié wēnnuǎn fàngsōng.",
+        "vi": "Wow, bất ngờ quá! Ở bên cạnh trò chuyện cùng anh lúc nào em cũng cảm thấy ấm áp và bình yên."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "slug": "business_work",
+    "title_vi": "14. Công việc & Đàm phán Thương mại Việt - Trung",
+    "title_zh": "14. 越中跨境商务与供应链洽谈",
+    "level": "B2 / HSK 5",
+    "scenario_vi": "Đàm phán đơn hàng xuất nhập khẩu, tiến độ giao hàng và phương thức thanh toán.",
+    "scenario_zh": "洽谈跨境采购订单的交货期、质量标准与结算方式。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Đối tác VN",
+        "zh": "张总，如果这批电子配件订单达到五千件，贵公司能给多少折扣？",
+        "pinyin": "Zhāng zǒng, rúguǒ zhè pī diànzǐ pèijiàn dìngdān dádào wǔqiān jiàn, guì gōngsī néng gěi duōshao zhékòu?",
+        "vi": "Giám đốc Trương, nếu lô hàng linh kiện điện tử này đạt 5.000 sản phẩm, quý công ty có thể chiết khấu bao nhiêu?"
+      },
+      {
+        "speaker": "B",
+        "name": "Đối tác TQ",
+        "zh": "阮总爽快！五千件以上我们给九折出厂价，并且包清关物流直送北宁工业区。",
+        "pinyin": "Ruǎn zǒng shuǎngkuai! Wǔqiān jiàn yǐshàng wǒmen gěi jiǔ zhé chūchǎngjià, bìngqiě bāo qīngguān wùliú zhísòng Běiníng gōngyèqū.",
+        "vi": "Giám đốc Nguyễn thật sởi lởi! Trên 5.000 chiếc chúng tôi ưu đãi giảm 10% giá xuất xưởng, đồng thời bao trọn gói thông quan logistics giao thẳng tới KCN Bắc Ninh."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "slug": "interview",
+    "title_vi": "15. Phỏng vấn xin việc công ty đa quốc gia",
+    "title_zh": "15. 外资企业双语岗位求职面试",
+    "level": "B2 / HSK 5",
+    "scenario_vi": "Phỏng vấn vị trí Quản lý dự án song ngữ Việt - Trung.",
+    "scenario_zh": "面试越中双语项目经理岗位，展示优势与工作经验。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "HR",
+        "zh": "请简单介绍一下你的工作经历，以及为什么应聘我们公司的双语主管岗位？",
+        "pinyin": "Qǐng jiǎndān jièshào yíxià nǐ de gōngzuò jīnglì, yǐjí wèishénme yìngpìn wǒmen gōngsī de shuāngyǔ zhǔguǎn gǎngwèi?",
+        "vi": "Bạn hãy giới thiệu ngắn gọn kinh nghiệm làm việc, cũng như lý do ứng tuyển vị trí Quản lý song ngữ của công ty chúng tôi?"
+      },
+      {
+        "speaker": "B",
+        "name": "Ứng viên",
+        "zh": "我有三年跨境供应链管理经验，精通中越双语，能高效协调工厂与总部团队。",
+        "pinyin": "Wǒ yǒu sān nián kuàjìng gōngyìngliàn guǎnlǐ jīngyàn, jīngtōng Zhōng-Yuè shuāngyǔ, néng gāoxiào xiétiáo gōngchǎng yǔ zǒngbù tuánduì.",
+        "vi": "Tôi có 3 năm kinh nghiệm quản lý chuỗi cung ứng xuyên biên giới, thông thạo song ngữ Trung - Việt, có thể điều phối hiệu quả giữa nhà máy và đội ngũ tổng công ty."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "slug": "travel_tour",
+    "title_vi": "16. Du lịch & Hỏi đường tham quan",
+    "title_zh": "16. 自由行问路与景点游览",
+    "level": "A2 / HSK 3",
+    "scenario_vi": "Hỏi đường đến phố cổ, mua vé tham quan và nhờ chụp ảnh.",
+    "scenario_zh": "向当地人询问去古街的路线与门票购买方式。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Du khách",
+        "zh": "打扰一下，请问去还剑湖步行街怎么走？离这里远吗？",
+        "pinyin": "Dǎrǎo yíxià, qǐngwèn qù Huánjiànhú bùxíngjiē zěnme zǒu? Lí zhèlǐ yuǎn ma?",
+        "vi": "Xin làm phiền một chút, cho hỏi đường đi ra phố đi bộ Hồ Hoàn Kiếm đi thế nào ạ? Cách đây có xa không?"
+      },
+      {
+        "speaker": "B",
+        "name": "Người dân",
+        "zh": "不远！沿着这条路往前走三百米，在第一个红绿灯往左拐就到了。",
+        "pinyin": "Bù yuǎn! Yánzhe zhè tiáo lù wǎng qián zǒu sānbǎi mǐ, zài dì yī gè hónglǜdēng wǎng zuǒ guǎi jiù dào le.",
+        "vi": "Không xa đâu! Đi dọc theo con đường này về phía trước 300 mét, đến đèn giao thông đầu tiên rẽ trái là tới ngay."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "slug": "online_meeting",
+    "title_vi": "17. Giao tiếp Online & Họp Video (Zoom/Teams)",
+    "title_zh": "17. 远程视频会议与屏幕共享",
+    "level": "B1 / HSK 4",
+    "scenario_vi": "Kiểm tra âm thanh, chia sẻ màn hình báo cáo trong cuộc họp trực tuyến.",
+    "scenario_zh": "在线上视频会议中测试麦克风并共享屏幕演示PPT。",
+    "lines": [
+      {
+        "speaker": "A",
+        "name": "Host",
+        "zh": "大家好，能清楚听到我的声音并看到我共享的屏幕吗？",
+        "pinyin": "Dàjiā hǎo, néng qīngchu tīngdào wǒ de shēngyīn bìng kàndào wǒ gòngxiǎng de píngmù ma?",
+        "vi": "Chào mọi người, mọi người có nghe rõ âm thanh và nhìn thấy màn hình tôi đang chia sẻ không ạ?"
+      },
+      {
+        "speaker": "B",
+        "name": "Thành viên",
+        "zh": "画面和声音都非常清晰！我们可以开始演示第三季度的营销方案了。",
+        "pinyin": "Huàmiàn hé shēngyīn dōu fēicháng qīngxī! Wǒmen kěyǐ kāishǐ yǎnshì dì sān jìdù de yíngxiāo fāng àn le.",
+        "vi": "Hình ảnh và âm thanh đều vô cùng rõ nét! Chúng ta có thể bắt đầu trình chiếu phương án Marketing quý 3 rồi."
+      }
+    ]
+  }
+]

@@ -1,13 +1,36 @@
+import { env } from '../config/env';
+import { useAuthStore } from '../features/auth/store';
+
 export async function apiClient<T>(
   url: string,
   options: RequestInit = {},
 ): Promise<T> {
+  const headers = new Headers(options.headers);
+  headers.set('Content-Type', 'application/json');
+  const backendRequest =
+    Boolean(env.apiUrl) && url.startsWith(env.apiUrl + '/');
+  const token = useAuthStore.getState().user?.access_token;
+  if (
+    backendRequest &&
+    token &&
+    !url.startsWith(env.apiUrl + '/api/data/') &&
+    !headers.has('Authorization')
+  )
+    headers.set('Authorization', 'Bearer ' + token);
   const response = await fetch(url, {
     ...options,
-    headers: { 'Content-Type': 'application/json', ...options.headers },
+    headers,
     signal: options.signal || AbortSignal.timeout(120000),
   });
+  if (response.status === 204) return undefined as T;
   const data = await response.json();
+  if (
+    response.status === 401 &&
+    backendRequest &&
+    headers.get('Authorization') ===
+      'Bearer ' + useAuthStore.getState().user?.access_token
+  )
+    useAuthStore.getState().setUser(null);
   if (!response.ok)
     throw new Error(
       typeof data.error === 'string'

@@ -42,7 +42,7 @@ Tiến độ dùng lại khóa `sentruc_learned_zh/vi`, `sentruc_favorites_zh/vi
 
 Bản website cũ được giữ nguyên ở thư mục cha. Khóa học bốn bước, kiểm tra đầu vào, lịch SRS, CMS và các chế độ quiz mở rộng của bản cũ chưa được viết lại trong bản React. Các công cụ này vẫn có thể dùng trên website gốc. Bản React hiện là bản thiết kế lại các luồng học chính, không thay thế toàn bộ website cũ.
 
-Đăng nhập/đăng ký đã có form và service, cần cấu hình `VITE_API_URL` trỏ tới FastAPI để dùng tài khoản thật. Máy chủ Gemini hiện tại chỉ phục vụ chat. Không mang cầu nối Turso có thông tin truy cập trong JavaScript cũ sang bản React.
+Backend Java/Spring Boot mới nằm trong `../backend-java`. Đặt `VITE_API_URL` trỏ tới dịch vụ này để dùng tài khoản JWT, lấy dữ liệu từ database, đồng bộ tiến độ và chat có đăng nhập. Để trống biến này thì bản công khai tiếp tục dùng dữ liệu tĩnh và dịch vụ chat Node hiện tại. Hướng dẫn đầy đủ ở `../backend-java/README.md`. Không mang cầu nối Turso có thông tin truy cập trong JavaScript cũ sang bản React.
 
 ## Xuất bản xem thử
 

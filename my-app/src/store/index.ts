@@ -1,7 +1,11 @@
 import { create } from 'zustand';
 import type { Language, QuizResult } from '../types';
 import { readStorage, writeStorage } from '../hooks/useLocalStorage';
+import { env } from '../config/env';
+import { useAuthStore } from '../features/auth/store';
+const cloudSession = () => Boolean(env.apiUrl && useAuthStore.getState().user);
 interface State {
+  serverLoading: boolean;
   language: Language;
   learned: number[];
   favorites: number[];
@@ -27,6 +31,7 @@ function initialLanguage(): Language {
 }
 const initial = initialLanguage();
 export const useAppStore = create<State>((set, get) => ({
+  serverLoading: false,
   language: initial,
   learned: ids('sentruc_learned_' + initial),
   favorites: ids('sentruc_favorites_' + initial),
@@ -48,25 +53,29 @@ export const useAppStore = create<State>((set, get) => ({
     });
   },
   toggleLearned: (id) => {
+    if (get().serverLoading) return;
     const state = get(),
       already = state.learned.includes(id),
       learned = already
         ? state.learned.filter((x) => x !== id)
         : [...state.learned, id];
-    writeStorage('sentruc_learned_' + state.language, learned);
+    if (!cloudSession())
+      writeStorage('sentruc_learned_' + state.language, learned);
     const day = new Date().toLocaleDateString('en-CA');
     const daily = already
       ? state.daily
       : { ...state.daily, [day]: (state.daily[day] || 0) + 1 };
-    writeStorage('sentruc_daily_log', daily);
+    if (!cloudSession()) writeStorage('sentruc_daily_log', daily);
     set({ learned, daily });
   },
   toggleFavorite: (id) => {
+    if (get().serverLoading) return;
     const state = get(),
       favorites = state.favorites.includes(id)
         ? state.favorites.filter((x) => x !== id)
         : [...state.favorites, id];
-    writeStorage('sentruc_favorites_' + state.language, favorites);
+    if (!cloudSession())
+      writeStorage('sentruc_favorites_' + state.language, favorites);
     set({ favorites });
   },
   saveQuiz: (score, total) => {
@@ -79,7 +88,7 @@ export const useAppStore = create<State>((set, get) => ({
       },
       ...get().history,
     ].slice(0, 50);
-    writeStorage('vietninie_react_quiz_history', history);
+    if (!cloudSession()) writeStorage('vietninie_react_quiz_history', history);
     set({ history });
   },
   reload: () => {

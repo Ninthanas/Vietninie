@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/vietninie;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ${DB_PASSWORD:}
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: false

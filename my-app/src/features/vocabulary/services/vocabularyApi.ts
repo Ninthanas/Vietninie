@@ -1,10 +1,13 @@
 import { apiClient } from '../../../services/apiClient';
+import { env } from '../../../config/env';
 import type { Word, Language, Grammar, Conversation } from '../../../types';
 const cache = new Map<string, Promise<unknown>>();
 export function loadData<T>(filename: string): Promise<T> {
   if (!cache.has(filename)) {
     const request = apiClient<T>(
-      import.meta.env.BASE_URL + 'data/' + filename,
+      env.apiUrl
+        ? env.apiUrl + '/api/data/' + filename
+        : import.meta.env.BASE_URL + 'data/' + filename,
     ).catch((error) => {
       cache.delete(filename);
       throw error;

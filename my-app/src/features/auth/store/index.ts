@@ -1,13 +1,31 @@
 import { create } from 'zustand';
-import { readStorage, writeStorage } from '../../../hooks/useLocalStorage';
 import type { User } from '../types';
+function savedUser(): User | null {
+  try {
+    const user = JSON.parse(
+      sessionStorage.getItem('vietninie_react_user') || 'null',
+    );
+    if (user?.expires_at && Date.parse(user.expires_at) <= Date.now())
+      return null;
+    return user;
+  } catch {
+    return null;
+  }
+}
 export const useAuthStore = create<{
   user: User | null;
   setUser: (user: User | null) => void;
 }>((set) => ({
-  user: readStorage<User | null>('vietninie_react_user', null),
+  user: savedUser(),
   setUser: (user) => {
-    writeStorage('vietninie_react_user', user);
+    try {
+      if (user)
+        sessionStorage.setItem('vietninie_react_user', JSON.stringify(user));
+      else sessionStorage.removeItem('vietninie_react_user');
+      localStorage.removeItem('vietninie_react_user');
+    } catch {
+      /* Memory state still works when storage is unavailable. */
+    }
     set({ user });
   },
 }));

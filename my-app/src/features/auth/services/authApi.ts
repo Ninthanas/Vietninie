@@ -12,3 +12,7 @@ export function authenticate(credentials: Credentials, register = false) {
     body: JSON.stringify(credentials),
   });
 }
+
+export function logout() {
+  return apiClient<void>(env.apiUrl + '/api/auth/logout', { method: 'POST' });
+}

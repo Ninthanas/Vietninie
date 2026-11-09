@@ -21,6 +21,7 @@ import { navigation } from '../../constants/routes';
 import { useAppStore } from '../../store';
 import { useTheme } from '../../context/ThemeContext';
 import { ChatWidget } from '../../features/chat';
+import { useServerProgress } from '../../features/progress/useServerProgress';
 import logo from '../../assets/images/logo.jpg';
 const icons = {
   home: Home,
@@ -33,6 +34,7 @@ const icons = {
   chart: ChartNoAxesCombined,
 };
 export function MainLayout() {
+  const syncError = useServerProgress();
   const [expanded, setExpanded] = useState(false);
   const { pathname } = useLocation();
   const { language, setLanguage } = useAppStore();
@@ -141,6 +143,11 @@ export function MainLayout() {
           </div>
         </header>
         <main id="main-content" tabIndex={-1}>
+          {syncError && (
+            <p role="alert" className="error">
+              Chưa đồng bộ lên máy chủ: {syncError}
+            </p>
+          )}
           <Outlet />
         </main>
         <footer className="footer">
