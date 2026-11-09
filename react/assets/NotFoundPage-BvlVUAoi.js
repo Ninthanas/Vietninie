@@ -1,0 +1,1 @@
+import{j as n,L as r}from"./index-Ns51gnD6.js";function a(){return n.jsxs("div",{className:"empty-state",children:[n.jsx("h1",{children:"Trang này chưa có trong hành trình"}),n.jsx("p",{children:"Đường dẫn có thể đã thay đổi."}),n.jsx(r,{className:"primary-link",to:"/",children:"Trở về trang chủ"})]})}export{a as default};

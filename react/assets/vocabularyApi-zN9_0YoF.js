@@ -1,0 +1,1 @@
+import{d as n}from"./index-Ns51gnD6.js";const s=new Map;function t(a){if(!s.has(a)){const o=n("./data/"+a).catch(e=>{throw s.delete(a),e});s.set(a,o)}return s.get(a)}const c=a=>t(a==="zh"?"chinese-vocabulary.json":"vietnamese-vocabulary.json"),h=a=>t(a==="zh"?"chinese-grammar.json":"vietnamese-grammar.json"),g=()=>t("conversations.json");export{g as a,c as b,h as g,t as l};

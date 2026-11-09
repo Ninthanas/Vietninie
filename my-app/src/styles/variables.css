@@ -1,0 +1,26 @@
+:root {
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  color: #302c29;
+  background: #faf8f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --bg: #faf8f5;
+  --surface: #fff;
+  --ink: #302c29;
+  --muted: #817d77;
+  --line: #ece8e2;
+  --accent: #c4493d;
+  --soft: #fbede7;
+  --green: #4c7566;
+  --sidebar: 248px;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #1e211f;
+  --surface: #282c29;
+  --ink: #eeeae3;
+  --muted: #b3b7af;
+  --line: #3b413b;
+  --soft: #46302c;
+  --accent: #e17d6b;
+}

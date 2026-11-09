@@ -1,0 +1,1 @@
+function i(n,s,t=.9){if(!("speechSynthesis"in window))return!1;window.speechSynthesis.cancel();const e=new SpeechSynthesisUtterance(n);return e.lang=s==="zh"?"zh-CN":"vi-VN",e.rate=t,window.speechSynthesis.speak(e),!0}export{i as s};

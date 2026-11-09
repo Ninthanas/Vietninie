@@ -1,0 +1,453 @@
+[
+  {
+    "id": 1,
+    "title": "Cấu trúc câu cơ bản SVO & Trật tự Thời gian - Địa điểm",
+    "pattern": "Chủ ngữ (S) + Thời gian + Địa điểm + Động từ (V) + Tân ngữ (O)",
+    "level": "HSK 1",
+    "explanation": "Trong tiếng Trung, cấu trúc chính vẫn là Chủ ngữ - Động từ - Tân ngữ (SVO) giống tiếng Việt. Tuy nhiên, trạng ngữ chỉ THỜI GIAN và ĐỊA ĐIỂM bắt buộc phải đặt TRƯỚC động từ (khác tiếng Việt thường để ở cuối câu).",
+    "examples": [
+      {
+        "zh": "我今天在北京学习汉语。",
+        "pinyin": "Wǒ jīntiān zài Běijīng xuéxí Hànyǔ.",
+        "vi": "Hôm nay tôi học tiếng Trung ở Bắc Kinh."
+      },
+      {
+        "zh": "他每天早上七点在家里吃早饭。",
+        "pinyin": "Tā měitiān zǎoshang qī diǎn zài jiālǐ chī zǎofàn.",
+        "vi": "Anh ấy ăn sáng ở nhà lúc 7 giờ sáng mỗi ngày."
+      }
+    ],
+    "exercise_prompt": "Chọn câu đúng ngữ pháp tiếng Trung cho câu: \"Ngày mai tôi làm việc ở văn phòng\":",
+    "quiz": {
+      "question": "Đâu là câu đúng ngữ pháp cho: \"Ngày mai tôi làm việc ở văn phòng\"?",
+      "options": [
+        "我明天在办公室工作。",
+        "我工作在办公室明天。",
+        "明天我工作在办公室。",
+        "在办公室工作我明天。"
+      ],
+      "answerIndex": 0,
+      "explanation": "Trạng ngữ thời gian (明天) + trạng ngữ địa điểm (在办公室) phải đứng trước động từ chính (工作)."
+    }
+  },
+  {
+    "id": 2,
+    "title": "Động từ phán đoán 是 (shì) - Là",
+    "pattern": "A + 是 + B (Phủ định: A + 不是 + B)",
+    "level": "HSK 1",
+    "explanation": "“是” (shì) dùng để nối chủ ngữ và danh từ nhằm giới thiệu tên tuổi, nghề nghiệp, quốc tịch. Lưu ý: KHÔNG dùng “是” trước tính từ (ví dụ không nói 我是高 mà nói 我很高).",
+    "examples": [
+      {
+        "zh": "我是越南留学生。",
+        "pinyin": "Wǒ shì Yuènán liúxuéshēng.",
+        "vi": "Tôi là du học sinh Việt Nam."
+      },
+      {
+        "zh": "她不是老师，她是工程师。",
+        "pinyin": "Tā bú shì lǎoshī, tā shì gōngchéngshī.",
+        "vi": "Cô ấy không phải là giáo viên, cô ấy là kỹ sư."
+      }
+    ],
+    "quiz": {
+      "question": "Dạng phủ định của động từ 是 (shì) là gì?",
+      "options": [
+        "没是 (méi shì)",
+        "不是 (bú shì)",
+        "别是 (bié shì)",
+        "未是 (wèi shì)"
+      ],
+      "answerIndex": 1,
+      "explanation": "是 luôn phủ định bằng 不 -> 不是 (bú shì - biến điệu thanh 2 trước thanh 4)."
+    }
+  },
+  {
+    "id": 3,
+    "title": "Động từ sở hữu & tồn tại 有 (yǒu) - Có",
+    "pattern": "A + 有 + B (Phủ định: A + 没有 + B)",
+    "level": "HSK 1",
+    "explanation": "“有” biểu thị sự sở hữu hoặc sự tồn tại. Đặc biệt lưu ý: Phủ định của 有 bắt buộc dùng “没有” (méiyǒu), tuyệt đối KHÔNG dùng “不有”.",
+    "examples": [
+      {
+        "zh": "我有两个中国好朋友。",
+        "pinyin": "Wǒ yǒu liǎng gè Zhōngguó hǎo péngyou.",
+        "vi": "Tôi có hai người bạn tốt Trung Quốc."
+      },
+      {
+        "zh": "今天我没有空儿。",
+        "pinyin": "Jīntiān wǒ méiyǒu kòngr.",
+        "vi": "Hôm nay tôi không có thời gian rảnh."
+      }
+    ],
+    "quiz": {
+      "question": "Chọn câu đúng: \"Tôi không có tiền mặt\"",
+      "options": [
+        "我不有现金。",
+        "我没有现金。",
+        "我非有现金。",
+        "我无现金不。"
+      ],
+      "answerIndex": 1,
+      "explanation": "Phủ định của 有 luôn là 没有 (méiyǒu)."
+    }
+  },
+  {
+    "id": 4,
+    "title": "Giới từ & Phó từ 在 (zài) - Ở tại / Đang",
+    "pattern": "1. S + 在 + Địa điểm + V | 2. S + 在 + V (Đang làm gì)",
+    "level": "HSK 1",
+    "explanation": "“在” khi đi với danh từ chỉ nơi chốn mang nghĩa “ở tại đâu”. Khi đứng ngay trước động từ hành động, “在” đóng vai trò phó từ chỉ hành động ĐANG diễn ra (tương đương 正在).",
+    "examples": [
+      {
+        "zh": "他在胡志明市工作。",
+        "pinyin": "Tā zài Húzhìmíng shì gōngzuò.",
+        "vi": "Anh ấy làm việc tại TP. Hồ Chí Minh."
+      },
+      {
+        "zh": "你在看什么书呢？",
+        "pinyin": "Nǐ zài kàn shénme shū ne?",
+        "vi": "Bạn đang đọc sách gì thế?"
+      }
+    ],
+    "quiz": {
+      "question": "Trong câu \"妈妈在做饭\", chữ 在 mang nghĩa là gì?",
+      "options": [
+        "Ở tại",
+        "Đang (tiếp diễn)",
+        "Đã từng",
+        "Bởi vì"
+      ],
+      "answerIndex": 1,
+      "explanation": "在 đứng trực tiếp trước động từ 做饭 biểu thị hành động đang diễn ra: Mẹ đang nấu cơm."
+    }
+  },
+  {
+    "id": 5,
+    "title": "Trợ từ động thái & ngữ khí 了 (le) - Đã / Rồi",
+    "pattern": "S + V + 了 + O (Hoàn thành) | Câu + 了 (Thay đổi trạng thái)",
+    "level": "HSK 2",
+    "explanation": "“了” đứng sau động từ biểu thị hành động đã hoàn thành; đứng cuối câu biểu thị tình huống mới xuất hiện hoặc sự thay đổi trạng thái (Đã... rồi).",
+    "examples": [
+      {
+        "zh": "我买了两张去河内的机票。",
+        "pinyin": "Wǒ mǎi le liǎng zhāng qù Hénèi de jīpiào.",
+        "vi": "Tôi đã mua 2 tấm vé máy bay đi Hà Nội."
+      },
+      {
+        "zh": "外面下雨了，带雨伞吧。",
+        "pinyin": "Wàimiàn xiàyǔ le, dài yǔsǎn ba.",
+        "vi": "Bên ngoài trời mưa rồi, mang ô theo nhé."
+      }
+    ],
+    "quiz": {
+      "question": "Khi muốn nói \"Tôi đã ăn sáng rồi\", câu nào tự nhiên nhất?",
+      "options": [
+        "我吃早饭了。",
+        "我了吃早饭。",
+        "了吃早饭我。",
+        "我吃早饭过。"
+      ],
+      "answerIndex": 0,
+      "explanation": "了 đặt sau động từ hoặc cuối câu để chỉ hành động đã hoàn tất."
+    }
+  },
+  {
+    "id": 6,
+    "title": "Trợ từ trải nghiệm 过 (guò) - Đã từng",
+    "pattern": "S + V + 过 + O (Phủ định: 没 + V + 过 + O)",
+    "level": "HSK 2",
+    "explanation": "“过” đứng ngay sau động từ dùng để nhấn mạnh một trải nghiệm hoặc kinh nghiệm đã từng xảy ra trong quá khứ.",
+    "examples": [
+      {
+        "zh": "我去过上海三次。",
+        "pinyin": "Wǒ qù guò Shànghǎi sān cì.",
+        "vi": "Tôi đã từng đi Thượng Hải 3 lần."
+      },
+      {
+        "zh": "你吃过越南牛肉粉吗？",
+        "pinyin": "Nǐ chī guò Yuènán niúròufěn ma?",
+        "vi": "Bạn đã từng ăn phở bò Việt Nam chưa?"
+      }
+    ],
+    "quiz": {
+      "question": "Phủ định của cấu trúc V + 过 (Chưa từng làm gì) là:",
+      "options": [
+        "不 + V + 过",
+        "没(有) + V + 过",
+        "别 + V + 过",
+        "V + 不过"
+      ],
+      "answerIndex": 1,
+      "explanation": "Để nói \"chưa từng\", ta dùng 没(有) + Động từ + 过."
+    }
+  },
+  {
+    "id": 7,
+    "title": "Phân biệt 3 trợ từ kết cấu: 的 - 得 - 地 (de)",
+    "pattern": "Định ngữ + 的 + Danh từ | Động từ + 得 + Bổ ngữ | Trạng ngữ + 地 + Động từ",
+    "level": "HSK 3",
+    "explanation": "Ba chữ đều đọc nhẹ là \"de\" nhưng chức năng hoàn toàn khác nhau: “的” đứng trước Danh từ (sở hữu/miêu tả); “得” đứng sau Động từ để đánh giá mức độ/kết quả; “地” đứng sau Tính từ để biến tính từ thành trạng ngữ bổ nghĩa cho động từ.",
+    "examples": [
+      {
+        "zh": "美丽的风景 (的) / 说得非常流利 (得) / 认真地学习 (地)",
+        "pinyin": "měilì de fēngjǐng / shuō de fēicháng liúlì / rènzhēn de xuéxí",
+        "vi": "Phong cảnh đẹp / Nói rất lưu loát / Học tập một cách nghiêm túc"
+      }
+    ],
+    "quiz": {
+      "question": "Điền chữ đúng vào chỗ trống: \"他汉语说___非常好\" (Anh ấy nói tiếng Trung rất tốt):",
+      "options": [
+        "的",
+        "得",
+        "地",
+        "着"
+      ],
+      "answerIndex": 1,
+      "explanation": "Sau động từ 说 cần bổ ngữ chỉ mức độ (非常好) nên bắt buộc dùng 得."
+    }
+  },
+  {
+    "id": 8,
+    "title": "Câu chữ 把 (bǎ) - Xử lý tân ngữ",
+    "pattern": "S + 把 + Tân ngữ (xác định) + Động từ + Thành phần khác (了/Bổ ngữ)",
+    "level": "HSK 3",
+    "explanation": "Câu chữ 把 dùng để nhấn mạnh tác động của chủ ngữ làm thay đổi vị trí hoặc trạng thái của một sự vật xác định. Lưu ý: Động từ trong câu chữ 把 KHÔNG được đứng trơ trọi một mình.",
+    "examples": [
+      {
+        "zh": "请把门关上。",
+        "pinyin": "Qǐng bǎ mén guān shàng.",
+        "vi": "Xin hãy đóng cửa lại."
+      },
+      {
+        "zh": "我已经把合同发给客户了。",
+        "pinyin": "Wǒ yǐjīng bǎ hétong fā gěi kèhù le.",
+        "vi": "Tôi đã gửi hợp đồng cho khách hàng rồi."
+      }
+    ],
+    "quiz": {
+      "question": "Trong câu chữ 把, từ phủ định (不 / 没) phải đặt ở đâu?",
+      "options": [
+        "Đặt trước chữ 把",
+        "Đặt sau chữ 把",
+        "Đặt cuối câu",
+        "Đặt sau động từ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Phó từ phủ định (不, 没) hoặc động từ năng nguyện (想, 要) luôn phải đứng TRƯỚC chữ 把."
+    }
+  },
+  {
+    "id": 9,
+    "title": "Câu bị động chữ 被 (bèi) - Bị / Được",
+    "pattern": "Tân ngữ chịu tác động + 被 + (Tác nhân) + Động từ + Thành phần khác",
+    "level": "HSK 3",
+    "explanation": "“被” dùng để diễn tả câu bị động. Trong tiếng Trung hiện đại, 被 dùng cho cả nghĩa tiêu cực (bị) lẫn tích cực (được khen, được chọn).",
+    "examples": [
+      {
+        "zh": "桌上的蛋糕被弟弟吃光了。",
+        "pinyin": "Zhuō shàng de dàngāo bèi dìdi chī guāng le.",
+        "vi": "Chiếc bánh kem trên bàn bị em trai ăn sạch rồi."
+      },
+      {
+        "zh": "他被评为公司今年的优秀员工。",
+        "pinyin": "Tā bèi píngwéi gōngsī jīnnián de yōuxiù yuángōng.",
+        "vi": "Anh ấy được bình chọn là nhân viên xuất sắc năm nay của công ty."
+      }
+    ],
+    "quiz": {
+      "question": "Câu nào đúng cấu trúc bị động với 被?",
+      "options": [
+        "我的手机被偷了。",
+        "被我的手机偷了。",
+        "我的手机偷被了。",
+        "我的手机被偷。"
+      ],
+      "answerIndex": 0,
+      "explanation": "Cấu trúc: Chủ ngữ chịu tác động (我的手机) + 被 + Động từ + 了/Bổ ngữ (偷了)."
+    }
+  },
+  {
+    "id": 10,
+    "title": "Câu so sánh hơn với 比 (bǐ)",
+    "pattern": "A + 比 + B + Tính từ (+ Cụ thể chênh lệch / 更 / 得多)",
+    "level": "HSK 2",
+    "explanation": "“比” dùng để so sánh hơn giữa A và B. Lưu ý QUAN TRỌNG: Tuyệt đối KHÔNG dùng 很, 非常, 太 trước tính từ trong câu chữ 比 (nhưng có thể dùng 更 hoặc 得多 ở sau).",
+    "examples": [
+      {
+        "zh": "今天比昨天凉快多了。",
+        "pinyin": "Jīntiān bǐ zuótiān liángkuai duō le.",
+        "vi": "Hôm nay mát hơn hôm qua nhiều."
+      },
+      {
+        "zh": "坐高铁比坐汽车快两个小时。",
+        "pinyin": "Zuò gāotiě bǐ zuò qìchē kuài liǎng gè xiǎoshí.",
+        "vi": "Đi tàu cao tốc nhanh hơn đi ô tô 2 tiếng đồng hồ."
+      }
+    ],
+    "quiz": {
+      "question": "Câu so sánh nào dưới đây bị SAI ngữ pháp?",
+      "options": [
+        "哥哥比我高。",
+        "哥哥比我很高。",
+        "哥哥比我更高。",
+        "哥哥比我高一点儿。"
+      ],
+      "answerIndex": 1,
+      "explanation": "Trong câu so sánh 比, không được thêm phó từ chỉ mức độ 很 (hěn) trước tính từ."
+    }
+  },
+  {
+    "id": 11,
+    "title": "Cấu trúc 越来越... (yuèláiyuè) - Càng ngày càng...",
+    "pattern": "Chủ ngữ + 越来越 + Tính từ / Động từ tâm lý",
+    "level": "HSK 3",
+    "explanation": "Biểu thị mức độ của sự vật/trạng thái tăng dần theo thời gian. Đã có 越来越 thì không thêm 很 hay 太 nữa.",
+    "examples": [
+      {
+        "zh": "你的发音越来越标准了！",
+        "pinyin": "Nǐ de fāyīn yuèláiyuè biāozhǔn le!",
+        "vi": "Phát âm của bạn càng ngày càng chuẩn rồi!"
+      },
+      {
+        "zh": "来越南投资的企业越来越多。",
+        "pinyin": "Lái Yuènán tóuzī de qǐyè yuèláiyuè duō.",
+        "vi": "Doanh nghiệp đến Việt Nam đầu tư ngày càng nhiều."
+      }
+    ],
+    "quiz": {
+      "question": "Để nói \"Thời tiết càng ngày càng nóng\", ta nói:",
+      "options": [
+        "天气越来越热。",
+        "天气越热越来。",
+        "天气很越来越热。",
+        "越来越天气热。"
+      ],
+      "answerIndex": 0,
+      "explanation": "Chủ ngữ (天气) + 越来越 + Tính từ (热)."
+    }
+  },
+  {
+    "id": 12,
+    "title": "Cấu trúc 一边…一边… (Vừa... vừa...)",
+    "pattern": "Chủ ngữ + 一边 + Động từ 1 + 一边 + Động từ 2",
+    "level": "HSK 3",
+    "explanation": "Biểu thị hai hành động diễn ra song song cùng một lúc do cùng một chủ thể thực hiện.",
+    "examples": [
+      {
+        "zh": "我们一边喝咖啡，一边聊合作项目吧。",
+        "pinyin": "Wǒmen yìbiān hē kāfēi, yìbiān liáo hézuò xiàngmù ba.",
+        "vi": "Chúng ta vừa uống cà phê vừa bàn về dự án hợp tác nhé."
+      }
+    ],
+    "quiz": {
+      "question": "Điền vào chỗ trống: \"她喜欢___听音乐，___做运动。\"",
+      "options": [
+        "一边...一边...",
+        "因为...所以...",
+        "虽然...但是...",
+        "如果...就..."
+      ],
+      "answerIndex": 0,
+      "explanation": "Hai hành động nghe nhạc và tập thể dục diễn ra đồng thời nên dùng 一边…一边…"
+    }
+  },
+  {
+    "id": 13,
+    "title": "Cấu trúc nhượng bộ 虽然…但是… (Tuy... nhưng...)",
+    "pattern": "虽然 + Mệnh đề 1，但是 / 可是 + Mệnh đề 2",
+    "level": "HSK 2",
+    "explanation": "Biểu thị quan hệ chuyển ngoặt nhượng bộ: thừa nhận sự thật ở vế trước (虽然), nhưng kết quả hoặc ý chính nằm ở vế sau (但是).",
+    "examples": [
+      {
+        "zh": "虽然汉字有点难，但是非常有趣。",
+        "pinyin": "Suīrán Hànzì yǒudiǎn nán, dànshì fēicháng yǒuqù.",
+        "vi": "Tuy chữ Hán hơi khó một chút, nhưng lại vô cùng thú vị."
+      }
+    ],
+    "quiz": {
+      "question": "Cặp liên từ nào đi cùng với 虽然?",
+      "options": [
+        "所以",
+        "但是",
+        "而且",
+        "就"
+      ],
+      "answerIndex": 1,
+      "explanation": "虽然…但是… (Tuy... nhưng...) là cặp liên từ cố định."
+    }
+  },
+  {
+    "id": 14,
+    "title": "Cấu trúc nhân quả 因为…所以… (Bởi vì... cho nên...)",
+    "pattern": "因为 + Nguyên nhân，所以 + Kết quả",
+    "level": "HSK 2",
+    "explanation": "Diễn tả nguyên nhân và kết quả rõ ràng trong cả văn nói lẫn văn viết.",
+    "examples": [
+      {
+        "zh": "因为路上堵车，所以我迟到了五分钟。",
+        "pinyin": "Yīnwèi lùshang dǔchē, suǒyǐ wǒ chídào le wǔ fēnzhōng.",
+        "vi": "Vì trên đường bị kẹt xe nên tôi đã đến muộn 5 phút."
+      }
+    ],
+    "quiz": {
+      "question": "Chọn vế nối đúng: \"因为今天下大雨，___我们取消了露营计划。\"",
+      "options": [
+        "所以",
+        "但是",
+        "还是",
+        "一边"
+      ],
+      "answerIndex": 0,
+      "explanation": "因为 (vì) đi với 所以 (cho nên)."
+    }
+  },
+  {
+    "id": 15,
+    "title": "Cấu trúc giả thiết 如果…就… (Nếu... thì...)",
+    "pattern": "如果 + Điều kiện giả định，(Chủ ngữ 2) + 就 + Kết quả",
+    "level": "HSK 3",
+    "explanation": "Biểu thị điều kiện giả thiết. Lưu ý chữ “就” (jiù) luôn phải đứng SAU chủ ngữ của vế thứ hai!",
+    "examples": [
+      {
+        "zh": "如果你有什么问题，就随时联系我。",
+        "pinyin": "Rúguǒ nǐ yǒu shénme wèntí, jiù suíshí liánxì wǒ.",
+        "vi": "Nếu bạn có thắc mắc gì thì cứ liên hệ tôi bất cứ lúc nào."
+      }
+    ],
+    "quiz": {
+      "question": "Trong vế thứ hai của 如果…就…, vị trí đúng của chữ 就 là ở đâu?",
+      "options": [
+        "Đứng sau chủ ngữ vế 2",
+        "Đứng trước chủ ngữ vế 2",
+        "Đứng cuối câu",
+        "Đứng trước 如果"
+      ],
+      "answerIndex": 0,
+      "explanation": "Chữ 就 là phó từ nên bắt buộc đứng sau chủ ngữ và trước động từ của vế thứ 2."
+    }
+  },
+  {
+    "id": 16,
+    "title": "Cấu trúc tăng tiến 不但…而且… (Không những... mà còn...)",
+    "pattern": "不但 + Vế 1，而且 + Vế 2",
+    "level": "HSK 3",
+    "explanation": "Dùng để bổ sung thêm một tầng ý nghĩa cao hơn hoặc rộng hơn so với vế đầu.",
+    "examples": [
+      {
+        "zh": "这家餐厅不但菜好吃，而且服务态度也很好。",
+        "pinyin": "Zhè jiā cāntīng búdàn cài hǎochī, érqiě fúwù tàidù yě hěn hǎo.",
+        "vi": "Nhà hàng này không những món ăn ngon mà thái độ phục vụ cũng rất tốt."
+      }
+    ],
+    "quiz": {
+      "question": "Cặp liên từ \"不但…而且…\" mang nghĩa gì?",
+      "options": [
+        "Không những... mà còn...",
+        "Tuy... nhưng...",
+        "Hoặc là... hoặc là...",
+        "Thà... còn hơn..."
+      ],
+      "answerIndex": 0,
+      "explanation": "不但…而且… biểu thị quan hệ tăng tiến."
+    }
+  }
+]
