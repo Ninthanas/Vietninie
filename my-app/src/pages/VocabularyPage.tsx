@@ -23,6 +23,11 @@ export default function VocabularyPage() {
     [mode, setMode] = useState('list'),
     [flipped, setFlipped] = useState(false);
   const search = useDebounce(query);
+  useEffect(() => {
+    setLevel('');
+    setTopic('');
+    setQuery('');
+  }, [language]);
   const filtered = useMemo(
     () =>
       words.filter(

@@ -1,0 +1,1 @@
+import{j as r}from"./index-dWbViTea.js";const m="_button_18mlo_1",_="_primary_18mlo_24",a="_secondary_18mlo_29",c="_ghost_18mlo_34",t={button:m,primary:_,secondary:a,ghost:c};function e({className:o="",variant:s="primary",...n}){return r.jsx("button",{...n,className:t.button+" "+t[s]+" "+o})}export{e as B};

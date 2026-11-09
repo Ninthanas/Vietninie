@@ -73,6 +73,9 @@ export function MainLayout() {
           })}
         </nav>
         <div className="sidebar-bottom">
+          <NavLink to="/login">
+            <Globe size={19} /> Tài khoản
+          </NavLink>
           <div className="sidebar-tip">
             <Sparkles size={23} />
             <strong>
