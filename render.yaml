@@ -12,6 +12,6 @@ services:
       - key: GEMINI_API_KEY
         sync: false
       - key: GEMINI_MODEL
-        value: gemini-flash-latest
+        value: gemini-3.5-flash
       - key: CHAT_ALLOWED_ORIGINS
         value: https://ninthanas.github.io

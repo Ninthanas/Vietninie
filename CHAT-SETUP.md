@@ -7,7 +7,7 @@ Chat đã được gắn vào trang chủ và 9 trang học. Hội thoại chỉ
 Yêu cầu Node.js 22 trở lên. Không cần cài thêm thư viện hoặc chạy cơ sở dữ liệu.
 
 1. Sao chép `backend/chat.env.example` thành `backend/chat.env` (tệp này bị git bỏ qua).
-2. Điền `GEMINI_API_KEY` lấy từ https://aistudio.google.com/api-keys và `GEMINI_MODEL` (mặc định `gemini-flash-latest`). Khóa chỉ nằm ở máy chủ.
+2. Điền `GEMINI_API_KEY` lấy từ https://aistudio.google.com/api-keys và `GEMINI_MODEL` (mặc định `gemini-3.5-flash`). Khóa chỉ nằm ở máy chủ.
 3. Từ thư mục dự án chạy:
 
 ```
